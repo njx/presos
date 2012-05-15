@@ -61,7 +61,7 @@
                     <h2>Signing Up for a Bug</h2>
                     <ul>
                         <li class="fragment">Make sure it isn't "fix in progress" or "fixed but not closed"</li>
-                        <li class="fragment">Comment on the bug that you're working on it</li>
+                        <li class="fragment">Comment on the bug saying that you're working on it</li>
                         <li class="fragment">After pull request is merged, comment on the bug asking the filer to close</li>
                     </ul>
                 </section>
@@ -80,7 +80,7 @@
                     <ul>
                         <li class="fragment">Small changes should be reviewed within a couple of days</li>
                         <li class="fragment">Larger changes/features will be scheduled for a future sprint</li>
-                        <li class="fragment">Our sprints are 2.5 weeks long</li>
+                        <li class="fragment">Core team sprints are 2.5 weeks long</li>
                     </ul>
                 </section>
                 
@@ -89,10 +89,10 @@
                     <ul>
                         <li class="fragment">Want to keep the core of Brackets small</li>
                         <li class="fragment">Try to build your feature as an extension</li>
-                        <li class="fragment">Let us know where you run into problems or want a general API</li>
+                        <li class="fragment">Discuss with community where you run into problems or want a general API</li>
                         <li class="fragment">Extensions not in adobe/brackets repo don't need pull requests</li>
+                        <li class="fragment">When ready to post, add a link to <a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">Brackets Extensions</a> page</li>
                         <li class="fragment">If it makes sense in the Brackets core distro, we can pull it into <code>extensions/disabled</code> and review</li>
-                        <li class="fragment">Brackets doesn't yet have any UI around discovering/installing extensions</li>
                     </ul>
                 </section>
                 
@@ -100,16 +100,23 @@
                     <h2>How to Build an Extension</h2>
                     <ul>
                         <li class="fragment">Create a folder or repo in <code>extensions/user</code></li>
-                        <li class="fragment">Create a main.js file containing your main module</li>
+                        <li class="fragment">Create a <code>main.js</code> file containing your main module</li>
                         <li class="fragment">Use <code>brackets.getModule()</code> for core modules</li>
                         <li class="fragment">Use <code>require()</code> for your own modules</li>
-                        <li class="fragment">...don't yet use CommonJS package.json, but will...</li>
-                        <li class="fragment">When ready to post, add to <a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">Brackets Extensions</a> on the wiki</li>
                     </ul>
                 </section>
                 
                 <section>
                     <h2>Example: InlineImageViewer</h2>
+                </section>
+                
+                <section>
+                    <h2>Some Limitations of Extensions</h2>
+                    <ul>
+                        <li class="fragment">Brackets doesn't yet use CommonJS <code>package.json</code>, but will move to that in the future</li>
+                        <li class="fragment">Don't yet have clean APIs for adding menu items/keyboard shortcuts</li>
+                        <li class="fragment">Don't yet have UI/mechanisms for discovering/installing/managing extensions</li>
+                    </ul>
                 </section>
                 
                 <section>
@@ -157,7 +164,7 @@
                 rollingLinks: true,
                 
                 // UI style
-                theme: 'default', // default/neon
+                theme: 'neon', // default/neon
                 
                 // Transition style
                 transition: 'default' // default/cube/page/concave/linear(2d)
