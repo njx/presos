@@ -1,0 +1,169 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>What to Work On in Brackets</title>
+
+		<meta name="description" content="Suggestions for how to contribute to the Brackets project: github.com/adobe/brackets">
+		<meta name="author" content="Narciso (nj) Jaramillo, @notwebsafe">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="../reveal.js/css/reset.css">
+		<link rel="stylesheet" href="../reveal.js/css/main.css">
+		<link rel="stylesheet" href="../reveal.js/css/print.css" type="text/css" media="print">
+
+		<link rel="stylesheet" href="../reveal.js/lib/zenburn.css">
+	</head>
+    
+    <body>
+        <div id="reveal">
+            <div class="slides">
+                <section>
+                    <h1>What to Work On in Brackets</h1>
+					<p>
+						<i><small><a href="http://notwebsafe.com">Narciso Jaramillo</a> / <a href="http://twitter.com/notwebsafe">@notwebsafe</a></small></i>
+					</p>                    
+                    <script>
+						// Deliciously hacky. Look away.
+						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+					</script>
+                </section>
+                
+                <section>
+                    <h2>Contributions !== Code</h2>
+                    <ul>
+                        <li class="fragment">Use (and test) Brackets!</li>
+                        <li class="fragment">File bugs and feature ideas:<br>
+                            <a href="https://github.com/adobe/brackets/issues">github.com/adobe/brackets/issues</a></li>
+                        <li class="fragment">Vote or comment on backlog/icebox items:<br>
+                            <a href="http://bit.ly/BracketsBacklog">bit.ly/BracketsBacklog</a></li>
+                        <li class="fragment">Update/create developer or user documentation:<br>
+                            <a href="https://github.com/adobe/brackets/wiki">github.com/adobe/brackets/wiki</a></li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Contributions === Code</h2>
+                    <ul>
+                        <li class="fragment"><a href="https://github.com/adobe/brackets/issues?labels=starter+bug&state=open">Issues labelled "starter bug"</a></li>
+                        <li class="fragment"><a href="http://bit.ly/BracketsBacklog">Backlog/icebox items labelled "starter feature"</a></li>
+                        <li class="fragment">Things you want to see in Brackets</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Signing Up for a Bug</h2>
+                    <ul>
+                        <li class="fragment">Make sure it isn't "fix in progress" or "fixed but not closed"</li>
+                        <li class="fragment">Comment on the bug that you're working on it</li>
+                        <li class="fragment">After pull request is merged, comment on the bug asking the filer to close</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Signing Up for a Feature</h2>
+                    <ul>
+                        <li class="fragment">Mention what you're working on on the Google Group or IRC</li>
+                        <li class="fragment">Describe your design/approach and get feedback</li>
+                        <li class="fragment">Or post a prototype (as a branch in your fork or as an extension)</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Pull Request Reviews</h2>
+                    <ul>
+                        <li class="fragment">Small changes should be reviewed within a couple of days</li>
+                        <li class="fragment">Larger changes/features will be scheduled for a future sprint</li>
+                        <li class="fragment">Our sprints are 2.5 weeks long</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Core vs. Extensions</h2>
+                    <ul>
+                        <li class="fragment">Want to keep the core of Brackets small</li>
+                        <li class="fragment">Try to build your feature as an extension</li>
+                        <li class="fragment">Let us know where you run into problems or want a general API</li>
+                        <li class="fragment">Extensions not in adobe/brackets repo don't need pull requests</li>
+                        <li class="fragment">If it makes sense in the Brackets core distro, we can pull it into <code>extensions/disabled</code> and review</li>
+                        <li class="fragment">Brackets doesn't yet have any UI around discovering/installing extensions</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>How to Build an Extension</h2>
+                    <ul>
+                        <li class="fragment">Create a folder or repo in <code>extensions/user</code></li>
+                        <li class="fragment">Create a main.js file containing your main module</li>
+                        <li class="fragment">Use <code>brackets.getModule()</code> for core modules</li>
+                        <li class="fragment">Use <code>require()</code> for your own modules</li>
+                        <li class="fragment">...don't yet use CommonJS package.json, but will...</li>
+                        <li class="fragment">When ready to post, add to <a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">Brackets Extensions</a> on the wiki</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Example: InlineImageViewer</h2>
+                </section>
+                
+                <section>
+                    <!-- Why does 25% work? -->
+                    <h1 style="margin-top: 25%">GO FOR IT</h1>
+                </section>
+            </div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+        </div>
+
+        <script src="../reveal.js/js/reveal.js"></script>
+
+		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+		<script src="../reveal.js/lib/highlight.js"></script>
+		<script src="../reveal.js/lib/classList.js"></script>
+		
+		<script>
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Loops the presentation, defaults to false
+				loop: false,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: true,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: true,
+
+				// UI style
+				theme: 'default', // default/neon
+
+				// Transition style
+				transition: 'default' // default/cube/page/concave/linear(2d)
+			});
+
+			hljs.initHighlightingOnLoad();
+		</script>
+    </body>
+</html>
