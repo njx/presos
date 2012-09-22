@@ -1,0 +1,95 @@
+<!doctype html>  
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        
+        <title>What to Work On in Brackets</title>
+        
+        <meta name="description" content="Suggestions for how to contribute to the Brackets project: github.com/adobe/brackets">
+        <meta name="author" content="Narciso (nj) Jaramillo, @notwebsafe">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        
+        <script src="http://use.edgefonts.net/nixie-one:n4:all;open-sans:n7,i7,n8,i8,i4,n3,i3,n4,n6,i6:all.js"></script>
+        
+        <link rel="stylesheet" href="../reveal.js/css/main.css">
+        <link rel="stylesheet" href="hipster.css" id="theme">
+        
+        <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+    </head>
+    
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section data-state="cover">
+                    <h1>become a web design hipster</h1>
+                    <p>
+                        <i><small><a href="http://notwebsafe.com">Narciso Jaramillo</a> / <a href="http://twitter.com/notwebsafe">@notwebsafe</a></small></i>
+                    </p>                    
+                    <script>
+                        // Deliciously hacky. Look away.
+                        if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+                    </script>
+                </section>
+                
+                <section>
+                    <h2>Something Awesome</h2>
+                    <ul>
+                        <li class="fragment">Awesome Bullet 1</li>
+                        <li class="fragment">Awesome Bullet 2</li>
+                        <li class="fragment">Awesome Bullet 3</li>
+                    </ul>
+                </section>
+            </div>
+            
+            <!-- The navigational controls UI -->
+            <aside class="controls">
+                <a class="left" href="#">&#x25C4;</a>
+                <a class="right" href="#">&#x25BA;</a>
+                <a class="up" href="#">&#x25B2;</a>
+                <a class="down" href="#">&#x25BC;</a>
+            </aside>
+            
+            <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+            <div class="progress"><span></span></div>
+        </div>
+
+        <script src="../reveal.js/lib/js/head.min.js"></script>
+        <script src="../reveal.js/js/reveal.js"></script>
+        
+        <script>
+            Reveal.initialize({
+                // Display controls in the bottom right corner
+                controls: true,
+                
+                // Display a presentation progress bar
+                progress: true,
+                
+                // If true; each slide will be pushed to the browser history
+                history: true,
+                
+                // Loops the presentation, defaults to false
+                loop: false,
+                
+                // Flags if mouse wheel navigation should be enabled
+                mouseWheel: true,
+                
+                // Apply a 3D roll to links on hover
+                rollingLinks: true,
+                
+                // UI style
+                theme: 'hipster',
+                
+                // Transition style
+                transition: 'linear',
+                
+                dependencies: [
+					{ src: '../reveal.js/lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+                ]
+            });
+        </script>
+    </body>
+</html>
