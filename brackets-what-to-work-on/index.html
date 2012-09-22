@@ -18,6 +18,12 @@
         <link rel="stylesheet" href="../reveal.js/css/theme/default.css" id="theme">
         
         <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+        
+        <style type="text/css">
+            code {
+                color: orange;
+            }
+        </style>
     </head>
     
     <body>
@@ -26,7 +32,7 @@
                 <section>
                     <h1>What to Work On in Brackets</h1>
                     <p>
-                        <i><small><a href="http://notwebsafe.com">Narciso Jaramillo</a> / <a href="http://twitter.com/notwebsafe">@notwebsafe</a></small></i>
+                        <i><small><a href="http://notwebsafe.com">Narciso (NJ) Jaramillo</a> / <a href="http://twitter.com/notwebsafe">@notwebsafe</a></small></i>
                     </p>                    
                     <script>
                         // Deliciously hacky. Look away.
@@ -106,7 +112,23 @@
                 </section>
                 
                 <section>
-                    <h2>Example: InlineImageViewer</h2>
+                    <h2>Example: HelloWorld</h2>
+                    <pre><code contenteditable class="javascript">
+define(function (require, exports, module) {
+    'use strict';
+    
+    // Brackets modules
+    var DocumentManager = brackets.getModule("document/DocumentManager");
+    
+    var $item = $("&lt;li&gt;&lt;/li&gt;");
+    $("&lt;a href='#' id='hello-world'&gt;Hello World&lt;/a&gt;")
+        .click(function() {
+            alert("Hello Document: " + DocumentManager.getCurrentDocument().file.fullPath);
+        })
+        .appendTo($item);
+    $("#menu-experimental-usetab").parent().after($item);
+});
+                    </code></pre>
                 </section>
                 
                 <section>
@@ -115,6 +137,16 @@
                         <li class="fragment">Brackets doesn't yet use CommonJS <code>package.json</code>, but will move to that in the future</li>
                         <li class="fragment">Don't yet have clean APIs for adding menu items/keyboard shortcuts</li>
                         <li class="fragment">Don't yet have UI/mechanisms for discovering/installing/managing extensions</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Existing Extensible Features</h2>
+                    <ul>
+                        <li class="fragment">Quick Open: <code>QuickOpen.addQuickOpenPlugin()</code></li>
+                        <li class="fragment">Quick Edit: <code>EditorManager.registerInlineEditProvider()</code></li>
+                        <li class="fragment">Language support: <code>EditorUtils.getModeFromFileExtension()</code><br>
+                            based on CodeMirror modes: <a href="http://codemirror.net/doc/manual.html#modeapi">http://codemirror.net/doc/manual.html#modeapi</a></li>
                     </ul>
                 </section>
                 
