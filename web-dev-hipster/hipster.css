@@ -65,6 +65,9 @@ body {
 	color: white;
 	line-height: 0.9em;
     background-color: rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 10px black;
+    -webkit-box-shadow: 0 0 10px black;
+    box-shadow: 0 0 10px black;
 }
 
 
@@ -159,6 +162,30 @@ body {
  * SLIDE-SPECIFIC
  *********************************************/
 
-.cover body {
-    background: url("cover.png") 50% 50% / 100% auto no-repeat;
+.hip-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    -moz-transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    background: 50% 50% / cover no-repeat;
+}
+
+#cover.hip-image {
+    background-image: url("cover.png");
+}
+.cover #cover.hip-image {
+    opacity: 1;
+}
+
+#awesome.hip-image {
+    background-position: 50% 0;
+    background-image: url("awesome.jpg");
+}
+.awesome #awesome.hip-image {
+    opacity: 1;
 }
