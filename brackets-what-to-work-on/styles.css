@@ -1,0 +1,51 @@
+.reveal .slides {
+    max-width: 1000px;
+    top: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    padding: 10px;
+    background-color: rgba(240, 240, 255, 0.3);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.reveal h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+.reveal h2 {
+    font-size: 1.8em;
+}
+
+.reveal pre {
+    width: 100%;
+    font-size: 0.6em;
+}
+.reveal li {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+code.small {
+    font-size: 0.6em;
+}
+
+li code {
+    display: inline-block;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 6px 10px;
+    font-size: 0.9em;
+    color: #373769;
+}
+
+.brackets-logo {
+    margin: 0 auto;
+    background: url(branding_512.svg);
+    background-size: 100% 100%;
+    width: 384px;
+    height: 384px;
+}
