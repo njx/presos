@@ -49,3 +49,32 @@ li code {
     width: 384px;
     height: 384px;
 }
+
+.slide-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.what .slide-bg {
+    background: url(what-now.jpg);
+    background-size: 100% auto;
+}
+.what-bg .slide-bg {
+    background: url(what-now-bg.png);
+    background-size: 100% auto;
+}
+.how-core .slide-bg {
+    background: url(how-core.jpg);
+    background-size: 100% auto;
+}
+.how-core-bg .slide-bg {
+    background: url(how-core-bg.png);
+    background-size: 100% auto;
+}
+
+.boxed {
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 10px;
+    padding: 200px;
+}

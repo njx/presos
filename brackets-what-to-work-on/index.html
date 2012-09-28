@@ -22,6 +22,7 @@
     </head>
     
     <body>
+        <div class="slide-bg"></div>
         <div class="reveal">
             <div class="slides">
                 <section>
@@ -37,11 +38,11 @@
                     </script>
                 </section>
                 
-                <section>
-                    <h1>WHAT</h1>
+                <section data-state="what">
+                    <h1>What to Do?</h1>
                 </section>
                 
-                <section>
+                <section data-state="what-bg">
                     <h2>What Should I Work On?</h2>
                     <ul>
                         <li>Find a <a href="https://github.com/adobe/brackets/issues?labels=starter+bug&state=open">starter bug</a></li>
@@ -54,7 +55,7 @@
                     </ul>
                 </section>
                 
-                <section>
+                <section data-state="what-bg">
                     <h2>Signing Up for a Bug</h2>
                     <ul>
                         <li>Check the labels</li>
@@ -64,7 +65,7 @@
                     </ul>
                 </section>
                 
-                <section>
+                <section data-state="what-bg">
                     <h2>Signing Up for a Feature</h2>
                     <ul>
                         <li>Mention what you're working on on the Google Group</li>
@@ -73,11 +74,11 @@
                     </ul>
                 </section>
                 
-                <section>
-                    <h1>HOW: Core</h1>
+                <section data-state="how-core">
+                    <h1>Hacking on Core</h1>
                 </section>
                 
-                <section>
+                <section data-state="how-core-bg">
                     <h2>Get Set Up</h2>
                     <ul>
                         <li>Install <a href="https://github.com/adobe/brackets/downloads">a build of Brackets</a> to get the shell</li>
@@ -88,17 +89,17 @@
                     </ul>
                 </section>
                 
-                <section>
+                <section data-state="how-core-bg">
                     <h2>Development Workflow</h2>
                     <ul>
                         <li>Launch Brackets</li>
-                        <li>Do <strong>Debug &gt; New Brackets Window</strong> to get a second window</li>
-                        <li>Edit and save in your initial window, reload and test in your second window</li>
-                        <li><strong>Debug &gt; Show Developer Tools</strong> brings up Web Inspector on Brackets</li>
+                        <li><strong>Debug &gt; New Brackets Window</strong></li>
+                        <li>Edit / save in first window, reload / test in second window</li>
+                        <li><strong>Debug &gt; Show Developer Tools</strong> brings up Web Inspector</li>
                     </ul>
                 </section>
 
-                <section>
+                <section data-state="how-core-bg">
                     <h2>Practice Good Hygiene</h2>
                     <ul>
                         <li>Read the <a href="https://github.com/adobe/brackets/wiki/Brackets-Coding-Conventions">Brackets Coding Conventions</a></li>
@@ -108,7 +109,7 @@
                     </ul>
                 </section>
                 
-                <section>
+                <section data-state="how-core-bg">
                     <h2>Submit a Pull Request</h2>
                     <ul>
                         <li>Fill out the <a href="http://dev.brackets.io/brackets-contributor-license-agreement.html">Contributor License Agreement</a></li>
@@ -120,7 +121,8 @@
                 </section>
                 
                 <section>
-                    <h1>HOW: Extensions</h1>
+                    <h1>Writing Extensions</h1>
+                    <p class="boxed fragment">pretend this is an image of a chimp playing with legos</p>
                 </section>
                 
                 <section>
@@ -172,10 +174,17 @@
                 </section>
                 
                 <section>
-                    <h2>Code Hinting Extensions</h2>
-                    
+                    <h2>Code Hinting Extensions</h2>                    
                 </section>
                 
+                <section>
+                    <h2>Quick Open Extensions</h2>                    
+                </section>
+
+                <section>
+                    <h2>Quick Edit Extensions</h2>                    
+                </section>
+
                 <section>
                     <!-- Why does 25% work? -->
                     <h1 style="margin-top: 25%">GO</h1>
