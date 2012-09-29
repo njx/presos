@@ -7,7 +7,7 @@
 
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
     padding: 10px;
-    background-color: rgba(240, 240, 255, 0.3);
+    background-color: rgba(240, 240, 255, 0.5);
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -31,6 +31,9 @@
 code.small {
     font-size: 0.6em;
 }
+code .param {
+    color: #904444;
+}
 
 li code {
     display: inline-block;
@@ -44,7 +47,7 @@ li code {
 
 .brackets-logo {
     margin: 0 auto;
-    background: url(branding_512.svg);
+    background-image: url(branding_512.svg);
     background-size: 100% 100%;
     width: 384px;
     height: 384px;
@@ -54,22 +57,25 @@ li code {
     position: absolute;
     width: 100%;
     height: 100%;
+    background-size: 100% auto;
 }
 .what .slide-bg {
-    background: url(what-now.jpg);
-    background-size: 100% auto;
+    background-image: url(what-now.jpg);
 }
 .what-bg .slide-bg {
-    background: url(what-now-bg.png);
-    background-size: 100% auto;
+    background-image: url(what-now-bg.png);
 }
 .how-core .slide-bg {
-    background: url(how-core.jpg);
-    background-size: 100% auto;
+    background-image: url(how-core.jpg);
 }
 .how-core-bg .slide-bg {
-    background: url(how-core-bg.png);
-    background-size: 100% auto;
+    background-image: url(how-core-bg.png);
+}
+.how-extensions .slide-bg {
+    background-image: url(how-extensions.jpg);
+}
+.how-extensions-bg .slide-bg {
+    background-image: url(how-extensions-bg.png);
 }
 
 .boxed {
@@ -77,4 +83,12 @@ li code {
     background: rgba(255, 255, 255, 0.3);
     margin: 10px;
     padding: 200px;
+}
+
+.extension-images {
+    margin: 20px auto;
+}
+.extension-image {
+    display: inline-block;
+    margin: 0 20px;
 }

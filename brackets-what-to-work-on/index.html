@@ -38,151 +38,179 @@
                     </script>
                 </section>
                 
-                <section data-state="what">
-                    <h1>What to Do?</h1>
-                </section>
+                <section>
+                    <section data-state="what">
+                        <h1>What to Do?</h1>
+                    </section>
                 
-                <section data-state="what-bg">
-                    <h2>What Should I Work On?</h2>
-                    <ul>
-                        <li>Find a <a href="https://github.com/adobe/brackets/issues?labels=starter+bug&state=open">starter bug</a></li>
-                        <li>Find a <a href="http://bit.ly/BracketsBacklog">starter feature</a></li>
-                        <li>Work on a <a href="https://github.com/adobe/brackets/blob/master/src/nls/README.md">translation</a></li>
-                        <li>Add code hints, Quick Open, or Quick Edit for a language</li>
-                        <li>Work on your own idea</li>
-                        <li>Update/write <a href="https://github.com/adobe/brackets/wiki">developer or user documentation</a></li>
-                        <li>Check with us on the <a href="https://groups.google.com/group/brackets-dev">Google Group</a> or #brackets</li>
-                    </ul>
-                </section>
-                
-                <section data-state="what-bg">
-                    <h2>Signing Up for a Bug</h2>
-                    <ul>
-                        <li>Check the labels</li>
-                        <li>Comment on the bug to claim it</li>
-                        <li>Submit a pull request</li>
-                        <li>After it's merged, add a comment asking filer to close</li>
-                    </ul>
-                </section>
-                
-                <section data-state="what-bg">
-                    <h2>Signing Up for a Feature</h2>
-                    <ul>
-                        <li>Mention what you're working on on the Google Group</li>
-                        <li>Describe your design/approach and get feedback</li>
-                        <li>Or post a prototype (as a branch or an extension)</li>
-                    </ul>
-                </section>
-                
-                <section data-state="how-core">
-                    <h1>Hacking on Core</h1>
-                </section>
-                
-                <section data-state="how-core-bg">
-                    <h2>Get Set Up</h2>
-                    <ul>
-                        <li>Install <a href="https://github.com/adobe/brackets/downloads">a build of Brackets</a> to get the shell</li>
-                        <li>Fork the <a href="https://github.com/adobe/brackets">Brackets repo</a></li>
-                        <li>Run the setup script in your fork of the repo<br/>
-                            <code class="small">./tools/setup_for_hacking.sh "/Applications/Brackets Sprint 14.app"</code>
-                        </li>
-                    </ul>
-                </section>
-                
-                <section data-state="how-core-bg">
-                    <h2>Development Workflow</h2>
-                    <ul>
-                        <li>Launch Brackets</li>
-                        <li><strong>Debug &gt; New Brackets Window</strong></li>
-                        <li>Edit / save in first window, reload / test in second window</li>
-                        <li><strong>Debug &gt; Show Developer Tools</strong> brings up Web Inspector</li>
-                    </ul>
-                </section>
-
-                <section data-state="how-core-bg">
-                    <h2>Practice Good Hygiene</h2>
-                    <ul>
-                        <li>Read the <a href="https://github.com/adobe/brackets/wiki/Brackets-Coding-Conventions">Brackets Coding Conventions</a></li>
-                        <li>Make sure your code is JSLint-clean</li>
-                        <li>Write Jasmine unit tests</li>
-                        <li>Run the <a href="https://github.com/adobe/brackets/wiki/Brackets-Smoke-Tests">smoke tests</a></li>
-                    </ul>
-                </section>
-                
-                <section data-state="how-core-bg">
-                    <h2>Submit a Pull Request</h2>
-                    <ul>
-                        <li>Fill out the <a href="http://dev.brackets.io/brackets-contributor-license-agreement.html">Contributor License Agreement</a></li>
-                        <li>Submit a pull request from your fork</li>
-                        <li>Small changes are reviewed within a couple of days</li>
-                        <li>Larger requests will be reviewed in a future sprint</li>
-                        <li>Core team sprints are 2.5 weeks long</li>
-                    </ul>
+                    <section data-state="what-bg">
+                        <h2>What Should I Work On?</h2>
+                        <ul>
+                            <li>Find a <a href="https://github.com/adobe/brackets/issues?labels=starter+bug&state=open">starter bug</a></li>
+                            <li>Find a <a href="http://bit.ly/BracketsBacklog">starter feature</a></li>
+                            <li>Work on a <a href="https://github.com/adobe/brackets/blob/master/src/nls/README.md">translation</a></li>
+                            <li>Add code hints, Quick Open, or Quick Edit for a language</li>
+                            <li>Work on your own idea</li>
+                            <li>Update/write <a href="https://github.com/adobe/brackets/wiki">developer or user documentation</a></li>
+                            <li>Check with us on the <a href="https://groups.google.com/group/brackets-dev">Google Group</a> or #brackets</li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="what-bg">
+                        <h2>Signing Up for a Bug</h2>
+                        <ul>
+                            <li>Check the labels<br/>
+                                <img src="bug-list.png" width="658" height="269"></li>
+                            <li>Comment on the bug to claim it</li>
+                            <li>Submit a pull request</li>
+                            <li>After it's merged, add a comment asking filer to close</li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="what-bg">
+                        <h2>Signing Up for a Feature</h2>
+                        <ul>
+                            <li>Mention what you're working on on the Google Group</li>
+                            <li>Describe your design/approach and get feedback</li>
+                            <li>Or post a prototype (as a branch or an extension)</li>
+                        </ul>
+                    </section>
                 </section>
                 
                 <section>
-                    <h1>Writing Extensions</h1>
-                    <p class="boxed fragment">pretend this is an image of a chimp playing with legos</p>
-                </section>
-                
-                <section>
-                    <h2>Extensions</h2>
-                    <ul>
-                        <li>Keep the core of Brackets small&mdash;build extensions!</li>
-                        <li>When done, add a link to <a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">Brackets Extensions</a></li>
-                        <li>Post on the Google Group to let us know</li>
-                        <li>We don't have (official) extension management yet</li>
-                    </ul>
-                </section>
-                
-                <section>
-                    <h2>How to Build an Extension</h2>
-                    <ul>
-                        <li>Create a folder or repo in <code>extensions/user</code></li>
-                        <li>Create a <code>main.js</code> file containing your main module</li>
-                        <li>Use <code>brackets.getModule()</code> for core modules</li>
-                        <li>Use <code>require()</code> for your own modules</li>
-                        <li>Use <code>ExtensionUtils.loadStyleSheet()</code> for styles</li>
-                    </ul>
-                </section>
-                
-                <section>
-                    <h2>Example: HelloWorld</h2>
-                    <pre><code contenteditable>define(function (require, exports, module) {
-    "use strict";
-
-    var CommandManager = brackets.getModule("command/CommandManager"),
-        Menus          = brackets.getModule("command/Menus");
-
-    // Function to run when the menu item is clicked
-    function handleHelloWorld() {
-        window.alert("Hello, world!");
-    }
+                    <section data-state="how-core">
+                        <h1>Hacking on Core</h1>
+                    </section>
+                    
+                    <section data-state="how-core-bg">
+                        <h2>Get Set Up</h2>
+                        <ul>
+                            <li>Install <a href="https://github.com/adobe/brackets/downloads">a build of Brackets</a> to get the shell</li>
+                            <li>Fork the <a href="https://github.com/adobe/brackets">Brackets repo</a></li>
+                            <li>Run the setup script in your fork of the repo<br/>
+                                <code class="small">tools/setup_for_hacking.sh "/Applications/Brackets Sprint 14.app"</code><br/>
+                                <code class="small">tools\setup_for_hacking.bat "C:\Program Files (x86)\Brackets Sprint 14"</code>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="how-core-bg">
+                        <h2>Development Workflow</h2>
+                        <ul>
+                            <li>Launch Brackets</li>
+                            <li><strong>Debug &gt; New Brackets Window</strong></li>
+                            <li>Edit / save in first window, reload / test in second window</li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="how-core-bg">
+                        <h2>Trouble?</h2>
+                        <ul>
+                            <li><strong>Debug &gt; Show Developer Tools</strong> brings up Web Inspector</li>
+                            <li>Delete your prefs/cache<br/>
+                                <code class="small">~/Library/Application Support/Brackets</code><br/>
+                                <code class="small"><span class="param">{USER}</span>\AppData\Roaming\Brackets</code>
+                            </li>
+                            <li>Revert to installed Brackets source<br/>
+                                <code class="small">tools/restore_installed_build.sh "/Applications/Brackets Sprint 14.app"</code>
+                                <code class="small">tools\restore_installed_build.bat "C:\Program Files (x86)\Brackets Sprint 14"</code>
+                            </li>
+                        </ul>
+                    </section>
     
-    // Register command--can be called from menus, kbd shortcuts, etc.
-    var MY_COMMAND_ID = "helloworld.sayhello";
-    CommandManager.register("Hello World", MY_COMMAND_ID, handleHelloWorld);
-
-    // Create a menu item bound to the command
-    var menu = Menus.getMenu(Menus.AppMenuBar.FILE_MENU);
-    menu.addMenuItem(MY_COMMAND_ID);
+                    <section data-state="how-core-bg">
+                        <h2>Practice Good Hygiene</h2>
+                        <ul>
+                            <li>Read the <a href="https://github.com/adobe/brackets/wiki/Brackets-Coding-Conventions">Brackets Coding Conventions</a></li>
+                            <li>Make sure your code is JSLint-clean</li>
+                            <li>Write Jasmine unit tests</li>
+                            <li>Run the <a href="https://github.com/adobe/brackets/wiki/Brackets-Smoke-Tests">smoke tests</a></li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="how-core-bg">
+                        <h2>Submit a Pull Request</h2>
+                        <ul>
+                            <li>Fill out the <a href="http://dev.brackets.io/brackets-contributor-license-agreement.html">Contributor License Agreement</a></li>
+                            <li>Submit a pull request from your fork</li>
+                            <li>Small changes are reviewed within a couple of days</li>
+                            <li>Larger requests will be reviewed in a future sprint</li>
+                            <li>Core team sprints are 2.5 weeks long</li>
+                        </ul>
+                    </section>
+                </section>
+                
+                <section>
+                    <section data-state="how-extensions">
+                        <h1>Writing Extensions</h1>
+                    </section>
+                    
+                    <section data-state="how-extensions-bg">
+                        <h2>What You Can Build With Extensions</h2>
+                        <div class="extension-images">
+                            <div class="extension-image">
+                                <a href="https://github.com/GarthDB/brackets-inline-color-editor"><img src="inline-color.png" width="280" height="360"></a>
+                            </div>
+                            <div class="extension-image">
+                                <a href="https://github.com/mikechambers/StringConvert"><img src="utilities.png" width="280" height="360"></a>
+                            </div>
+                            <div class="extension-image">
+                                <a href="https://github.com/adobe/brackets/tree/master/src/extensions/default/QuickOpenCSS"><img src="quick-open-css.png" width="280" height="360"></a>
+                            </div>
+                        </div>
+                        <p>Building functionality as extensions keeps the core small.</p>
+                        <p><a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">Brackets Extensions</a></p>
+                    </section>
+                    
+                    <section data-state="how-extensions-bg">
+                        <h2>How to Build an Extension</h2>
+                        <ul>
+                            <li>Create a folder or repo in <code>extensions/user</code></li>
+                            <li>Create a <code>main.js</code> file containing your main module</li>
+                            <li>Use <code>brackets.getModule()</code> for core modules</li>
+                            <li>Use <code>require()</code> for your own modules</li>
+                            <li>Use <code>ExtensionUtils.loadStyleSheet()</code> for styles</li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="how-extensions-bg">
+                        <h2>Example: HelloWorld</h2>
+                        <pre><code contenteditable>define(function (require, exports, module) {
+        "use strict";
     
-    // Add a key binding--Ctrl maps to Cmd on Mac
-    menu.addMenuItem(MY_COMMAND_ID, "Ctrl-Alt-H");
-});
-					</code></pre>
-                </section>
-                
-                <section>
-                    <h2>Code Hinting Extensions</h2>                    
-                </section>
-                
-                <section>
-                    <h2>Quick Open Extensions</h2>                    
-                </section>
-
-                <section>
-                    <h2>Quick Edit Extensions</h2>                    
+        var CommandManager = brackets.getModule("command/CommandManager"),
+            Menus          = brackets.getModule("command/Menus");
+    
+        // Function to run when the menu item is clicked
+        function handleHelloWorld() {
+            window.alert("Hello, world!");
+        }
+        
+        // Register command--can be called from menus, kbd shortcuts, etc.
+        var MY_COMMAND_ID = "helloworld.sayhello";
+        CommandManager.register("Hello World", MY_COMMAND_ID, handleHelloWorld);
+    
+        // Create a menu item bound to the command
+        var menu = Menus.getMenu(Menus.AppMenuBar.FILE_MENU);
+        menu.addMenuItem(MY_COMMAND_ID);
+        
+        // Add a key binding--Ctrl maps to Cmd on Mac
+        menu.addMenuItem(MY_COMMAND_ID, "Ctrl-Alt-H");
+    });
+                        </code></pre>
+                    </section>
+                    
+                    <section data-state="how-extensions-bg">
+                        <h2>Code Hinting Extensions</h2>                    
+                    </section>
+                    
+                    <section data-state="how-extensions-bg">
+                        <h2>Quick Open Extensions</h2>                    
+                    </section>
+    
+                    <section data-state="how-extensions-bg">
+                        <h2>Quick Edit Extensions</h2>                    
+                    </section>
                 </section>
 
                 <section>
