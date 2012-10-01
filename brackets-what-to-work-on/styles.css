@@ -47,7 +47,7 @@ li code {
 
 .brackets-logo {
     margin: 0 auto;
-    background-image: url(branding_512.svg);
+    background-image: url(images/branding_512.svg);
     background-size: 100% 100%;
     width: 384px;
     height: 384px;
@@ -60,22 +60,22 @@ li code {
     background-size: 100% auto;
 }
 .what .slide-bg {
-    background-image: url(what-now.jpg);
+    background-image: url(images/what-now.jpg);
 }
 .what-bg .slide-bg {
-    background-image: url(what-now-bg.png);
+    background-image: url(images/what-now-bg.png);
 }
 .how-core .slide-bg {
-    background-image: url(how-core.jpg);
+    background-image: url(images/how-core.jpg);
 }
 .how-core-bg .slide-bg {
-    background-image: url(how-core-bg.png);
+    background-image: url(images/how-core-bg.png);
 }
 .how-extensions .slide-bg {
-    background-image: url(how-extensions.jpg);
+    background-image: url(images/how-extensions.jpg);
 }
 .how-extensions-bg .slide-bg {
-    background-image: url(how-extensions-bg.png);
+    background-image: url(images/how-extensions-bg.png);
 }
 
 .boxed {
@@ -117,7 +117,7 @@ li code {
 .reveal div.finale {
     margin: 0 auto;
     padding-top: 300px;
-    background-image: url(branding_512.svg);
+    background-image: url(images/branding_512.svg);
     background-size: 100% 100%;
     width: 384px;
     height: 384px;
