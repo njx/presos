@@ -35,7 +35,7 @@ code .param {
     color: #904444;
 }
 
-li code {
+li code, p code {
     display: inline-block;
     margin: 6px 0;
     border: 1px solid #ccc;

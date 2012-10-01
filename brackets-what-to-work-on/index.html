@@ -126,6 +126,7 @@
                             <li>Read the <a href="https://github.com/adobe/brackets/wiki/Brackets-Coding-Conventions">Brackets Coding Conventions</a></li>
                             <li>Make sure your code is JSLint-clean</li>
                             <li>Write Jasmine unit tests</li>
+                            <li>Run all unit tests with <strong>Debug &gt; Run Tests</strong>
                             <li>Run the <a href="https://github.com/adobe/brackets/wiki/Brackets-Smoke-Tests">smoke tests</a></li>
                         </ul>
                     </section>
@@ -191,7 +192,7 @@
                     <section data-state="how-core-bg">
                         <h2>Code Complete! What Now?</h2>
                         <ul>
-                            <li>Fill out the <a href="http://dev.brackets.io/brackets-contributor-license-agreement.html">Contributor License Agreement</a></li>
+                            <li>Fill out the <a href="http://dev.brackets.io/brackets-contributor-license-agreement.html">Contributor License Agreement</a> (once)</li>
                             <li>Submit a pull request from your fork</li>
                             <li>Small changes are reviewed within a couple of days</li>
                             <li>Larger requests will be reviewed in a future sprint</li>
@@ -218,8 +219,7 @@
                                 <a href="https://github.com/adobe/brackets/tree/master/src/extensions/default/QuickOpenCSS"><img src="images/quick-open-css.png" width="280" height="360"></a>
                             </div>
                         </div>
-                        <p>Building functionality as extensions keeps the core small.</p>
-                        <p><a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">Brackets Extensions</a></p>
+                        <p>Building functionality as extensions keeps the core small</p>
                     </section>
                     
                     <section data-state="how-extensions-bg">
@@ -251,30 +251,129 @@
     var MY_COMMAND_ID = "helloworld.sayhello";
     CommandManager.register("Hello World", MY_COMMAND_ID, doHelloWorld);
 
-    // Create a menu item bound to the command
+    // Create a menu item and key binding bound to the command
     var menu = Menus.getMenu(Menus.AppMenuBar.FILE_MENU);
-    menu.addMenuItem(MY_COMMAND_ID);
-    
-    // Add a key binding--Ctrl maps to Cmd on Mac
     menu.addMenuItem(MY_COMMAND_ID, "Ctrl-Alt-H");
 });
                         </code></pre>
                     </section>
 
                     <section data-state="how-extensions-bg">
-                        <h2>Commands, Menus, and Shortcuts</h2>                    
+                        <h2>Commands</h2>
+                        <ul>
+                            <li>Centralized operations dispatched by CommandManager</li>
+                            <li>Commands can be bound to menu items and keyboard shortcuts</li>
+                            <li>Can also be called directly from other code (loose coupling)</li>
+                            <li>Can take params when called directly from code</li>
+                            <li>Each command maintains its own checked/disabled state</li>
+                        </ul>
                     </section>
                     
                     <section data-state="how-extensions-bg">
-                        <h2>Code Hinting Extensions</h2>                    
+                        <h2>Menus</h2>
+                        <ul>
+                            <li>Can add menu items to existing menus/menu sections</li>
+                            <li>Can create new top level or context menus</li>
+                            <li>On context menu, call <code>open()</code> to pop it up</li>
+                            <li>Can handle <code>beforeContextMenuOpen</code> to update menu</li>
+                        </ul>
                     </section>
                     
                     <section data-state="how-extensions-bg">
-                        <h2>Quick Open Extensions</h2>                    
+                        <h2>Keyboard shortcuts</h2>
+                        <ul>
+                            <li>Can specify when creating menu item or use <code>KeyBindingManager</code></li>
+                            <li>By default, <code>Ctrl</code> auto-maps to <code>Cmd</code> on Mac</li>
+                            <li>Can specify different shortcuts per platform</li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="how-extensions-bg">
+                        <h2>Code Hinting Extensions</h2>
+                        <p>Register with <code class="small">CodeHintManager.registerHintProvider()</code></p>
+                        <pre><code>{
+    getQueryInfo: function (editor, cursor) {
+        // return the query object to be used for hinting
+        // must have queryStr property--set to null if no hints
+        // query object can have other properties
+    },
+    
+    search: function (query) {
+        // takes the query object and performs the actual search
+        // returns an array of matching strings
+    },
+    
+    handleSelect: function (string, editor, cursor) {
+        // performs the edit based on the selected string
+    },
+    
+    shouldShowHintsOnKey: function (string) {
+        // quick shortcut check
+        // return true if you want to pop up hints on this key
+    }
+}</code></pre>
+                    </section>
+                    
+                    <section data-state="how-extensions-bg">
+                        <h2>Quick Open Extensions</h2>  
+                        <p>Register with <code class="small">QuickOpen.addQuickOpenPlugin()</code></p>
+                        <pre><code>{
+    name: /* plugin name */,
+    fileTypes: /* array of applicable types, or [] for all */,
+    search: function (queryStr) {
+        // returns list of applicable items
+        // items can be strings or objects with a "label" property
+    },
+    match: function (queryStr) {
+        // returns true if this provider wants to handle the query
+    },
+    itemFocus: function (item) {
+        // called when user highlights an item
+    },
+    itemSelect: function (item) { 
+        // called when user chooses an item
+    },
+    resultFormatter: function (queryStr, item) {
+        // returns an &lt;li&gt; to display the given query and item object
+    },
+    done: function () { 
+        // called when quick open is closed
+    }
+}</code></pre>
                     </section>
     
                     <section data-state="how-extensions-bg">
-                        <h2>Quick Edit Extensions</h2>                    
+                        <h2>Quick Edit Extensions</h2>
+                        <p>Register with <code class="small">EditorManager.registerInlineEditProvider()</code></p>
+                        <pre><code>function myProvider(editor, pos) {
+    // returns either a Promise that will be resolved with an inline widget
+    // or null if we don't want to handle it
+}
+
+// Standard prototype chain hookup--do it however you like
+function MyInlineWidget() {
+    InlineWidget.call(this);
+}
+MyInlineWidget.prototype = new InlineWidget();
+MyInlineWidget.prototype.constructor = MyInlineWidget;
+MyInlineWidget.prototype.parentClass = InlineWidget.prototype;
+
+// Override load() to construct your widget
+MyInlineWidget.prototype.load = function (hostEditor) {
+    this.parentClass.load.call(hostEditor);
+    // construct contents of widget
+}
+// can also implement onAdded, onClosed
+</code></pre>
+                    </section>
+
+                    <section data-state="how-extensions-bg">
+                        <h2>Code Complete! What Now?</h2>
+                        <ul>
+                            <li>Add it to the <a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">Brackets Extensions</a> page</li>
+                            <li>Post about it to the <a href="https://groups.google.com/group/brackets-dev">Google Group</a></li>
+                            <li>Give us feedback on the API</li>
+                        </ul>
                     </section>
                 </section>
 
