@@ -85,10 +85,41 @@ li code {
     padding: 200px;
 }
 
+.reveal img.plain {
+    background: none;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
 .extension-images {
     margin: 20px auto;
 }
 .extension-image {
     display: inline-block;
     margin: 0 20px;
+}
+
+.punchline {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 50px auto;
+}
+
+.dimmer {
+    font-size: 1.5em;
+}
+.dimmed .dim {
+    opacity: 0.2;
+}
+
+.reveal div.finale {
+    margin: 0 auto;
+    padding-top: 300px;
+    background-image: url(branding_512.svg);
+    background-size: 100% 100%;
+    width: 384px;
+    height: 384px;
+    font-size: 1.5em;
 }

@@ -40,7 +40,7 @@
                 
                 <section>
                     <section data-state="what">
-                        <h1>What to Do?</h1>
+                        <h1>What To Hack On</h1>
                     </section>
                 
                     <section data-state="what-bg">
@@ -50,10 +50,10 @@
                             <li>Find a <a href="http://bit.ly/BracketsBacklog">starter feature</a></li>
                             <li>Work on a <a href="https://github.com/adobe/brackets/blob/master/src/nls/README.md">translation</a></li>
                             <li>Add code hints, Quick Open, or Quick Edit for a language</li>
-                            <li>Work on your own idea</li>
                             <li>Update/write <a href="https://github.com/adobe/brackets/wiki">developer or user documentation</a></li>
                             <li>Check with us on the <a href="https://groups.google.com/group/brackets-dev">Google Group</a> or #brackets</li>
                         </ul>
+                        <p class="fragment punchline">Or whatever you want!</p>
                     </section>
                     
                     <section data-state="what-bg">
@@ -92,6 +92,7 @@
                                 <code class="small">tools\setup_for_hacking.bat "C:\Program Files (x86)\Brackets Sprint 14"</code>
                             </li>
                         </ul>
+                        <img class="plain" src="brackets-symlink.png" width="800" height="234">
                     </section>
                     
                     <section data-state="how-core-bg">
@@ -101,6 +102,7 @@
                             <li><strong>Debug &gt; New Brackets Window</strong></li>
                             <li>Edit / save in first window, reload / test in second window</li>
                         </ul>
+                        <img class="plain" src="dev-workflow.png" width="800" height="300">
                     </section>
                     
                     <section data-state="how-core-bg">
@@ -127,9 +129,67 @@
                             <li>Run the <a href="https://github.com/adobe/brackets/wiki/Brackets-Smoke-Tests">smoke tests</a></li>
                         </ul>
                     </section>
+
+                    <section data-state="how-core-bg">
+                        <h2>Unit Testing, Jasmine-style</h2>
+                        <pre><code>describe(<span class="dim">"PreferenceStorage", function () {</span>
+
+    it(<span class="dim">"should read initial preferences from JSON", function () {
+
+        var store = new PreferenceStorage(CLIENT_ID, 
+            {"foo": "bar", hello: "world"});</span>
+        expect(<span class="dim">store.getValue("foo")</span>).toBe(<span class="dim">"bar"</span>);
+        expect(<span class="dim">store.getValue("hello")</span>).toBe(<span class="dim">"world"</span>);
+
+    });
+
+});</pre></code>
+                        <input type="button" class="dimmer" value="Highlight"/>
+                    </section>
+
+                    <section data-state="how-core-bg">
+                        <h2>Testing Asynchronous Sequences</h2>
+                        <pre><code><span class="dim">it("should remove a list item when a file is closed", function () {
+    DocumentManager.getCurrentDocument()._markClean();
+           
+    // close the document
+    var didClose = false, gotError = false;</span>
+    runs(function () {
+<span class="dim">        CommandManager.execute(Commands.FILE_CLOSE)
+            .done(function () { didClose = true; })
+            .fail(function () { gotError = true; });</span>
+    });
+    waitsFor(function () { return didClose &amp;&amp; !gotError; }, 
+        "FILE_OPEN on file timeout", 1000);
+<span class="dim">            
+    // check there are no list items</span>
+    runs(function () {
+<span class="dim">        var listItems = 
+            testWindow.$("#open-files-container &gt; ul").children();
+        expect(listItems.length).toBe(1);</span>
+    });
+<span class="dim">});</span></pre></code>
+                        <input type="button" class="dimmer" value="Highlight"/>
+                    </section>
                     
                     <section data-state="how-core-bg">
-                        <h2>Submit a Pull Request</h2>
+                        <h2>Unit testing in Brackets</h2>
+                        <ul>
+                            <li>Core tests are in <code>brackets/test/spec</code></li>
+                            <li>Add new test files to <code>brackets/test/UnitTestSuite.js</code></li>
+                            <li>Test contexts:
+                                <ul>
+                                    <li>True unit tests: just run normally in test runner window</li>
+                                    <li>Tests needing Brackets context:<br/>
+                                        get modules from <code>brackets.test</code> (not <code>require()</code>)</li>
+                                    <li>Tests needing clean Brackets: use <code>SpecRunnerUtils.createTestWindowAndRun()</code> (slow)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section data-state="how-core-bg">
+                        <h2>Code Complete! What Now?</h2>
                         <ul>
                             <li>Fill out the <a href="http://dev.brackets.io/brackets-contributor-license-agreement.html">Contributor License Agreement</a></li>
                             <li>Submit a pull request from your fork</li>
@@ -170,34 +230,39 @@
                             <li>Use <code>brackets.getModule()</code> for core modules</li>
                             <li>Use <code>require()</code> for your own modules</li>
                             <li>Use <code>ExtensionUtils.loadStyleSheet()</code> for styles</li>
+                            <li>Create <code>unittests.js</code> for unit tests</li>
                         </ul>
                     </section>
                     
                     <section data-state="how-extensions-bg">
                         <h2>Example: HelloWorld</h2>
                         <pre><code contenteditable>define(function (require, exports, module) {
-        "use strict";
+    "use strict";
+
+    var CommandManager = brackets.getModule("command/CommandManager"),
+        Menus          = brackets.getModule("command/Menus");
+
+    // Function to run when the menu item is clicked
+    function doHelloWorld() {
+        window.alert("Hello, world!");
+    }
     
-        var CommandManager = brackets.getModule("command/CommandManager"),
-            Menus          = brackets.getModule("command/Menus");
+    // Register command--can be called from menus, kbd shortcuts, etc.
+    var MY_COMMAND_ID = "helloworld.sayhello";
+    CommandManager.register("Hello World", MY_COMMAND_ID, doHelloWorld);
+
+    // Create a menu item bound to the command
+    var menu = Menus.getMenu(Menus.AppMenuBar.FILE_MENU);
+    menu.addMenuItem(MY_COMMAND_ID);
     
-        // Function to run when the menu item is clicked
-        function handleHelloWorld() {
-            window.alert("Hello, world!");
-        }
-        
-        // Register command--can be called from menus, kbd shortcuts, etc.
-        var MY_COMMAND_ID = "helloworld.sayhello";
-        CommandManager.register("Hello World", MY_COMMAND_ID, handleHelloWorld);
-    
-        // Create a menu item bound to the command
-        var menu = Menus.getMenu(Menus.AppMenuBar.FILE_MENU);
-        menu.addMenuItem(MY_COMMAND_ID);
-        
-        // Add a key binding--Ctrl maps to Cmd on Mac
-        menu.addMenuItem(MY_COMMAND_ID, "Ctrl-Alt-H");
-    });
+    // Add a key binding--Ctrl maps to Cmd on Mac
+    menu.addMenuItem(MY_COMMAND_ID, "Ctrl-Alt-H");
+});
                         </code></pre>
+                    </section>
+
+                    <section data-state="how-extensions-bg">
+                        <h2>Commands, Menus, and Shortcuts</h2>                    
                     </section>
                     
                     <section data-state="how-extensions-bg">
@@ -214,8 +279,18 @@
                 </section>
 
                 <section>
+                    <h2>More Resources</h2>
+                    <ul>
+                        <li><a href="https://github.com/adobe/brackets/wiki/How-to-Hack-on-Brackets">How to Hack on Brackets</a></li>
+                        <li><a href="https://github.com/adobe/brackets/wiki/How-to-write-extensions">How to Write Extensions</a></li>
+                        <li><a href="https://github.com/adobe/brackets/wiki/Brackets-Development-How-Tos">Brackets Development How-Tos</a></li>
+                    </ul>
+                    <p class="fragment punchline">If something's missing, please help us improve the docs!</p>
+                </section>
+                
+                <section>
                     <!-- Why does 25% work? -->
-                    <h1 style="margin-top: 25%">GO</h1>
+                    <div class="finale">GO</div>
                 </section>
             </div>
             
@@ -231,6 +306,7 @@
             <div class="progress"><span></span></div>
         </div>
 
+        <script src="../jquery-1.7.min.js"></script>
         <script src="../reveal.js/lib/js/head.min.js"></script>
         <script src="../reveal.js/js/reveal.js"></script>
         
@@ -264,6 +340,10 @@
 					{ src: '../reveal.js/lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
 					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } }
                 ]
+            });
+            
+            $(".dimmer").click(function() {
+                $(this).closest("section").toggleClass("dimmed");
             });
         </script>
     </body>
