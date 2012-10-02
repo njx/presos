@@ -23,14 +23,15 @@
     
     <body>
         <div class="slide-bg"></div>
+        <div class="slide-dim-bg"></div>
         <div class="reveal">
             <div class="slides">
                 <section>
                     <h1>How to Hack on Brackets</h1>
                     <div class="brackets-logo"></div>
                     <p>
-                        <i>Narciso (NJ) Jaramillo<br/>
-                            <a href="http://twitter.com/notwebsafe">@notwebsafe</a></i>
+                        Narciso (NJ) Jaramillo<br/>
+                        <a href="http://twitter.com/notwebsafe">@notwebsafe</a>
                     </p>                    
                     <script>
                         // Deliciously hacky. Look away.
@@ -51,7 +52,7 @@
                             <li>Work on a <a href="https://github.com/adobe/brackets/blob/master/src/nls/README.md">translation</a></li>
                             <li>Add code hints, Quick Open, or Quick Edit for a language</li>
                             <li>Update/write <a href="https://github.com/adobe/brackets/wiki">developer or user documentation</a></li>
-                            <li>Check with us on the <a href="https://groups.google.com/group/brackets-dev">Google Group</a> or #brackets</li>
+                            <li>Check in with the <a href="https://groups.google.com/group/brackets-dev">Google Group</a> or #brackets</li>
                         </ul>
                         <p class="fragment punchline">Or whatever you want!</p>
                     </section>
@@ -88,8 +89,8 @@
                             <li>Install <a href="https://github.com/adobe/brackets/downloads">a build of Brackets</a> to get the shell</li>
                             <li>Fork the <a href="https://github.com/adobe/brackets">Brackets repo</a></li>
                             <li>Run the setup script in your fork of the repo<br/>
-                                <code class="small">tools/setup_for_hacking.sh "/Applications/Brackets Sprint 14.app"</code><br/>
-                                <code class="small">tools\setup_for_hacking.bat "C:\Program Files (x86)\Brackets Sprint 14"</code>
+                                <div class="platform">Mac</div> <code class="small">tools/setup_for_hacking.sh "/Applications/Brackets Sprint 14.app"</code><br/>
+                                <div class="platform">Win</div> <code class="small">tools\setup_for_hacking.bat "C:\Program Files (x86)\Brackets Sprint 14"</code>
                             </li>
                         </ul>
                         <img class="plain" src="images/brackets-symlink.png" width="800" height="234">
@@ -110,12 +111,12 @@
                         <ul>
                             <li><strong>Debug &gt; Show Developer Tools</strong> brings up Web Inspector</li>
                             <li>Delete your prefs/cache<br/>
-                                <code class="small">~/Library/Application Support/Brackets</code><br/>
-                                <code class="small"><span class="param">{USER}</span>\AppData\Roaming\Brackets</code>
+                                <div class="platform">Mac</div> <code class="small">~/Library/Application Support/Brackets</code><br/>
+                                <div class="platform">Win</div> <code class="small"><span class="param">{USER}</span>\AppData\Roaming\Brackets</code>
                             </li>
                             <li>Revert to installed Brackets source<br/>
-                                <code class="small">tools/restore_installed_build.sh "/Applications/Brackets Sprint 14.app"</code>
-                                <code class="small">tools\restore_installed_build.bat "C:\Program Files (x86)\Brackets Sprint 14"</code>
+                                <div class="platform">Mac</div> <code class="small">tools/restore_installed_build.sh "/Applications/Brackets Sprint 14.app"</code><br/>
+                                <div class="platform">Win</div> <code class="small">tools\restore_installed_build.bat "C:\Program Files (x86)\Brackets Sprint 14"</code>
                             </li>
                         </ul>
                     </section>
@@ -180,10 +181,11 @@
                             <li>Add new test files to <code>brackets/test/UnitTestSuite.js</code></li>
                             <li>Test contexts:
                                 <ul>
-                                    <li>True unit tests: just run normally in test runner window</li>
-                                    <li>Tests needing Brackets context:<br/>
-                                        get modules from <code>brackets.test</code> (not <code>require()</code>)</li>
-                                    <li>Tests needing clean Brackets: use <code>SpecRunnerUtils.createTestWindowAndRun()</code> (slow)</li>
+                                    <li>True unit tests: run in test runner window<br/>
+                                        Use <code>require()</code> for modules (private to test window)</li>
+                                    <li>Integration tests: (slower)<br/>
+                                        <code>SpecRunnerUtils.createTestWindowAndRun()</code><br/>
+                                        <code>testWindow.brackets.test.<em>ModuleName</em></code></li>
                                 </ul>
                             </li>
                         </ul>
@@ -219,7 +221,8 @@
                                 <a href="https://github.com/adobe/brackets/tree/master/src/extensions/default/QuickOpenCSS"><img src="images/quick-open-css.png" width="280" height="360"></a>
                             </div>
                         </div>
-                        <p>Building functionality as extensions keeps the core small</p>
+                        <p>Try to build new features as extensions first</p>
+                        <p>Minimize core code changes (and discuss with community)</p>
                     </section>
                     
                     <section data-state="how-extensions-bg">
@@ -257,7 +260,7 @@
 });
                         </code></pre>
                     </section>
-
+<!--
                     <section data-state="how-extensions-bg">
                         <h2>Commands</h2>
                         <ul>
@@ -287,11 +290,17 @@
                             <li>Can specify different shortcuts per platform</li>
                         </ul>
                     </section>
+-->
                     
                     <section data-state="how-extensions-bg">
                         <h2>Code Hinting Extensions</h2>
-                        <p>Register with <code class="small">CodeHintManager.registerHintProvider()</code></p>
-                        <pre><code>{
+                        <p>Register with <code>CodeHintManager.registerHintProvider()</code></p>
+                        <pre><code>{    
+    shouldShowHintsOnKey: function (string) {
+        // quick shortcut check
+        // return true if you want to pop up hints on this key
+    },
+
     getQueryInfo: function (editor, cursor) {
         // return the query object to be used for hinting
         // must have queryStr property--set to null if no hints
@@ -305,27 +314,22 @@
     
     handleSelect: function (string, editor, cursor) {
         // performs the edit based on the selected string
-    },
-    
-    shouldShowHintsOnKey: function (string) {
-        // quick shortcut check
-        // return true if you want to pop up hints on this key
     }
 }</code></pre>
                     </section>
                     
                     <section data-state="how-extensions-bg">
                         <h2>Quick Open Extensions</h2>  
-                        <p>Register with <code class="small">QuickOpen.addQuickOpenPlugin()</code></p>
+                        <p>Register with <code>QuickOpen.addQuickOpenPlugin()</code></p>
                         <pre><code>{
     name: /* plugin name */,
     fileTypes: /* array of applicable types, or [] for all */,
+    match: function (queryStr) {
+        // returns true if this provider wants to handle the query
+    },
     search: function (queryStr) {
         // returns list of applicable items
         // items can be strings or objects with a "label" property
-    },
-    match: function (queryStr) {
-        // returns true if this provider wants to handle the query
     },
     itemFocus: function (item) {
         // called when user highlights an item
@@ -344,7 +348,7 @@
     
                     <section data-state="how-extensions-bg">
                         <h2>Quick Edit Extensions</h2>
-                        <p>Register with <code class="small">EditorManager.registerInlineEditProvider()</code></p>
+                        <p>Register with <code>EditorManager.registerInlineEditProvider()</code></p>
                         <pre><code>function myProvider(editor, pos) {
     // returns either a Promise that will be resolved with an inline widget
     // or null if we don't want to handle it
@@ -353,16 +357,12 @@
 // Standard prototype chain hookup--do it however you like
 function MyInlineWidget() {
     InlineWidget.call(this);
+    // construct your widget's contents inside the $htmlContent node
 }
 MyInlineWidget.prototype = new InlineWidget();
 MyInlineWidget.prototype.constructor = MyInlineWidget;
 MyInlineWidget.prototype.parentClass = InlineWidget.prototype;
 
-// Override load() to construct your widget
-MyInlineWidget.prototype.load = function (hostEditor) {
-    this.parentClass.load.call(hostEditor);
-    // construct contents of widget
-}
 // can also implement onAdded, onClosed
 </code></pre>
                     </section>
