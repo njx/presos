@@ -70,6 +70,9 @@
     font-size: 0.9em;
     color: #764113;
     vertical-align: baseline;
+    
+    /* Needed for FF to properly align the baseline */
+    overflow: visible;
 }
 
 .reveal code.small {
