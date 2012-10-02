@@ -9,6 +9,10 @@
     padding-top: 0;
 }
 
+.reveal a:hover {
+    text-decoration: underline;
+}
+
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
     padding: 10px;
     background-color: rgba(240, 240, 255, 0.5);
@@ -32,6 +36,16 @@
     font-size: 1.5em;
     font-weight: bold;
     margin: 50px auto;
+}
+
+.bug {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: rgba(240, 240, 255, 0.5);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+    font-size: 0.5em;
+    padding: 20px;
 }
 
 
