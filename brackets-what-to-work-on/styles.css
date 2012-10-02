@@ -58,7 +58,7 @@
     font-size: 0.6em;
 }
 .reveal code {
-    font-family: "Source Code Pro", monospace;
+    font-family: source-code-pro, monospace;
 }
 
 .reveal li code, .reveal p code {
