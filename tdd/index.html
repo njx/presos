@@ -1,0 +1,163 @@
+<!doctype html>  
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        
+        <title>Notes on TDD</title>
+        
+        <meta name="description" content="Suggestions for how to contribute to the Brackets project: github.com/adobe/brackets">
+        <meta name="author" content="Narciso (nj) Jaramillo, @notwebsafe">
+        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        
+        <link rel="stylesheet" href="../reveal.js/css/main.css">
+        <link rel="stylesheet" href="../reveal.js/css/theme/sky.css" id="theme">
+        <link rel="stylesheet" href="styles.css">
+        
+        <link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+    </head>
+    
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section class="onepoint">
+                    <p>
+                        <strong>Notes on TDD</strong>
+                    </p>
+                </section>
+                <section class="onepoint">
+                    <p>
+                        Test-Driven Development is not about testing.
+                    </p>
+                </section>
+                <section class="onepoint">
+                    <p>
+                        The best way to design your code is to refactor it.
+                    </p>
+                </section>
+                <section class="onepoint">
+                    <p>
+                        Unit tests let you <strong>refactor</strong> safely<br/>
+                        <span class="fragment">and capture the <strong>intent</strong> of your code.</span>
+                    </p>
+                </section>
+                <section class="onepoint">
+                    <p>
+                        To refactor often, tests must run quickly.
+                    </p>
+                </section>
+                <section>
+                    <p>
+                        <strong>The TDD loop</strong>
+                    </p>
+                    <ol>
+                        <li class="fragment">Write a test that describes <strong>one</strong> behavior.</li>
+                        <li class="fragment">Watch the test fail <span class="fail">(red)</span>.</li>
+                        <li class="fragment">Write the <strong>simplest</strong> code you can to make the test pass.</li>
+                        <li class="fragment">Watch the test pass <span class="pass">(green)</span>.</li>
+                        <li class="fragment">Refactor anything you want as long as the tests are <span class="pass">green</span>.</li>
+                    </ol>
+                </section>
+                <section>
+                    <p>
+                        <strong>Applications to Brackets</strong>
+                    </p>
+                    <ul>
+                        <li class="fragment">Have both fine-grained unit tests and larger integration tests. Unit tests don't tell you about overall workflow.</li>
+                        <li class="fragment">Unit tests should run <strong>really fast</strong>. It's okay for integration tests to run slower.</li>
+                        <li class="fragment">To make tests that run fast, mock dependencies as much as possible.</li>
+                        <li class="fragment">Writing tests first helps you capture each behavior as you think of it. It won't help you capture cases you haven't thought of.</li>
+                        <li class="fragment">It's okay to build tests that know about "private" implementation. Just be aware of the tradeoffs.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>
+                        <strong>Unit testing UI</strong>
+                    </p>
+                    <ul>
+                        <li class="fragment">Unit test UI by treating the DOM as data and building DOM fixtures.</li>
+                        <li class="fragment">(This is harder to apply to complex things, like CodeMirror and tree view.)</li>
+                        <li class="fragment">Using simplified DOM fixtures forces you to make fewer assumptions about overall UI.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>
+                        <strong>Mocking and dependencies</strong>
+                    </p>
+                    <ul>
+                        <li class="fragment">Use mock editors and documents where possible instead of whole windows.</li>
+                        <li class="fragment">We should try to decouple more modules, especially from ProjectManager.</li>
+                        <li class="fragment">"Spies" are a useful tool for stubbing or monitoring function calls.</li>
+                        <li class="fragment">We should try to figure out a way to do dependency injection with require.</li>
+                        <li class="fragment">"Mockjax" is a useful way to stub out AJAX calls.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>
+                        <strong>Miscellaneous thoughts</strong>
+                    </p>
+                    <ul>
+                        <li class="fragment">Async testing in qunit is kind of sucky.</li>
+                        <li class="fragment">Could we add phantomjs to our process to do headless unit testing?</li>
+                    </ul>
+                </section>
+                <section class="onepoint">
+                    <p>
+                        <strong>Q &amp; A</strong>
+                    </p>
+                </section>
+            </div>
+            
+            <!-- The navigational controls UI -->
+            <aside class="controls">
+                <a class="left" href="#">&#x25C4;</a>
+                <a class="right" href="#">&#x25BA;</a>
+                <a class="up" href="#">&#x25B2;</a>
+                <a class="down" href="#">&#x25BC;</a>
+            </aside>
+            
+            <!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+            <div class="progress"><span></span></div>
+        </div>
+
+        <script src="../reveal.js/lib/js/head.min.js"></script>
+        <script src="../reveal.js/js/reveal.js"></script>
+        
+        <script>
+            Reveal.initialize({
+                // Display controls in the bottom right corner
+                controls: true,
+                
+                // Display a presentation progress bar
+                progress: true,
+                
+                // If true; each slide will be pushed to the browser history
+                history: true,
+                
+                // Loops the presentation, defaults to false
+                loop: false,
+                
+                // Flags if mouse wheel navigation should be enabled
+                mouseWheel: true,
+                
+                // Apply a 3D roll to links on hover
+                rollingLinks: false,
+                
+                // UI style
+                theme: 'sky',
+                
+                // Transition style
+                transition: 'linear',
+                
+                dependencies: [
+					{ src: '../reveal.js/lib/js/highlight.js', async: true, callback: function() { window.hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } }
+                ]
+            });
+        </script>
+    </body>
+</html>
