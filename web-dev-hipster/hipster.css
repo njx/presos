@@ -50,8 +50,24 @@ body {
 }
 
 /*********************************************
- * HEADERS
+ * BLOCKS
  *********************************************/
+
+.reveal h1, 
+.reveal h2, 
+.reveal h3, 
+.reveal h4, 
+.reveal h5, 
+.reveal h6,
+.reveal p,
+.reveal ul {
+    padding: 30px 30px 30px 100px;
+	margin: 0 0 40px -100px;
+	color: white;
+	line-height: 1.2em;
+    background-color: rgba(0, 0, 0, 0.6);
+    min-width: 900px;
+}
 
 .reveal h1, 
 .reveal h2, 
@@ -60,20 +76,22 @@ body {
 .reveal h5, 
 .reveal h6 {
     font-family: nixie-one, serif;
-    padding: 30px 30px 30px 100px;
-	margin: 0 0 40px -100px;
-	color: white;
-	line-height: 0.9em;
-    background-color: rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+}
+
+.reveal li {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin: 0.3em 0;
 }
 
 
 /*********************************************
- * LINKS
+ * CHARACTER STYLES
  *********************************************/
 
 .reveal a:not(.image) {
-	color: darkblue;
+	color: lightblue;
 	text-decoration: none;
 
 	-webkit-transition: color .15s ease;
@@ -91,6 +109,14 @@ body {
 .reveal .roll span:after {
 	color: #fff;
 	background: darkblue;
+}
+
+.reveal li code {
+    color: #ffb031;
+}
+
+.reveal li .todo {
+    color: #ff7171;
 }
 
 
