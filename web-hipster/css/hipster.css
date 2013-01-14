@@ -1,0 +1,102 @@
+.bg-hipster body {
+    background: url("../images/hipster.png") 50% 50% / 100% auto no-repeat;
+}
+.bg-hipster h2, .bg-hipster h4 {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.reveal section img {
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  box-shadow: none;
+}
+
+.logos img {
+    height: 250px;
+}
+.logos img#js-logo {
+    margin-left: 40px;
+}
+.logos-smaller img {
+    height: 200px;
+}
+
+.photos img {
+    max-height: 250px;
+    max-width: 250px;
+    margin: 40px;
+}
+
+.logo {
+    height: 400px;
+}
+
+#sample-deco-container {
+    width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+    background: #999;
+}
+#sample-deco {
+    height: 200px;
+    
+    background: #7abcff; /* Old browsers */
+    background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+    
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow:  0px 0px 8px 0px rgba(0, 0, 0, 0.6);    
+    box-shadow:  0px 0px 8px 0px rgba(0, 0, 0, 0.6);
+}
+
+@font-face {
+    font-family: forque;
+    src: url('fonts/Forque-webfont.eot');
+    src: url('fonts/Forque-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Forque-webfont.woff') format('woff'),
+         url('fonts/Forque-webfont.ttf') format('truetype'),
+         url('fonts/Forque-webfont.svg#firsttestRegular') format('svg');
+}
+#sample-font {
+    font-family: forque;
+}
+
+#sample-anim-container {
+    padding: 10px;
+    background: #333;
+}
+#sample-anim {
+    position: relative;
+    width: 100px;
+    height: 98px;
+    background: url("../images/adobe-logo.png") 100% 100% no-repeat;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+#sample-anim.moved {
+    left: 600px;    
+    -webkit-transform: rotateX(60deg);
+    transform: rotateX(60deg);
+}
+
+.reveal pre.right {
+    float: right;
+    width: 400px;
+}
+.reveal pre.left {
+    float: left;
+    width: 400px;
+}
+
+.reveal .edge-tool {
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+}
