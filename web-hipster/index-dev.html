@@ -6,9 +6,6 @@
 
 		<title>Become a Web Dev Hipster</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
-
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
@@ -70,10 +67,10 @@
     "project": "Brackets",
     "birthday": new Date(1932, 10, 5),
     "isOld": true
-};</code></pre>
+}</code></pre>
 <pre class="fragment"><code>data = eval(jsonString); // not very safe
-data = JSON.parse(jsonString); // safer
-jsonString = JSON.stringify(data); // to convert back to JSON</code></pre>
+<span class="fragment">data = JSON.parse(jsonString); // safer</span>
+<span class="fragment">jsonString = JSON.stringify(data); // to convert back to JSON</span></code></pre>
                         <p class="fragment">
                             <a target="_blank" href="http://www.json.org">json.org</a> |
                             <a target="_blank" href="http://jsonlint.com">jsonlint.com</a>
@@ -94,62 +91,62 @@ jsonString = JSON.stringify(data); // to convert back to JSON</code></pre>
                     <section>
                         <h3>Simple namespacing</h3>
 <pre><code>var Counter = {
-  count: 1,
+  <span class="fragment">count: 1,</span>
 
-  countUp: function() {
+  <span class="fragment">countUp: function() {
     Counter.count++;
-  },
+  }</span>
 };
 
-Counter.countUp();
-$("#count").text(Counter.counter);</code></pre>
+<span class="fragment">Counter.countUp();</span>
+<span class="fragment">$("#count").text(Counter.counter);</span></code></pre>
                     </section>
                     
                     <section>
                         <h3>Modules</h3>
 <pre><code>var Counter = (function() {
-  var count = 1; // private
+  <span class="fragment">var count = 1; // private</span>
   
-  function debug() { // private
+  <span class="fragment">function debug() { // private
     alert(count);
-  }
+  }</span>
 
-  return {
-    countUp: function() {
+  <span class="fragment">return {
+    <span class="fragment">countUp: function() {
       count++;
     },
 
     getCount: function() {
       return count;
-    }
-  };
-})();</code></pre>
+    }</span>
+  };</span>
+})<span class="fragment">()</span>;</code></pre>
                         <p class="fragment">
-                            <a target="_blank" href="http://bit.ly/jsnamespacing">bit.ly/jsnamespacing</a> |
-                            <a target="_blank" href="http://bit.ly/jsmoduleinfo">bit.ly/jsmoduleinfo</a>
+                            <a target="_blank" href="http://is.gd/jsnamespacing">is.gd/jsnamespacing</a> |
+                            <a target="_blank" href="http://is.gd/jsmoduleinfo">is.gd/jsmoduleinfo</a>
                         </p>
                     </section>
                     
                     <section>
                         <h3>require</h3>
 <pre><code><div class="title">Counter.js</div>define(function(require, exports, module) {
-  var count = 1; // private to this module
+  <span class="fragment">var count = 1; // private
 
   function debug() { // private
     alert(count);
-  }
+  }</span>
 
-  exports.countUp = function() {
+  <span class="fragment">exports.countUp = function() {
     count++;
   };
 
   exports.getCount = function() {
     return count;
-  };
+  };</span>
 });</code></pre>
 <pre class="fragment"><code><div class="title">main.js</div>var Counter = require("Counter");
-Counter.countUp();
-$("#count").text(Counter.getCount());</code></pre>
+<span class="fragment">Counter.countUp();
+$("#count").text(Counter.getCount());</span></code></pre>
                       <p class="fragment">
                           <a target="_blank" href="http://requirejs.org">requirejs.org</a> |
                           <a target="_blank" href="http://commonjs.org">commonjs.org</a>
@@ -157,60 +154,62 @@ $("#count").text(Counter.getCount());</code></pre>
                     </section>
                     
                     <section>
-                        <h3>Prototypal inheritance</h3>
-<pre><code>var Counter = function() {
+                        <h3>Inheritance</h3>
+<pre><code><span class="fragment">var Counter = function() {
   this.counter = 1;
-};
+};</span>
 
-Counter.prototype.countUp = function() {
+<span class="fragment">Counter.prototype.countUp = function() {
   this.counter++;
-};
+};</span>
 
-Counter.prototype.getCount = function() {
+<span class="fragment">Counter.prototype.getCount = function() {
   return this.counter;
-};
+};</span>
 
-var myCounter = new Counter();
-myCounter.countUp();</code></pre>
+<span class="fragment">var myCounter = new Counter();</span>
+<span class="fragment">myCounter.countUp();</span></code></pre>
                       <p class="fragment">
                           <a target="_blank" href="http://j.mp/jsproto">j.mp/jsproto</a> |
-                          <a target="_blank" href="http://bit.ly/jsmixins">bit.ly/jsmixins</a>
+                          <a target="_blank" href="http://is.gd/jsmixins">is.gd/jsmixins</a>
                       </p>
                     </section>
                     
                     <section>
                         <h3>What are methods, really?</h3>
-<pre><code>var obj1 = { x: 100 },
-    obj2 = { x: 200 };
+<pre><code><span class="fragment">var obj1 = { x: 100 },
+    obj2 = { x: 200 };</span>
 
-function log() { 
-  alert(this.x); 
-}
+<span class="fragment">function log() { 
+  console.log(this.x); 
+}</span>
 
-obj1.log = obj2.log = log;
+<span class="fragment">obj1.log = obj2.log = log;</span>
 
-obj1.log(); // 100
+<span class="fragment">obj1.log(); // 100
 obj2.log(); // 200
-</code></pre>
+log(); // error: "this" is undefined</span></code></pre>
                     </section>
                     
                     <section>
                         <h3>Beware of "this"</h3>
 <pre><code>var myButton = {
-  element: document.getElementById(‘myButton’),
-  value: ‘myValue’,
+  <span class="fragment">elt: document.getElementById("myButton"),
+  value: "myValue",</span>
 
-  init: function() {
-    <strong>this.element.onclick = this.handleClick;</strong>
-  },
-
-  handleClick: function() {
+  <span class="fragment">handleClick: function() {
     alert(this.value);
-  }
+  },</span>
+
+  <span class="fragment">init: function() {
+    <strong>this.elt.onclick = this.handleClick;</strong>
+  }</span>
 };
 
-myButton.handleClick(); // works, this == myButton
-// but clicking on the button sets “this” to element (or window)</code></pre>
+<span class="fragment">myButton.init();</span>
+<span class="fragment">myButton.handleClick(); // works, this === myButton</span>
+<span class="fragment">// but clicking on the button shows "Click Me"
+// because this === elt</span></code></pre>
                     </section>
                     
                     <section>
@@ -219,13 +218,13 @@ myButton.handleClick(); // works, this == myButton
   element: document.getElementById(‘myButton’),
   value: ‘myValue’,
 
+  handleClick: function() {
+    alert(this.value);
+  }
+
   init: function() {
     <strong>this.handleClick = this.handleClick.bind(this);</strong>
     this.element.onclick = this.handleClick;
-  },
-
-  handleClick: function() {
-    alert(this.value);
   }
 };</code></pre>
                     </section>
@@ -237,15 +236,15 @@ myButton.handleClick(); // works, this == myButton
   value: ‘myValue’,
 
   init: function() {
-    <strong>var self = this;</strong>
-    this.element.onclick = function() {
-      alert(<strong>self</strong>.value);
-    };
+    <span class="fragment"><strong>var self = this;</strong></span>
+    <span class="fragment">this.element.onclick = function() {
+      <span class="fragment">alert(<strong>self</strong>.value);</span>
+    };</span>
   }
 };</code></pre>
                         <p class="fragment">
                             <a target="_blank" href="http://j.mp/jsscope">j.mp/jsscope</a> |
-                            <a target="_blank" href="http://bit.ly/jsgarden">bit.ly/jsgarden</a>
+                            <a target="_blank" href="http://is.gd/jsgarden">is.gd/jsgarden</a>
                         </p>
                     </section>
                     
@@ -253,17 +252,17 @@ myButton.handleClick(); // works, this == myButton
                         <h3>Unit testing</h3>
 <pre class="left fragment"><code><div class="title">QUnit</div>test("countUp adds 1", 
   function() {
-    Counter.reset();
-    Counter.countUp();
-    equal(Counter.getCount(), 1);
+    <span class="fragment">Counter.reset();
+    Counter.countUp();</span>
+    <span class="fragment">equal(Counter.getCount(), 1);</span>
   }
 );</code></pre>
 <pre class="right fragment"><code><div class="title">Jasmine</div>it("should add 1",
   function() {
     Counter.reset();
     Counter.countUp();
-    expect(Counter.getCount())
-      .toBe(1);
+    <span class="fragment">expect(Counter.getCount())
+      .toBe(1);</span>
   }
 );</code></pre>
                         <p class="fragment" style="clear: both">
@@ -437,7 +436,7 @@ cube = function(x) {
 <span class="fragment">myTodo.set("title", "Buy lowfat milk"); // view will update</span></code></pre>
                         <p class="fragment">
                             <a target="_blank" href="http://backbonejs.org">backbonejs.org</a> |
-                            <a target="_blank" href="http://bit.ly/backbonetodos">bit.ly/backbonetodos</a>
+                            <a target="_blank" href="http://is.gd/backbonetodos">is.gd/backbonetodos</a>
                         </p>
                     </section>
                 </section>
@@ -449,11 +448,10 @@ cube = function(x) {
                     
                     <section>
                         <h3>Local storage</h3>
-<pre><code>
-localStorage.setItem("name", "Narciso Jaramillo");
-// later...
-var name = localStorage.getItem("name");
-localStorage.removeItem("name");
+<pre class="fragment"><code>localStorage.setItem("name", "Narciso Jaramillo");
+<span class="fragment">// later...
+var name = localStorage.getItem("name");</span>
+<span class="fragment">localStorage.removeItem("name");</span>
 </code></pre>
                     </section>
                     
@@ -469,7 +467,7 @@ stylesheet.css
 images/logo.png
 scripts/main.js</code></pre>
                         <p class="fragment">
-                            <a target="_blank" href="http://bit.ly/appcachetut">bit.ly/appcachetut</a>
+                            <a target="_blank" href="http://is.gd/appcachetut">is.gd/appcachetut</a>
                         </p>
                     </section>
                     
@@ -477,44 +475,83 @@ scripts/main.js</code></pre>
                         <h3>Web workers</h3>
 <pre class="fragment"><code><div class="title">main.js</div>var worker = new Worker('doWork.js');
 
-worker.addEventListener('message', function(e) {
+<span class="fragment">worker.addEventListener('message', function(e) {
   console.log('Worker said: ', e.data);
-}, false);
+}, false);</span>
 
-worker.postMessage('Hello World'); // Send data to our worker.</code></pre>
+<span class="fragment">worker.postMessage('Hello World'); // Send data to our worker.</span></code></pre>
 <pre class="fragment"><code><div class="title">doWork.js</div>self.addEventListener('message', function(e) {
   self.postMessage('I heard: ' + e.data);
 }, false);</code></pre>
                         <p class="fragment">
-                            <a target="_blank" href="http://bit.ly/webworkertut">bit.ly/webworkertut</a>
+                            <a target="_blank" href="http://is.gd/webworkertut">is.gd/webworkertut</a>
                         </p>
                     </section>
                     
                     <section>
                         <h3>Web sockets</h3>
-<pre><code>var connection = new WebSocket("ws://echo.websocket.org/");
-connection.onopen = function () {
+<pre class="fragment"><code>var connection = new WebSocket("ws://echo.websocket.org/");
+<span class="fragment">connection.onopen = function () {
   connection.send("Hello there");
-};
-connection.onmessage = function (e) {
+};</span>
+<span class="fragment">connection.onmessage = function (e) {
   alert("Got message: " + e.data);
-};</code></pre>
+};</span></code></pre>
                         <p class="fragment">
-                            <a target="_blank" href="http://bit.ly/websocketstut">bit.ly/websocketstut</a>
+                            <a target="_blank" href="http://is.gd/websocketstut">is.gd/websocketstut</a>
                         </p>
                     </section>
                 </section>
 
                 <section>
                     <section>
-                        <h2>The backend</h2>
+                        <h2>The server side</h2>
                     </section>
                     
                     <section>
-                        <h3>Node.js</h3>
+                        <h3>Node.js: JS on the server</h3>
+<pre><code>var http = require("http");
+
+http.createServer(<span class="fragment">function(request, response) {
+  <span class="fragment">response.writeHead(200, {"Content-Type": "text/plain"});
+  response.write("Hello World");
+  response.end();</span>
+}</span>)<span class="fragment">.listen(8888);</span></code></pre>
+                        <p class="fragment">
+                            "Everything runs in parallel, except your code"
+                        </p>
+                        <p class="fragment">
+                            <a target="_blank" href="http://nodebeginner.org">nodebeginner.org</a> |
+                            <a target="_blank" href="http://is.gd/nodeeventloop">is.gd/nodeeventloop</a>
+                        </p>
                     </section>
+                    
+                    <section>
+                        <h3>Node.js: Not just for servers</h3>
+                        <p class="fragment">
+                            <img src="images/npm.png">
+                        </p>
+                        <p class="fragment">
+                            <a target="_blank" href="http://npmjs.org">npmjs.org</a>
+                        </p>
+                    </section>
+                    
                     <section>
                         <h3>NoSQL data stores</h3>
+                        <p class="fragment">
+                            <img src="images/redis.png">
+                        </p>
+                        <p class="fragment">
+                            <img src="images/mongodb.png">
+                        </p>
+                        <p class="fragment">
+                            <img src="images/couchdb.png">
+                        </p>
+                        <p class="fragment">
+                            <a target="_blank" href="http://redis.io">redis.io</a> |
+                            <a target="_blank" href="http://mongodb.org">mongodb.org</a> |
+                            <a target="_blank" href="http://couchdb.apache.org">couchdb.apache.org</a>
+                        </p>
                     </section>
                 </section>
 
@@ -524,19 +561,60 @@ connection.onmessage = function (e) {
                     </section>
                     
                     <section>
-                        <h3>Postprocessors</h3>
+                        <h3>In-browser tools</h3>
                     </section>
+                    
+                    <section>
+                        <h3>Command-line tools</h3>
+<pre class="fragment"><code class="none">sudo npm install -g bower
+bower install jquery
+bower install underscore
+bower install backbone</code></pre>
+<pre class="fragment"><code class="none">sudo npm install -g grunt
+grunt init:jquery
+</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://twitter.github.com/bower">twitter.github.com/bower</a> |
+                            <a target="_blank" href="http://gruntjs.com">gruntjs.com</a> |
+                            <a target="_blank" href="http://yeoman.io">yeoman.io</a>
+                        </p>
+                    </section>
+                    
                     <section>
                         <h3>Editors</h3>
+                        <p class="fragment">
+                            <img src="images/editors.png">
+                        </p>
+                        <!-- from http://codepen.io/Elbone/pen/DulKx -->
+                        <div id="brackets" class="fragment"></div>
+                        <p class="fragment">
+                            <a target="_blank" href="https://github.com/adobe/brackets">github.com/adobe/brackets</a>
+                        </p>
                     </section>
+                    
                     <section>
                         <h3>Documentation and other resources</h3>
+                        <ul>
+                            <li class="fragment"><a target="_blank" href="http://docs.webplatform.org">docs.webplatform.org</a></li>
+                            <li class="fragment"><a target="_blank" href="http://developer.mozilla.org">developer.mozilla.org</a></li>
+                            <li class="fragment"><a target="_blank" href="http://html5rocks.com">html5rocks.com</a></li>
+                            <li class="fragment"><span class="killme">w3schools.com</span></li>
+                            <li class="fragment"><a target="_blank" href="http://remotesynthesis.com/">remotesynthesis.com</a></li>
+                        </ul>
                     </section>
                 </section>
 
                 <section>
                     <section>
-                        <h2>Q&amp;A</h2>
+                        <h2>Thanks!</h2>
+                        <p>
+                            <a target="_blank" href="http://is.gd/webdesignhipster">is.gd/webdesignhipster</a><br>
+                            <a target="_blank" href="http://is.gd/webdevhipster">is.gd/webdevhipster</a><br>
+                            <a target="_blank" href="https://github.com/njx/presos">github.com/njx/presos</a>
+                        </p>
+                        <p>
+                            Built with <a target="_blank" href="http://lab.hakim.se/reveal-js">reveal.js</a>
+                        </p>
                     </section>
                 </section>
             </div>
