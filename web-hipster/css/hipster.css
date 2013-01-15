@@ -5,9 +5,14 @@
 .bg-hipster body {
     background: url("../images/hipster.png") 50% 50% / 100% auto no-repeat;
 }
-.bg-hipster h2, .bg-hipster h4 {
+.bg-hipster2 body {
+    background: url("../images/hipster2.png") 50% 50% / 100% auto no-repeat;
+}
+.cover h2, .cover h4 {
     padding: 20px;
     background: rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow:  0px 0px 16px 0px rgba(0, 0, 0, 0.8);    
+    box-shadow:  0px 0px 16px 0px rgba(0, 0, 0, 0.8);
 }
 
 .reveal section img {
