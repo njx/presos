@@ -56,19 +56,25 @@
                     
                     <section>
                         <h3>Anonymous objects and JSON</h3>
-<pre><code><div class="title">JavaScript</div>var myObject = {
-    name: "Narciso Jaramillo",
-    project: "Brackets",
-    birthday: new Date(1932, 10, 5),
-    isOld: true
+<pre class="fragment"><code><div class="title">JavaScript</div>var myObject = {
+    <span class="fragment">name: "Narciso Jaramillo",</span>
+    <span class="fragment">birthday: new Date(1932, 10, 5),</span>
+    <span class="fragment">address: {
+        street: "123 Anywhere Place",
+        city: "Somewhere",
+        zip: 92153
+    }</span>
 };</code></pre>
 <pre class="fragment"><code><div class="title">JSON</div>{
     "name": "Narciso Jaramillo",
-    "project": "Brackets",
-    "birthday": new Date(1932, 10, 5),
-    "isOld": true
+    "birthday": "1932-10-05T03:52:12Z",
+    "address": {
+        "street": "123 Anywhere Place",
+        "city": "Somewhere",
+        zip: 92153
+    }
 }</code></pre>
-<pre class="fragment"><code>data = eval(jsonString); // not very safe
+<pre class="fragment"><code class="javascript">data = eval(jsonString); // not very safe
 <span class="fragment">data = JSON.parse(jsonString); // safer</span>
 <span class="fragment">jsonString = JSON.stringify(data); // to convert back to JSON</span></code></pre>
                         <p class="fragment">
@@ -154,7 +160,7 @@ $("#count").text(Counter.getCount());</span></code></pre>
                     </section>
                     
                     <section>
-                        <h3>Inheritance</h3>
+                        <h3>Prototypes</h3>
 <pre><code><span class="fragment">var Counter = function() {
   this.counter = 1;
 };</span>
@@ -170,8 +176,7 @@ $("#count").text(Counter.getCount());</span></code></pre>
 <span class="fragment">var myCounter = new Counter();</span>
 <span class="fragment">myCounter.countUp();</span></code></pre>
                       <p class="fragment">
-                          <a target="_blank" href="http://j.mp/jsproto">j.mp/jsproto</a> |
-                          <a target="_blank" href="http://is.gd/jsmixins">is.gd/jsmixins</a>
+                          <a target="_blank" href="http://j.mp/jsproto">j.mp/jsproto</a>
                       </p>
                     </section>
                     
@@ -183,7 +188,7 @@ $("#count").text(Counter.getCount());</span></code></pre>
 <span class="fragment">function log() { 
   console.log(this.x); 
 }</span>
-
+                    
 <span class="fragment">obj1.log = obj2.log = log;</span>
 
 <span class="fragment">obj1.log(); // 100
@@ -192,6 +197,26 @@ log(); // error: "this" is undefined</span></code></pre>
                     </section>
                     
                     <section>
+                        <h3>Mixins</h3>
+<pre class="fragment"><code><span class="fragment">var debugMixin = {
+  log: function () {
+    console.log(this.toString());
+  },
+  alert: function () {
+    alert(this.toString());
+  }
+};</span>
+
+<span class="fragment">var myObj = {
+  // ...
+};</span>
+<span class="fragment">$.extend(myObj, debugMixin);</span>
+<span class="fragment">myObj.log();</span>
+</code></pre>
+                    </section>
+                    
+                    <section>
+                        <!-- TODO: put runnable example inline -->
                         <h3>Beware of "this"</h3>
 <pre><code>var myButton = {
   <span class="fragment">elt: document.getElementById("myButton"),

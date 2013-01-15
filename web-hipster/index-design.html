@@ -95,7 +95,8 @@
                         <img class="logo" src="images/CSS3_Logo.png">
                     </section>
                     <section>
-                        <h3>...or, <code>&lt;img&gt;</code> is dead<br>(mostly)</h3>
+                        <h3>or, <code>&lt;img&gt;</code> is dead<br>
+                            <span class="fragment">(mostly)</span></h3>
                     </section>
                     <section>
                         <h3>Box decorations</h3>
@@ -153,14 +154,14 @@
     background: url("images/adobe-logo.png") 100% 100% no-repeat;
     <strong>transition: all 1s;</strong>
 }
-#sample-anim.moved {
-    left: 600px;
-    transform: rotateX(60deg);    
-}</code></pre>
+<span class="fragment">#sample-anim.moved {
+    <span class="fragment">left: 600px;</span>
+    <span class="fragment">transform: rotateX(60deg);</span>
+}</span></code></pre>
 <pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
-animBox.onclick = function () {
-    animBox.className = animBox.className ? "" : "moved";
-}</code></pre>
+<span class="fragment">animBox.onclick = function () {
+    <span class="fragment">animBox.className = animBox.className ? "" : "moved";</span>
+};</span></code></pre>
                         <p class="fragment"><a target="_blank" href="http://css3.bradshawenterprises.com/">css3.bradshawenterprises.com</a></p>
                     </section>
                 </section>
@@ -203,13 +204,12 @@ animBox.onclick = function () {
                         <img src="images/adaptive.png">
 <pre class="fragment"><code class="css"><div class="title">CSS</div>#a { float: left; }
 #c { float: right; }
-@media only screen and (max-width: 768px) {
+<span class="fragment">@media only screen and (max-width: 768px) {
     #a { float: none; }
-}
-@media only screen and (max-width: 480px) {
+}</span>
+<span class="fragment">@media only screen and (max-width: 480px) {
     #c { float: none; }
-}
-</code></pre>
+}</span></code></pre>
                     </section>
     
                     <section>
@@ -328,16 +328,16 @@ animBox.onclick = function () {
                         <h3>Canvas</h3>
 <pre><code><div class="title">HTML</div>&lt;canvas id="canvas" width="150" height="150"&gt;&lt;/canvas&gt;</code></pre>
 <pre class="fragment"><code><div class="title">JavaScript</div>function draw() {
-  var canvas = document.getElementById('canvas');
-  if (canvas.getContext) {
+  <span class="fragment">var canvas = document.getElementById('canvas');</span>
+  <span class="fragment">if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
 
-    ctx.fillStyle = "rgb(200,0,0)";
-    ctx.fillRect (10, 10, 55, 50);
+    <span class="fragment">ctx.fillStyle = "rgb(200,0,0)";
+    ctx.fillRect(10, 10, 55, 50);
 
     ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-    ctx.fillRect (30, 30, 55, 50);
-  }
+    ctx.fillRect(30, 30, 55, 50);</span>
+  }</span>
 }</code></pre>
                         <p class="fragment"><a target="_blank" href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial">MDN Canvas Tutorial</a> | <a target="_blank" href="http://www.createjs.com/#!/EaselJS">EaselJS</a></p>
                     </section>
