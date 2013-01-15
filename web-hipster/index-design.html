@@ -105,7 +105,7 @@
                         <div id="sample-deco-container">
                             <div id="sample-deco"></div>
                         </div>
-<pre class="fragment"><code class="css">#sample-deco {
+<pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-deco {
   background: linear-gradient(to bottom, #7abcff 0%, #60abf8 44%,
     #4096ee 100%);
   border-radius: 20px;
@@ -116,7 +116,7 @@
                     </section>
                     <section>
                         <h3>Not quite that simple...</h3>
-<pre class="fragment"><code class="css">#sample-gradient {
+<pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-gradient {
   background: #7abcff; /* Old browsers */
   background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
@@ -131,7 +131,7 @@
                     </section>
                     <section>
                         <h2 id="sample-font">Web fonts</h2>
-<pre class="fragment"><code class="css">@font-face {
+<pre class="fragment"><code class="css"><div class="title">CSS</div>@font-face {
   font-family: forque;
   src: url('Forque-webfont.eot');
   <span class="fragment">src: url('Forque-webfont.eot?#iefix') format('embedded-opentype'),
@@ -151,7 +151,7 @@
                         <div id="sample-anim-container">
                             <div id="sample-anim"></div>
                         </div>
-<pre class="fragment"><code class="css">#sample-anim {
+<pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-anim {
     position: relative; width: 100px; height: 98px;
     background: url("images/adobe-logo.png") 100% 100% no-repeat;
     <strong>transition: all 1s;</strong>
@@ -160,7 +160,7 @@
     left: 600px;
     transform: rotateX(60deg);    
 }</code></pre>
-<pre class="fragment"><code>var animBox = document.getElementById("sample-anim");
+<pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
 animBox.onclick = function () {
     animBox.className = animBox.className ? "" : "moved";
 }</code></pre>
@@ -173,8 +173,12 @@ animBox.onclick = function () {
                         <h2>Layout</h2>
                     </section>
                     <section>
+                        <h3>or, living with the box model</h3>
+                    </section>
+                    
+                    <section>
                         <h3>Grid systems</h3>
-<pre class="right fragment"><code>&lt;div class="row"&gt;
+<pre class="right fragment"><code><div class="title">HTML</div>&lt;div class="row"&gt;
   &lt;div class="span4"&gt;
     ...
   &lt;/div&gt;
@@ -200,7 +204,7 @@ animBox.onclick = function () {
                     <section>
                         <h3>Adaptive design: @media</h3>
                         <img src="images/adaptive.png">
-<pre class="fragment"><code class="css">#a { float: left; }
+<pre class="fragment"><code class="css"><div class="title">CSS</div>#a { float: left; }
 #c { float: right; }
 @media only screen and (max-width: 768px) {
     #a { float: none; }
@@ -216,7 +220,7 @@ animBox.onclick = function () {
                         <ul>
                             <li class="fragment">Fit breakpoints to the design, not the device</li>
                             <li class="fragment">Use fluid sizing:
-<pre><code class="css">.span1 {
+<pre><code class="css"><div class="title">CSS</div>.span1 {
     width: 5.982905982905983%;
 }
 #hero-image {
@@ -233,10 +237,13 @@ animBox.onclick = function () {
                     <section>
                         <h2>Best practices</h2>
                     </section>
+                    <section>
+                        <h3>or, content is king</h3>
+                    </section>
                     
                     <section>
                         <h3>Semantic HTML</h3>
-<pre class="fragment"><code>&lt;div class="nav"&gt;
+<pre class="fragment"><code><div class="title">Non-semantic</div>&lt;div class="nav"&gt;
   &lt;div class="navBox"&gt;
     &lt;a href="home.html" onmouseover="..."&gt;
       &lt;img src="homeButton.png"&gt;
@@ -248,7 +255,7 @@ animBox.onclick = function () {
   &lt;/div&gt;
   &lt;!-- ... --&gt;
 &lt;/div&gt;</code></pre>
-<pre class="fragment"><code>&lt;nav&gt;
+<pre class="fragment"><code><div class="title">Semantic</div>&lt;nav&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href="home.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="products.html"&gt;Products&lt;/a&gt;&lt;/li&gt;
@@ -259,14 +266,14 @@ animBox.onclick = function () {
     
                     <section>
                         <h3>Progressive enhancement</h3>
-<pre><code>&lt;nav&gt;
+<pre><code><div class="title">HTML</div>&lt;nav&gt;
   &lt;ul&gt;
     &lt;li&gt;&lt;a href="home.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href="products.html"&gt;Products&lt;/a&gt;&lt;/li&gt;
     &lt;!-- ... --&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;</code></pre>
-<pre class="fragment"><code class="css">nav li {
+<pre class="fragment"><code class="css"><div class="title">CSS</div>nav li {
   display: inline-block;
   list-style-type: none;
 }
@@ -274,7 +281,7 @@ nav li a {
   background: linear-gradient(top, #d0e4f7 0%, #73b1e7 80%, ...
 }
 </code></pre>
-<pre class="fragment"><code>$("nav a").mouseover(function () {
+<pre class="fragment"><code><div class="title">JavaScript</div>$("nav a").mouseover(function () {
   // ...
 });</code></pre>
                     </section>
@@ -295,19 +302,19 @@ nav li a {
                     </section>
                     <section>
                         <h3>Selecting elements</h3>
-<pre class="fragment"><code>var animBox = document.getElementById("sample-anim");
+<pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
 animBox.onclick = function () {
     animBox.className = animBox.className ? "" : "moved";
 }
 </code></pre>
-<pre class="fragment"><code>$("#sample-anim")
+<pre class="fragment"><code><div class="title">JavaScript</div>$("#sample-anim")
   <span class="fragment">.click(function () {
     <span class="fragment">$(this).toggleClass("moved");</span>
   });</span></code></pre>
                     </section>
                     <section>
                         <h3>Multiple selection and chaining</h3>
-<pre class="fragment"><code>$(".someClass")
+<pre class="fragment"><code><div class="title">JavaScript</div>$(".someClass")
   <span class="fragment">.addClass("shown")</span>
   <span class="fragment">.fadeIn()</span>
   <span class="fragment">.click(function () { /* ... */ })</span>
@@ -322,8 +329,8 @@ animBox.onclick = function () {
                     </section>
                     <section>
                         <h3>Canvas</h3>
-<pre><code>&lt;canvas id="canvas" width="150" height="150"&gt;&lt;/canvas&gt;</code></pre>
-<pre class="fragment"><code>function draw() {
+<pre><code><div class="title">HTML</div>&lt;canvas id="canvas" width="150" height="150"&gt;&lt;/canvas&gt;</code></pre>
+<pre class="fragment"><code><div class="title">JavaScript</div>function draw() {
   var canvas = document.getElementById('canvas');
   if (canvas.getContext) {
     var ctx = canvas.getContext("2d");
@@ -339,12 +346,12 @@ animBox.onclick = function () {
                     </section>
                     <section>
                         <h3>Native SVG support</h3>
-<pre class="fragment"><code>&lt;object data="myImage.svg" type="image/svg+xml"&gt;&lt;/object&gt;</code></pre>
-<pre class="fragment"><code>#myBox {
+<pre class="fragment"><code><div class="title">HTML</div>&lt;object data="myImage.svg" type="image/svg+xml"&gt;&lt;/object&gt;</code></pre>
+<pre class="fragment"><code><div class="title">CSS</div>#myBox {
   background: url(myImage.svg);
 }</code></pre>
-<pre class="fragment"><code>&lt;img src="myImage.svg"&gt;</code></pre>
-<pre class="fragment"><code>&lt;body&gt;
+<pre class="fragment"><code><div class="title">HTML</div>&lt;img src="myImage.svg"&gt;</code></pre>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;body&gt;
   &lt;h1&gt;SVG can be inline in HTML5 documents&lt;/h1&gt;
   &lt;svg height="200" xmlns="http://www.w3.org/2000/svg"&gt;
     &lt;circle cx="30" cy="30" r="30" fill="green" /&gt;
@@ -353,7 +360,7 @@ animBox.onclick = function () {
                     </section>
                     <section>
                         <h3>WebGL</h3>
-<pre><code>var canvas = document.getElementById("glcanvas"); 
+<pre><code><div class="title">JavaScript</div>var canvas = document.getElementById("glcanvas"); 
 gl = canvas.getContext("webgl") 
   || canvas.getContext("experimental-webgl");
 if (gl) {
@@ -384,8 +391,7 @@ if (gl) {
                         
                     <section>
                         <h2>Preprocessors</h2>
-<pre class="left"><code class="css">/* CSS */
-#header {
+<pre class="left"><code class="css"><div class="title">CSS</div>#header {
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -400,8 +406,7 @@ if (gl) {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
 }</code></pre>
-<pre class="right fragment"><code class="css">/* LESS */
-.rounded-corners (@rad: 5px) {
+<pre class="right fragment"><code class="css"><div class="title">LESS</div>.rounded-corners (@rad: 5px) {
   border-radius: @rad;
   -webkit-border-radius: @rad;
   -moz-border-radius: @rad;

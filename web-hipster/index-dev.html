@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Become a Web Dev Hipster</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/adobe/adobe.css" id="theme">
+		<link rel="stylesheet" href="css/hipster.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->        
+	</head>
+
+	<body>
+		<div id='banner'>
+			<object id='banner-adobe' data='css/theme/adobe/banner-adobe.svg' type='image/svg+xml'></object>
+			<object id='banner-large' data='css/theme/adobe/banner-tech-summit-large.svg' type='image/svg+xml'></object>
+			<object id='banner-small' data='css/theme/adobe/banner-tech-summit-small.svg' type='image/svg+xml'></object>
+		</div>
+		
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-state='bg-hipster banner-large'>
+					<h2>Become a Web Dev Hipster</h2>
+					<h4><i>Narciso Jaramillo<br>
+                        Principal Scientist, Web Platform and Authoring<br>
+                        <a target="_blank" href="mailto:nj@adobe.com">nj@adobe.com</a><br>
+                        <a target="_blank" href="http://twitter.com/notwebsafe">@notwebsafe</a></i></h4>
+				</section>
+
+                <section>
+                    <section>
+                        <h2>JavaScript for Smarties</h2>
+                    </section>
+                    <section>
+                        <h3>or, coding without a net</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>Anonymous objects and JSON</h3>
+<pre><code><div class="title">JavaScript</div>var myObject = {
+    name: "Narciso Jaramillo",
+    project: "Brackets",
+    birthday: new Date(1932, 10, 5),
+    isOld: true
+};</code></pre>
+<pre class="fragment"><code><div class="title">JSON</div>{
+    "name": "Narciso Jaramillo",
+    "project": "Brackets",
+    "birthday": new Date(1932, 10, 5),
+    "isOld": true
+};</code></pre>
+<pre class="fragment"><code>data = eval(jsonString); // not very safe
+data = JSON.parse(jsonString); // safer
+jsonString = JSON.stringify(data); // to convert back to JSON</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://www.json.org">json.org</a> |
+                            <a target="_blank" href="http://jsonlint.com">jsonlint.com</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Functions and closures</h3>
+<pre><code>var fetchNewContent = function(url, <strong>container</strong>) {
+  <span class="fragment">$.ajax(url, {
+    success: function(data) {
+      <span class="fragment">$(<strong>container</strong>).html(data);</span>
+    }
+  });</span>
+}</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Simple namespacing</h3>
+<pre><code>var Counter = {
+  count: 1,
+
+  countUp: function() {
+    Counter.count++;
+  },
+};
+
+Counter.countUp();
+$("#count").text(Counter.counter);</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Modules</h3>
+<pre><code>var Counter = (function() {
+  var count = 1; // private
+  
+  function debug() { // private
+    alert(count);
+  }
+
+  return {
+    countUp: function() {
+      count++;
+    },
+
+    getCount: function() {
+      return count;
+    }
+  };
+})();</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://bit.ly/jsnamespacing">bit.ly/jsnamespacing</a> |
+                            <a target="_blank" href="http://bit.ly/jsmoduleinfo">bit.ly/jsmoduleinfo</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>require</h3>
+<pre><code><div class="title">Counter.js</div>define(function(require, exports, module) {
+  var count = 1; // private to this module
+
+  function debug() { // private
+    alert(count);
+  }
+
+  exports.countUp = function() {
+    count++;
+  };
+
+  exports.getCount = function() {
+    return count;
+  };
+});</code></pre>
+<pre class="fragment"><code><div class="title">main.js</div>var Counter = require("Counter");
+Counter.countUp();
+$("#count").text(Counter.getCount());</code></pre>
+                      <p class="fragment">
+                          <a target="_blank" href="http://requirejs.org">requirejs.org</a> |
+                          <a target="_blank" href="http://commonjs.org">commonjs.org</a>
+                      </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Prototypal inheritance</h3>
+<pre><code>var Counter = function() {
+  this.counter = 1;
+};
+
+Counter.prototype.countUp = function() {
+  this.counter++;
+};
+
+Counter.prototype.getCount = function() {
+  return this.counter;
+};
+
+var myCounter = new Counter();
+myCounter.countUp();</code></pre>
+                      <p class="fragment">
+                          <a target="_blank" href="http://j.mp/jsproto">j.mp/jsproto</a> |
+                          <a target="_blank" href="http://bit.ly/jsmixins">bit.ly/jsmixins</a>
+                      </p>
+                    </section>
+                    
+                    <section>
+                        <h3>What are methods, really?</h3>
+<pre><code>var obj1 = { x: 100 },
+    obj2 = { x: 200 };
+
+function log() { 
+  alert(this.x); 
+}
+
+obj1.log = obj2.log = log;
+
+obj1.log(); // 100
+obj2.log(); // 200
+</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Beware of "this"</h3>
+<pre><code>var myButton = {
+  element: document.getElementById(‘myButton’),
+  value: ‘myValue’,
+
+  init: function() {
+    <strong>this.element.onclick = this.handleClick;</strong>
+  },
+
+  handleClick: function() {
+    alert(this.value);
+  }
+};
+
+myButton.handleClick(); // works, this == myButton
+// but clicking on the button sets “this” to element (or window)</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Using "bind"</h3>
+<pre><code>var myButton = {
+  element: document.getElementById(‘myButton’),
+  value: ‘myValue’,
+
+  init: function() {
+    <strong>this.handleClick = this.handleClick.bind(this);</strong>
+    this.element.onclick = this.handleClick;
+  },
+
+  handleClick: function() {
+    alert(this.value);
+  }
+};</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Trick for anonymous handlers</h3>
+<pre><code>var myButton = {
+  element: document.getElementById(‘myButton’),
+  value: ‘myValue’,
+
+  init: function() {
+    <strong>var self = this;</strong>
+    this.element.onclick = function() {
+      alert(<strong>self</strong>.value);
+    };
+  }
+};</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://j.mp/jsscope">j.mp/jsscope</a> |
+                            <a target="_blank" href="http://bit.ly/jsgarden">bit.ly/jsgarden</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Unit testing</h3>
+<pre class="left fragment"><code><div class="title">QUnit</div>test("countUp adds 1", 
+  function() {
+    Counter.reset();
+    Counter.countUp();
+    equal(Counter.getCount(), 1);
+  }
+);</code></pre>
+<pre class="right fragment"><code><div class="title">Jasmine</div>it("should add 1",
+  function() {
+    Counter.reset();
+    Counter.countUp();
+    expect(Counter.getCount())
+      .toBe(1);
+  }
+);</code></pre>
+                        <p class="fragment" style="clear: both">
+                            <a target="_blank" href="http://qunitjs.com">qunitjs.com</a> |
+                            <a target="_blank" href="http://pivotal.github.com/jasmine">pivotal.github.com/jasmine</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>CoffeeScript</h3>
+<pre class="left fragment"><code><div class="title">CoffeeScript</div>square = (x) -> x * x
+
+cube   = (x) -> square(x) * x
+
+
+
+
+</code></pre>
+<pre class="right fragment"><code><div class="title">JavaScript</div>var cube, square;
+square = function(x) {
+  return x * x;
+};
+cube = function(x) {
+  return square(x) * x;
+};</code></pre>
+<pre class="left fragment" style="clear: both"><code><div class="title">CoffeeScript</div>cubes = (math.cube num 
+  for num in list)
+
+
+
+
+
+
+
+
+
+</code></pre>
+<pre class="right fragment"><code><div class="title">JavaScript</div>cubes = (function() {
+  var _i, _len, _results;
+  _results = [];
+  for (_i = 0, _len = list.length; _i &lt; _len; _i++) {
+    num = list[_i];
+    _results.push(math.cube(num));
+  }
+  return results;
+})();</code></pre>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>The evolution of AJAX</h2>
+                    </section>
+                    <section>
+                        <h3>or, why it should be called AJAJ</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>Classic vs. modern AJAX</h3>
+                        <p class="fragment">
+                            <img src="images/ajax-old.png">
+                        </p>
+                        <p class="fragment">
+                            <img src="images/ajax-new.png">
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Client-side templating</h3>
+<pre><code><div class="title">HTML</div>&lt;script id=“blogPostTemplate” type=“text/x-handlebars-template”&gt;
+  &lt;div class=“entry”&gt;
+    &lt;h1&gt;<strong>{{title}}</strong>&lt;/h1&gt;
+    &lt;div class=“body”&gt;
+      <strong>{{body}}</strong>
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/script&gt;</code></pre>
+<pre class="fragment"><code class="javascript">var data = { 
+  title: "My Blog Post",
+  body: "This is my awesome post."
+};
+<span class="fragment">var source = $(‘#blogPostTemplate’).html();</span>
+<span class="fragment">var postTemplate = Handlebars.compile(source);</span>
+<span class="fragment">$.ajax(postURL, { 
+  <span class="fragment">success: function(data) {
+    <span class="fragment">$(‘#postContent’).html(postTemplate(data));</span>
+  })</span>
+});</span><div class="title">JavaScript</div></code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Frameworks and libraries</h2>
+                    </section>
+                    <section>
+                        <h3>or, small is beautiful</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>"All-in-one" frameworks</h3>
+                        <div class="comparison">
+                            <ul class="frameworks fragment">
+                                <li><img src="images/extjs.png"></li>
+                                <li><img src="images/dojo.png"></li>
+                                <li><img src="images/closure.png"></li>
+                                <li><img src="images/yui.png"></li>
+                                <li><img src="images/sproutcore.png"></li>
+                            </ul>
+                            <ul class="features fragment">
+                                <li>Inheritance</li>
+                                <li>Component model</li>
+                                <li>UI widget set</li>
+                                <li>MVC</li>
+                                <li>Data access</li>
+                                <li>Hide DOM complexity</li>
+                            </ul>                            
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h3>Mix-and-match</h3>
+                        <table>
+                            <tr class="fragment">
+                                <td><img src="images/require.png"></td>
+                                <td>Module loading</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/jquery.png"></td>
+                                <td>DOM manipulation, AJAX</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/bootstrap.png"></td>
+                                <td>CSS grid/lightweight components</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/jqmobile.png"></td>
+                                <td>Mobile UI components</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/handlebars.png"></td>
+                                <td>Client-side templating</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/backbone.png"></td>
+                                <td>Lightweight MV(C)</td>
+                            </tr>
+                        </table>
+                    </section>
+                    
+                    <section>
+                        <h3>Backbone: Lightweight MV(C)</h3>
+<pre><code><span class="fragment">var Todo = Backbone.Model.extend({
+  defaults: {
+    title: "empty todo..."
+  }
+});</span>
+
+<span class="fragment">var TodoView = Backbone.View.extend({
+  <span class="fragment">initialize: function() {
+    this.listenTo(this.model, "change", this.render);
+  },</span>
+  <span class="fragment">render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }</span>
+});</span></code></pre>
+<pre class="fragment"><code>var myTodo = new Todo({ title: "Buy milk" });
+<span class="fragment">var myTodoView = new TodoView({ model: myTodo });</span>
+<span class="fragment">$("#todolist").append(myTodoView.render().$el);</span>
+<span class="fragment">myTodo.set("title", "Buy lowfat milk"); // view will update</span></code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://backbonejs.org">backbonejs.org</a> |
+                            <a target="_blank" href="http://bit.ly/backbonetodos">bit.ly/backbonetodos</a>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>HTML5 for apps</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>Local storage</h3>
+<pre><code>
+localStorage.setItem("name", "Narciso Jaramillo");
+// later...
+var name = localStorage.getItem("name");
+localStorage.removeItem("name");
+</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>App cache</h3>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;html manifest="example.appcache"&gt;
+  ...
+&lt;/html&gt;</code></pre>
+<pre class="fragment"><code><div class="title">Manifest</div>CACHE MANIFEST
+# 2013-01-14:v1
+index.html
+stylesheet.css
+images/logo.png
+scripts/main.js</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://bit.ly/appcachetut">bit.ly/appcachetut</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Web workers</h3>
+<pre class="fragment"><code><div class="title">main.js</div>var worker = new Worker('doWork.js');
+
+worker.addEventListener('message', function(e) {
+  console.log('Worker said: ', e.data);
+}, false);
+
+worker.postMessage('Hello World'); // Send data to our worker.</code></pre>
+<pre class="fragment"><code><div class="title">doWork.js</div>self.addEventListener('message', function(e) {
+  self.postMessage('I heard: ' + e.data);
+}, false);</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://bit.ly/webworkertut">bit.ly/webworkertut</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Web sockets</h3>
+<pre><code>var connection = new WebSocket("ws://echo.websocket.org/");
+connection.onopen = function () {
+  connection.send("Hello there");
+};
+connection.onmessage = function (e) {
+  alert("Got message: " + e.data);
+};</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://bit.ly/websocketstut">bit.ly/websocketstut</a>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The backend</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>Node.js</h3>
+                    </section>
+                    <section>
+                        <h3>NoSQL data stores</h3>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Tools and resources</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>Postprocessors</h3>
+                    </section>
+                    <section>
+                        <h3>Editors</h3>
+                    </section>
+                    <section>
+                        <h3>Documentation and other resources</h3>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Q&amp;A</h2>
+                    </section>
+                </section>
+            </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                rollingLinks: false,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+        <script>
+            var animBox = document.getElementById("sample-anim");
+            animBox.onclick = function () {
+                animBox.className = animBox.className ? "" : "moved";
+            }
+        </script>
+	</body>
+</html>

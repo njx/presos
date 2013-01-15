@@ -100,3 +100,45 @@
     text-align: center;
     margin-right: 20px;
 }
+
+.reveal code {
+    position: relative;
+    width: 100%;
+}
+.reveal code strong, .reveal code strong * {
+    color: #f66 !important;
+}
+.reveal code>div.title {
+    position: absolute;
+    padding: 4px;
+    top: 0;
+    right: 0;
+    background: #5d5d5d;
+    color: #bfbfbf !important;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.frameworks {
+    float: left;
+    text-align: left;
+    padding-right: 100px !important;
+}
+.frameworks li {    
+    display: block;
+    list-style-type: none;
+}
+.features {
+    padding-top: 150px !important;
+}
+
+table {
+    background: #333;
+}
+table tr {
+    background: #666;
+}
+table td {
+    font-size: 32px !important;
+    padding: 0 15px 0 15px !important;
+    vertical-align: middle !important;
+}
