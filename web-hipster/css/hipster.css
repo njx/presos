@@ -2,6 +2,16 @@
     line-height: 1.2em;
 }
 
+.reveal .slides {
+    max-width: 1050px;
+}
+
+.reveal code {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    max-height: none;
+}
+
 .bg-hipster body {
     background: url("../images/hipster.png") 50% 50% / 100% auto no-repeat;
 }
@@ -90,18 +100,17 @@
     transition: all 1s;
 }
 #sample-anim.moved {
-    left: 600px;    
-    -webkit-transform: rotateX(60deg);
-    transform: rotateX(60deg);
+    -webkit-transform: translateX(600px) rotateX(60deg);
+    transform: translateX(600px) rotateX(60deg);
 }
 
 .reveal pre.right {
     float: right;
-    width: 400px;
+    width: 500px;
 }
 .reveal pre.left {
     float: left;
-    width: 400px;
+    width: 500px;
 }
 
 .reveal .edge-tool {
@@ -154,7 +163,7 @@ table td {
 
 .killme {
     text-decoration: line-through;
-    color: #999
+    color: #999 !important;
 }
 
 
@@ -205,4 +214,24 @@ table td {
 	margin: 0 0 0 -8px;
 	background: #fff;
 	z-index: 2;
+}
+#image-rvw {
+    position: relative;
+    max-width: none;
+    max-height: none;
+}
+#image-pbr {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    max-width: none;
+    max-height: none;
+}
+#image-fixie {
+    position: absolute;
+    left: 40%;
+    top: 10%;
+    width: 350px;
+    max-width: none;
+    max-height: none;
 }

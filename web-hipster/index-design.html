@@ -40,11 +40,37 @@
 
 				<section data-state='bg-hipster cover banner-large'>
 					<h2>Become a Web Design Hipster</h2>
-					<h4 class="fragment"><i>Narciso Jaramillo<br>
+					<h4 class="fragment"><i>Narciso (NJ) Jaramillo<br>
                         Principal Scientist, Web Platform and Authoring<br>
                         <a class="fragment" target="_blank" href="mailto:nj@adobe.com">nj@adobe.com</a><br>
                         <a class="fragment" target="_blank" href="http://twitter.com/notwebsafe">@notwebsafe</a></i></h4>
 				</section>
+                
+                <section>
+                    <section>
+                        <!-- flickr.com/jacobwhittaker, pabstblueribbon.com, flickr.com/davewellbeloved -->
+                        <img class="fragment" id="image-rvw" src="images/rvw-jacobwhittaker.jpg">
+                        <img class="fragment" id="image-pbr" src="images/pbr.png">
+                        <img class="fragment" id="image-fixie" src="images/fixie-davewellbeloved-small.png">
+                    </section>
+                    <section>
+                        <!-- flickr.com/photos/34219731@N07 -->
+                        <img src="images/firehose.jpg">
+                    </section>
+                    <section>
+                        <!-- flickr.com/baggis -->
+                        <img src="images/seatbelt.jpg">
+                    </section>                </section>
+                
+                <section>
+                    <h2>Calibration</h2>
+                    <h3 class="fragment">CSS3</h3>
+                    <h3 class="fragment">Responsive design</h3>
+                    <h3 class="fragment">jQuery</h3>
+                    <h3 class="fragment"><code><small>Function.prototype.bind()</small></code></h3>
+                    <h3 class="fragment">Backbone</h3>
+                    <h3 class="fragment">Great Semicolon Debate of 2012</h3>
+                </section>
 
                 <section>
                     <section>
@@ -63,7 +89,7 @@
                             <img src="images/firefox-512.png">
                             <img class="fragment" src="images/chrome-512.png">
                             <img class="fragment" src="images/safari-512.png">
-                            <img class="fragment" src="images/opera-512.png">
+                            <img class="fragment" src="images/opera-512.png"><br>
                             <img class="fragment" src="images/ie8-700.png">
                             <img class="fragment" src="images/ie-256.png">
                         </div>                        
@@ -104,10 +130,10 @@
                             <div id="sample-deco"></div>
                         </div>
 <pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-deco {
-  background: linear-gradient(to bottom, #7abcff 0%, #60abf8 44%,
-    #4096ee 100%);
-  border-radius: 20px;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.6);
+  <span class="fragment">border-radius: 20px;</span>
+  <span class="fragment">box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.6);</span>
+  <span class="fragment">background: linear-gradient(to bottom, #7abcff 0%, #60abf8 44%,
+    #4096ee 100%);</span>
 }
 </code></pre>
                         <p class="fragment"><a target="_blank" href="http://www.css3generator.com">css3generator.com</a></p>
@@ -116,13 +142,12 @@
                         <h3>Not quite that simple...</h3>
 <pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-gradient {
   background: #7abcff; /* Old browsers */
-  background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
-  background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+  background: <strong>-moz-linear-gradient</strong>(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
+  background: <strong>-webkit-gradient</strong>(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
+  background: <strong>-webkit-linear-gradient</strong>(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
+  background: <strong>-o-linear-gradient</strong>(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
+  background: <strong>-ms-linear-gradient</strong>(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
+  background: <strong>linear-gradient</strong>(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
 }
 </code></pre>
                         <p class="fragment"><a target="_blank" href="http://prefixr.com">prefixr.com</a> | <a target="_blank" href="http://leaverou.github.com/prefixfree/">prefix-free</a> | <a target="_blank" href="caniuse.com">caniuse.com</a></p>
@@ -138,9 +163,9 @@
        url('Forque-webfont.svg#firsttestRegular') format('svg');</span>
 }
 
-#sample-font {
+<span class="fragment">#sample-font {
   font-family: forque;
-}
+}</span>
 </code></pre>
                         <p class="fragment"><a target="_blank" href="http://www.fontsquirrel.com">FontSquirrel</a> | <a target="_blank" href="http://html.adobe.com/edge/webfonts/">Edge Web Fonts</a> | <a target="_blank" href="typekit.com">Typekit</a></p>
                     </section>
@@ -150,13 +175,10 @@
                             <div id="sample-anim"></div>
                         </div>
 <pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-anim {
-    position: relative; width: 100px; height: 98px;
-    background: url("images/adobe-logo.png") 100% 100% no-repeat;
-    <strong>transition: all 1s;</strong>
+    transition: transform 1s;
 }
 <span class="fragment">#sample-anim.moved {
-    <span class="fragment">left: 600px;</span>
-    <span class="fragment">transform: rotateX(60deg);</span>
+    <span class="fragment">transform: translateX(600px) rotateX(60deg);</span>
 }</span></code></pre>
 <pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
 <span class="fragment">animBox.onclick = function () {
@@ -177,18 +199,18 @@
                     <section>
                         <h3>Grid systems</h3>
 <pre class="right fragment"><code><div class="title">HTML</div>&lt;div class="row"&gt;
-  &lt;div class="span4"&gt;
+  <span class="fragment">&lt;div class="span4"&gt;
     ...
-  &lt;/div&gt;
-  &lt;div class="span8"&gt;
+  &lt;/div&gt;</span>
+  <span class="fragment">&lt;div class="span8"&gt;
     ...
-  &lt;/div&gt;
+  &lt;/div&gt;</span>
 &lt;/div&gt;
-&lt;div class="row"&gt;
+<span class="fragment">&lt;div class="row"&gt;
   &lt;div class="span8 offset2"&gt;
     ...
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;</span></code></pre>
                         <p><img src="images/grid-preview.png"></p>
                         <p class="fragment"><a target="_blank" href="http://twitter.github.com/bootstrap">Bootstrap</a> | <a target="_blank" href="http://foundation.zurb.com/">Zurb Foundation</a></p>
                     </section>
@@ -202,13 +224,17 @@
                     <section>
                         <h3>Adaptive design: @media</h3>
                         <img src="images/adaptive.png">
-<pre class="fragment"><code class="css"><div class="title">CSS</div>#a { float: left; }
+<pre class="right fragment"><code class="css"><div class="title">CSS</div>#a { float: left; }
 #c { float: right; }
-<span class="fragment">@media only screen and (max-width: 768px) {
-    #a { float: none; }
+
+<span class="fragment">@media only screen 
+  and (max-width: 768px) {
+    <span class="fragment">#a { float: none; }</span>
 }</span>
-<span class="fragment">@media only screen and (max-width: 480px) {
-    #c { float: none; }
+
+<span class="fragment">@media only screen 
+  and (max-width: 480px) {
+    <span class="fragment">#c { float: none; }</span>
 }</span></code></pre>
                     </section>
     
@@ -217,12 +243,13 @@
                         <ul>
                             <li class="fragment">Fit breakpoints to the design, not the device</li>
                             <li class="fragment">Use fluid sizing:
-<pre><code class="css"><div class="title">CSS</div>.span1 {
+<pre><code class="css"><div class="title">CSS</div><span class="fragment">.span1 {
     width: 5.982905982905983%;
-}
-#hero-image {
+}</span>
+
+<span class="fragment">#hero-image {
     max-width: 100%;
-}
+}</span>
 </code></pre>
                             </li>
                         </ul>
@@ -230,6 +257,176 @@
                     </section>
                 </section>
 
+                <section>
+                    <section>
+                        <h2>jQuery</h2>
+                    </section>
+                    <section>
+                        <h3>Selecting elements</h3>
+<pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
+<span class="fragment">animBox.onclick = function () {
+    <span class="fragment">animBox.className = animBox.className ? "" : "moved";</span>
+}</span>
+</code></pre>
+<pre class="fragment"><code><div class="title">JavaScript</div>$("#sample-anim")
+  <span class="fragment">.click(function () {
+    <span class="fragment">$(this).toggleClass("moved");</span>
+  });</span></code></pre>
+                    </section>
+                    <section>
+                        <h3>Multiple selection and chaining</h3>
+<pre class="fragment"><code><div class="title">JavaScript</div>$(".someClass")
+  <span class="fragment">.addClass("shown")</span>
+  <span class="fragment">.fadeIn()</span>
+  <span class="fragment">.click(function () { /* ... */ })</span>
+  <span class="fragment">.mouseover(function () { /* ... */ });</span></code></pre>
+                        <p class="fragment"><a target="_blank" href="http://jquery.com">jquery.com</a></p>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Graphics</h2>
+                    </section>
+                    <section>
+                        <h3>Canvas</h3>
+<pre><code><div class="title">HTML</div>&lt;canvas id="canvas" width="150" height="150"&gt;&lt;/canvas&gt;</code></pre>
+<pre class="fragment"><code><div class="title">JavaScript</div>var canvas = document.getElementById('canvas');</span>
+  <span class="fragment">if (canvas.getContext) {
+    var ctx = canvas.getContext("2d");
+
+    <span class="fragment">ctx.fillStyle = "rgb(200,0,0)";
+    ctx.fillRect(10, 10, 55, 50);</span>
+  }
+</code></pre>
+                        <p class="fragment"><a target="_blank" href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial">MDN Canvas Tutorial</a> | <a target="_blank" href="http://www.createjs.com/#!/EaselJS">EaselJS</a></p>
+                    </section>
+                    <section>
+                        <h3>Native SVG support</h3>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;object data="myImage.svg" type="image/svg+xml"&gt;&lt;/object&gt;</code></pre>
+<pre class="fragment"><code><div class="title">CSS</div>#myBox {
+  background: url(myImage.svg);
+}</code></pre>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;img src="myImage.svg"&gt;</code></pre>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;body&gt;
+  &lt;h1&gt;SVG can be inline in HTML5 documents&lt;/h1&gt;
+  &lt;svg height="200" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;circle cx="30" cy="30" r="30" fill="green" /&gt;
+  &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+                    </section>
+                    <section>
+                        <h3>WebGL</h3>
+<pre class="fragment"><code><div class="title">JavaScript</div>var canvas = document.getElementById("glcanvas"); 
+<span class="fragment">var gl = canvas.getContext("webgl");</span>
+
+<span class="fragment">gl.clearColor(0.0, 0.0, 0.0, 1.0);
+gl.enable(gl.DEPTH_TEST);
+gl.depthFunc(gl.LEQUAL);
+gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+// ...</span></code></pre>
+                      <p class="fragment">Not implemented in IE currently.<span class="fragment"> (Maybe never.)</span></p>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Tools</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>In-browser tools</h3>
+                    </section>
+                  
+                    <section>
+                        <h3>Boilerplates and frameworks</h3>
+                        <ul>
+                            <li class="fragment"><a target="_blank" href="http://html5boilerplate.com/">HTML5 Boilerplate</a></li>
+                            <li class="fragment"><a target="_blank" href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a></li>
+                            <li class="fragment"><a target="_blank" href="http://foundation.zurb.com/">Zurb Foundation</a></li>
+                            <li class="fragment"><a target="_blank" href="http://modernizr.com">Modernizr</a> and polyfills</li>
+                        </ul>
+                    </section>
+                        
+                    <section>
+                        <h2>Preprocessors</h2>
+<pre class="fragment left"><code class="css"><div class="title">CSS</div>#header {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+<span class="fragment">#footer {
+  <span class="fragment">border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;</span>
+}</span>
+<span class="fragment">#footer .somechild {
+  font-size: 12px;
+}</span></code></pre>
+<pre class="right fragment"><code class="css"><div class="title">LESS</div>.rounded-corners (@rad: 5px) {
+  <span class="fragment">border-radius: @rad;
+  -webkit-border-radius: @rad;
+  -moz-border-radius: @rad;</span>
+}
+
+<span class="fragment">#header {
+  <span class="fragment">.rounded-corners;</span>
+}</span>
+<span class="fragment">#footer {
+  <span class="fragment">.rounded-corners(10px);</span>
+  <span class="fragment">.somechild { 
+    font-size: 12px; 
+  }</span>
+}</span></code></pre>
+                      <p class="fragment"><a target="_blank" href="http://lesscss.org/">lesscss.org</a> | <a target="_blank" href="http://sass-lang.com/">sass-lang.com</a></p>
+                    </section>
+                    
+                    <section>
+                        <h3>Edge Tools from Adobe</h3>
+                        <div class="edge-tools">
+                            <div class="edge-tool fragment">
+                                <img src="images/animate.jpg">
+                                <p>Edge Animate<br/>&nbsp;</p>
+                            </div>
+                            <div class="edge-tool fragment">
+                                <img src="images/reflow.jpg">
+                                <p>Edge Reflow<br/>&nbsp;</p>
+                            </div>
+                            <div class="edge-tool fragment">
+                                <img src="images/code.jpg">
+                                <p>Edge Code /<br/>Brackets</p>
+                            </div>
+                            <div class="edge-tool fragment">
+                                <img src="images/inspect.jpg">
+                                <p>Edge Inspect<br/>&nbsp;</p>
+                            </div>
+                            <div class="edge-tool fragment">
+                                <img src="images/web-fonts.jpg">
+                                <p>Edge Web Fonts</p>
+                            </div>
+                            <div class="edge-tool fragment">
+                                <img src="images/typekit.jpg">
+                                <p>Typekit</p>
+                            </div>
+                            <div class="edge-tool fragment">
+                                <img src="images/pgbuild.jpg">
+                                <p>PhoneGap Build</p>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                
+                <section>
+                    <h1>Q&amp;A</h1>
+                </section>
+        
+                <section>
+                    <h1>
+                        Extras
+                    </h1>
+                </section>
+        
                 <section>
                     <section>
                         <h2>Best practices</h2>
@@ -292,177 +489,7 @@ nav li a {
                         </ul>
                     </section>
                 </section>
-
-                <section>
-                    <section>
-                        <h2>jQuery</h2>
-                    </section>
-                    <section>
-                        <h3>Selecting elements</h3>
-<pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
-animBox.onclick = function () {
-    animBox.className = animBox.className ? "" : "moved";
-}
-</code></pre>
-<pre class="fragment"><code><div class="title">JavaScript</div>$("#sample-anim")
-  <span class="fragment">.click(function () {
-    <span class="fragment">$(this).toggleClass("moved");</span>
-  });</span></code></pre>
-                    </section>
-                    <section>
-                        <h3>Multiple selection and chaining</h3>
-<pre class="fragment"><code><div class="title">JavaScript</div>$(".someClass")
-  <span class="fragment">.addClass("shown")</span>
-  <span class="fragment">.fadeIn()</span>
-  <span class="fragment">.click(function () { /* ... */ })</span>
-  <span class="fragment">.mouseover(function () { /* ... */ });</span></code></pre>
-                        <p class="fragment"><a target="_blank" href="http://jquery.com">jquery.com</a></p>
-                    </section>
-                </section>
-                
-                <section>
-                    <section>
-                        <h2>Graphics</h2>
-                    </section>
-                    <section>
-                        <h3>Canvas</h3>
-<pre><code><div class="title">HTML</div>&lt;canvas id="canvas" width="150" height="150"&gt;&lt;/canvas&gt;</code></pre>
-<pre class="fragment"><code><div class="title">JavaScript</div>function draw() {
-  <span class="fragment">var canvas = document.getElementById('canvas');</span>
-  <span class="fragment">if (canvas.getContext) {
-    var ctx = canvas.getContext("2d");
-
-    <span class="fragment">ctx.fillStyle = "rgb(200,0,0)";
-    ctx.fillRect(10, 10, 55, 50);
-
-    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-    ctx.fillRect(30, 30, 55, 50);</span>
-  }</span>
-}</code></pre>
-                        <p class="fragment"><a target="_blank" href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial">MDN Canvas Tutorial</a> | <a target="_blank" href="http://www.createjs.com/#!/EaselJS">EaselJS</a></p>
-                    </section>
-                    <section>
-                        <h3>Native SVG support</h3>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;object data="myImage.svg" type="image/svg+xml"&gt;&lt;/object&gt;</code></pre>
-<pre class="fragment"><code><div class="title">CSS</div>#myBox {
-  background: url(myImage.svg);
-}</code></pre>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;img src="myImage.svg"&gt;</code></pre>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;body&gt;
-  &lt;h1&gt;SVG can be inline in HTML5 documents&lt;/h1&gt;
-  &lt;svg height="200" xmlns="http://www.w3.org/2000/svg"&gt;
-    &lt;circle cx="30" cy="30" r="30" fill="green" /&gt;
-  &lt;/svg&gt;
-&lt;/body&gt;</code></pre>
-                    </section>
-                    <section>
-                        <h3>WebGL</h3>
-<pre><code><div class="title">JavaScript</div>var canvas = document.getElementById("glcanvas"); 
-gl = canvas.getContext("webgl") 
-  || canvas.getContext("experimental-webgl");
-if (gl) {
-  gl.clearColor(0.0, 0.0, 0.0, 1.0);
-  gl.enable(gl.DEPTH_TEST);
-  gl.depthFunc(gl.LEQUAL);
-  gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-  // ...
-}</code></pre>
-                      <p class="fragment">Not implemented in IE currently.<span class="fragment"> (Maybe never.)</span></p>
-                    </section>
-                </section>
-                
-                <section>
-                    <section>
-                        <h2>Tools</h2>
-                    </section>
-                    
-                    <section>
-                        <h3>In-browser tools</h3>
-                    </section>
-                  
-                    <section>
-                        <h3>Boilerplates and frameworks</h3>
-                        <ul>
-                            <li class="fragment"><a target="_blank" href="http://html5boilerplate.com/">HTML5 Boilerplate</a></li>
-                            <li class="fragment"><a target="_blank" href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a></li>
-                            <li class="fragment"><a target="_blank" href="http://foundation.zurb.com/">Zurb Foundation</a></li>
-                            <li class="fragment"><a target="_blank" href="http://modernizr.com">Modernizr</a> and polyfills</li>
-                        </ul>
-                    </section>
-                        
-                    <section>
-                        <h2>Preprocessors</h2>
-<pre class="left"><code class="css"><div class="title">CSS</div>#header {
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-}
-
-#header .somechild {
-  font-size: 12px;
-}
-
-#footer {
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-}</code></pre>
-<pre class="right fragment"><code class="css"><div class="title">LESS</div>.rounded-corners (@rad: 5px) {
-  border-radius: @rad;
-  -webkit-border-radius: @rad;
-  -moz-border-radius: @rad;
-}
-
-#header {
-  .rounded-corners;
-  .somechild { 
-    font-size: 12px; 
-  }
-}
-#footer {
-  .rounded-corners(10px);
-}</code></pre>
-                      <p class="fragment"><a target="_blank" href="http://lesscss.org/">lesscss.org</a> | <a target="_blank" href="http://sass-lang.com/">sass-lang.com</a></p>
-                    </section>
-                    
-                    <section>
-                        <h3>Edge Tools from Adobe</h3>
-                        <div class="edge-tools">
-                            <div class="edge-tool fragment">
-                                <img src="images/animate.jpg">
-                                <p>Edge Animate<br/>&nbsp;</p>
-                            </div>
-                            <div class="edge-tool fragment">
-                                <img src="images/reflow.jpg">
-                                <p>Edge Reflow<br/>&nbsp;</p>
-                            </div>
-                            <div class="edge-tool fragment">
-                                <img src="images/code.jpg">
-                                <p>Edge Code /<br/>Brackets</p>
-                            </div>
-                            <div class="edge-tool fragment">
-                                <img src="images/inspect.jpg">
-                                <p>Edge Inspect<br/>&nbsp;</p>
-                            </div>
-                            <div class="edge-tool fragment">
-                                <img src="images/web-fonts.jpg">
-                                <p>Edge Web Fonts</p>
-                            </div>
-                            <div class="edge-tool fragment">
-                                <img src="images/typekit.jpg">
-                                <p>Typekit</p>
-                            </div>
-                            <div class="edge-tool fragment">
-                                <img src="images/pgbuild.jpg">
-                                <p>PhoneGap Build</p>
-                            </div>
-                        </div>
-                    </section>
-                </section>
-                
-                <section>
-                    <h1>Q&amp;A</h1>
-                </section>
+        
 			</div>
 		</div>
 

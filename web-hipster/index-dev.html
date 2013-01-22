@@ -40,7 +40,7 @@
 
 				<section data-state='bg-hipster2 cover banner-large'>
 					<h2>Become a Web Dev Hipster</h2>
-					<h4 class="fragment"><i>Narciso Jaramillo<br>
+					<h4 class="fragment"><i>Narciso (NJ) Jaramillo<br>
                         Principal Scientist, Web Platform and Authoring<br>
                         <a class="fragment" target="_blank" href="mailto:nj@adobe.com">nj@adobe.com</a><br>
                         <a class="fragment" target="_blank" href="http://twitter.com/notwebsafe">@notwebsafe</a></i></h4>
@@ -55,7 +55,21 @@
                     </section>
                     
                     <section>
-                        <h3>Anonymous objects and JSON</h3>
+                        <h3 class="killme">
+                            Classes
+                        </h3>
+                        <h3 class="fragment">
+                            Objects
+                        </h3>
+                        <h3 class="fragment">
+                            Functions
+                        </h3>
+                        <h3 class="fragment">
+                            Prototypes
+                        </h3>
+                    </section>
+                    <section>
+                        <h3>Objects</h3>
 <pre class="fragment"><code><div class="title">JavaScript</div>var myObject = {
     <span class="fragment">name: "Narciso Jaramillo",</span>
     <span class="fragment">birthday: new Date(1932, 10, 5),</span>
@@ -66,22 +80,6 @@
     }</span>
 };
 <span class="fragment">myObject.newProp = "some value";</span></code></pre>
-<pre class="fragment"><code><div class="title">JSON</div>{
-    "name": "Narciso Jaramillo",
-    "birthday": "1932-10-05T03:52:12Z",
-    "address": {
-        "street": "123 Anywhere Place",
-        "city": "Somewhere",
-        zip: 92153
-    }
-}</code></pre>
-<pre class="fragment"><code class="javascript">data = eval(jsonString); // not very safe
-<span class="fragment">data = JSON.parse(jsonString); // safer</span>
-<span class="fragment">jsonString = JSON.stringify(data); // to convert back to JSON</span></code></pre>
-                        <p class="fragment">
-                            <a target="_blank" href="http://www.json.org">json.org</a> |
-                            <a target="_blank" href="http://jsonlint.com">jsonlint.com</a>
-                        </p>
                     </section>
                     
                     <section>
@@ -96,28 +94,10 @@
                     </section>
                     
                     <section>
-                        <h3>Simple namespacing</h3>
-<pre><code>var Counter = {
-  <span class="fragment">count: 1,</span>
-
-  <span class="fragment">countUp: function() {
-    Counter.count++;
-  }</span>
-};
-
-<span class="fragment">Counter.countUp();</span>
-<span class="fragment">$("#count").text(Counter.counter);</span></code></pre>
-                    </section>
-                    
-                    <section>
                         <h3>Modules</h3>
 <pre><code>var Counter = (function() {
   <span class="fragment">var count = 1; // private</span>
   
-  <span class="fragment">function debug() { // private
-    alert(count);
-  }</span>
-
   <span class="fragment">return {
     <span class="fragment">countUp: function() {
       count++;
@@ -130,59 +110,13 @@
 })<span class="fragment">()</span>;</code></pre>
                         <p class="fragment">
                             <a target="_blank" href="http://is.gd/jsnamespacing">is.gd/jsnamespacing</a> |
-                            <a target="_blank" href="http://is.gd/jsmoduleinfo">is.gd/jsmoduleinfo</a>
+                            <a target="_blank" href="http://is.gd/jsmoduleinfo">is.gd/jsmoduleinfo</a> |
+                            <a target="_blank" href="http://requirejs.org">requirejs.org</a>
                         </p>
                     </section>
                     
                     <section>
-                        <h3>require</h3>
-<pre><code><div class="title">Counter.js</div>define(function(require, exports, module) {
-  <span class="fragment">var count = 1; // private
-
-  function debug() { // private
-    alert(count);
-  }</span>
-
-  <span class="fragment">exports.countUp = function() {
-    count++;
-  };
-
-  exports.getCount = function() {
-    return count;
-  };</span>
-});</code></pre>
-<pre class="fragment"><code><div class="title">main.js</div>var Counter = require("Counter");
-<span class="fragment">Counter.countUp();
-$("#count").text(Counter.getCount());</span></code></pre>
-                      <p class="fragment">
-                          <a target="_blank" href="http://requirejs.org">requirejs.org</a> |
-                          <a target="_blank" href="http://commonjs.org">commonjs.org</a>
-                      </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Prototypes</h3>
-<pre><code><span class="fragment">var Counter = function() {
-  this.counter = 1;
-};</span>
-
-<span class="fragment">Counter.prototype.countUp = function() {
-  this.counter++;
-};</span>
-
-<span class="fragment">Counter.prototype.getCount = function() {
-  return this.counter;
-};</span>
-
-<span class="fragment">var myCounter = new Counter();</span>
-<span class="fragment">myCounter.countUp();</span></code></pre>
-                      <p class="fragment">
-                          <a target="_blank" href="http://j.mp/jsproto">j.mp/jsproto</a>
-                      </p>
-                    </section>
-                    
-                    <section>
-                        <h3>What are methods, really?</h3>
+                        <h3>"Methods": What is "this"?</h3>
 <pre><code><span class="fragment">var obj1 = { x: 100 },
     obj2 = { x: 200 };</span>
 
@@ -192,28 +126,9 @@ $("#count").text(Counter.getCount());</span></code></pre>
                     
 <span class="fragment">obj1.log = obj2.log = log;</span>
 
-<span class="fragment">obj1.log(); // 100
-obj2.log(); // 200
-log(); // error: "this" is undefined</span></code></pre>
-                    </section>
-                    
-                    <section>
-                        <h3>Mixins</h3>
-<pre class="fragment"><code><span class="fragment">var debugMixin = {
-  log: function () {
-    console.log(this.toString());
-  },
-  alert: function () {
-    alert(this.toString());
-  }
-};</span>
-
-<span class="fragment">var myObj = {
-  // ...
-};</span>
-<span class="fragment">$.extend(myObj, debugMixin);</span>
-<span class="fragment">myObj.log();</span>
-</code></pre>
+<span class="fragment">log(); // error: "this" is undefined</span>
+<span class="fragment">obj1.log(); // 100</span>
+<span class="fragment">obj2.log(); // 200</span></code></pre>
                     </section>
                     
                     <section>
@@ -249,8 +164,7 @@ log(); // error: "this" is undefined</span></code></pre>
   }
 
   init: function() {
-    <strong>this.handleClick = this.handleClick.bind(this);</strong>
-    this.element.onclick = this.handleClick;
+    this.element.onclick = this.handleClick<strong>.bind(this)</strong>;
   }
 };</code></pre>
                     </section>
@@ -272,6 +186,47 @@ log(); // error: "this" is undefined</span></code></pre>
                             <a target="_blank" href="http://j.mp/jsscope">j.mp/jsscope</a> |
                             <a target="_blank" href="http://is.gd/jsgarden">is.gd/jsgarden</a>
                         </p>
+                    </section>
+                    
+                    
+                    <section>
+                        <h3>Prototypes</h3>
+<pre><code><span class="fragment">var Counter = function() {
+  this.counter = 1;
+};</span>
+
+<span class="fragment">Counter.prototype.countUp = function() {
+  this.counter++;
+};</span>
+
+<span class="fragment">Counter.prototype.getCount = function() {
+  return this.counter;
+};</span>
+
+<span class="fragment">var myCounter = new Counter();</span>
+<span class="fragment">myCounter.countUp();</span></code></pre>
+                      <p class="fragment">
+                          <a target="_blank" href="http://j.mp/jsproto">j.mp/jsproto</a>
+                      </p>
+                    </section>
+
+                    <section>
+                        <h3>Mixins</h3>
+<pre class="fragment"><code><span class="fragment">var debugMixin = {
+  log: function () {
+    console.log(this.toString());
+  },
+  alert: function () {
+    alert(this.toString());
+  }
+};</span>
+
+<span class="fragment">var myObj = {
+  // ...
+};</span>
+<span class="fragment">$.extend(myObj, debugMixin);</span>
+<span class="fragment">myObj.log();</span>
+</code></pre>
                     </section>
                     
                     <section>
@@ -354,6 +309,19 @@ cube = function(x) {
                         <p class="fragment">
                             <img src="images/ajax-new.png">
                         </p>
+                    </section>
+                    
+                    <section>
+                        <h3>JSON</h3>
+<pre class="fragment"><code><div class="title">JSON</div>{
+    "name": "Narciso Jaramillo",
+    "birthday": "1932-10-05T03:52:12Z",
+    "address": {
+        "street": "123 Anywhere Place",
+        "city": "Somewhere",
+        zip: 92153
+    }
+}</code></pre>
                     </section>
                     
                     <section>
@@ -676,12 +644,5 @@ grunt init:jquery
 			});
 
 		</script>
-
-        <script>
-            var animBox = document.getElementById("sample-anim");
-            animBox.onclick = function () {
-                animBox.className = animBox.className ? "" : "moved";
-            }
-        </script>
 	</body>
 </html>
