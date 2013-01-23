@@ -45,7 +45,7 @@
                         <a class="fragment" target="_blank" href="mailto:nj@adobe.com">nj@adobe.com</a><br>
                         <a class="fragment" target="_blank" href="http://twitter.com/notwebsafe">@notwebsafe</a></i></h4>
 				</section>
-
+<!--
                 <section>
                     <section>
                         <h2>JavaScript for Smarties</h2>
@@ -135,7 +135,6 @@ Counter.getCount(); // 2</code></pre>
                     </section>
                     
                     <section>
-                        <!-- TODO: put runnable example inline -->
                         <h3>Beware of "this"</h3>
 <pre><code><div class="title">HTML</div>&lt;input id="myButton" value="Click Me"&gt;</code></pre>
 <pre><code><div class="title">JavaScript</div>var myButton = {
@@ -175,8 +174,7 @@ Counter.getCount(); // 2</code></pre>
                             <a target="_blank" href="http://j.mp/jsscope">j.mp/jsscope</a> |
                             <a target="_blank" href="http://is.gd/jsgarden">is.gd/jsgarden</a>
                         </p>
-                    </section>
-<!--                    
+                    </section>                    
                     <section>
                         <h3>Trick for anonymous handlers</h3>
 <pre><code>var myButton = {
@@ -236,7 +234,6 @@ Counter.getCount(); // 2</code></pre>
 <span class="fragment">myObj.log();</span>
 </code></pre>
                     </section>
--->
                     <section>
                         <h3>Code reuse across objects</h3>
                         <p class="fragment">
@@ -307,6 +304,33 @@ cube = function(x) {
   }
   return results;
 })();</code></pre>
+                    </section>
+                </section>
+-->                
+                <section>
+                    <section>
+                        <h2>jQuery</h2>
+                    </section>
+                    <section>
+                        <h3>Selecting elements</h3>
+<pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
+<span class="fragment">animBox.onclick = function () {
+    <span class="fragment">animBox.className = animBox.className ? "" : "moved";</span>
+}</span>
+</code></pre>
+<pre class="fragment"><code><div class="title">JavaScript</div>$("#sample-anim")
+  <span class="fragment">.click(function () {
+    <span class="fragment">$(this).toggleClass("moved");</span>
+  });</span></code></pre>
+                    </section>
+                    <section>
+                        <h3>Multiple selection and chaining</h3>
+<pre class="fragment"><code><div class="title">JavaScript</div>$(".someClass")
+  <span class="fragment">.addClass("shown")</span>
+  <span class="fragment">.fadeIn()</span>
+  <span class="fragment">.click(function () { /* ... */ })</span>
+  <span class="fragment">.mouseover(function () { /* ... */ });</span></code></pre>
+                        <p class="fragment"><a target="_blank" href="http://jquery.com">jquery.com</a></p>
                     </section>
                 </section>
                 
@@ -589,6 +613,69 @@ grunt init:jquery
                             <a target="_blank" href="http://gruntjs.com">gruntjs.com</a> |
                             <a target="_blank" href="http://yeoman.io">yeoman.io</a>
                         </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Unit testing</h3>
+<pre class="left fragment"><code><div class="title">QUnit</div>test("countUp adds 1", 
+  function() {
+    <span class="fragment">Counter.reset();
+    Counter.countUp();</span>
+    <span class="fragment">equal(Counter.getCount(), 1);</span>
+  }
+);</code></pre>
+<pre class="right fragment"><code><div class="title">Jasmine</div>it("should add 1",
+  function() {
+    Counter.reset();
+    Counter.countUp();
+    <span class="fragment">expect(Counter.getCount())
+      .toBe(1);</span>
+  }
+);</code></pre>
+                        <p class="fragment" style="clear: both">
+                            <a target="_blank" href="http://qunitjs.com">qunitjs.com</a> |
+                            <a target="_blank" href="http://pivotal.github.com/jasmine">pivotal.github.com/jasmine</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Languages that compile to JS</h3>
+<pre class="left fragment"><code><div class="title">CoffeeScript</div>square = (x) -> x * x
+
+cube   = (x) -> square(x) * x
+
+
+
+
+</code></pre>
+<pre class="right fragment"><code><div class="title">JavaScript</div>var cube, square;
+square = function(x) {
+  return x * x;
+};
+cube = function(x) {
+  return square(x) * x;
+};</code></pre>
+<pre class="left fragment" style="clear: both"><code><div class="title">CoffeeScript</div>cubes = (math.cube num 
+  for num in list)
+
+
+
+
+
+
+
+
+
+</code></pre>
+<pre class="right fragment"><code><div class="title">JavaScript</div>cubes = (function() {
+  var _i, _len, _results;
+  _results = [];
+  for (_i = 0, _len = list.length; _i &lt; _len; _i++) {
+    num = list[_i];
+    _results.push(math.cube(num));
+  }
+  return results;
+})();</code></pre>
                     </section>
                     
                     <section>
