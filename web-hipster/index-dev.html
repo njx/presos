@@ -375,14 +375,11 @@ cube = function(x) {
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/script&gt;</code></pre>
-<pre class="fragment"><code class="javascript">var data = { 
-  title: "My Blog Post",
-  body: "This is my awesome post."
-};
-<span class="fragment">var source = $(‘#blogPostTemplate’).html();</span>
+<pre class="fragment"><code class="javascript"><span class="fragment">var source = $(‘#blogPostTemplate’).html();</span>
 <span class="fragment">var postTemplate = Handlebars.compile(source);</span>
 <span class="fragment">$.ajax(postURL, { 
   <span class="fragment">success: function(data) {
+    <span class="fragment">// data = { title: "My Post", body: "..." }</span>
     <span class="fragment">$(‘#postContent’).html(postTemplate(data));</span>
   })</span>
 });</span><div class="title">JavaScript</div></code></pre>
