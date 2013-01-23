@@ -71,8 +71,8 @@
                     <section>
                         <h3>Objects</h3>
 <pre class="fragment"><code><div class="title">JavaScript</div>var myObject = {
-    <span class="fragment">name: "Narciso Jaramillo",</span>
-    <span class="fragment">birthday: new Date(1932, 10, 5),</span>
+    <span class="fragment">name: "Narciso Jaramillo",
+    birthday: new Date(1932, 10, 5),</span>
     <span class="fragment">address: {
         street: "123 Anywhere Place",
         city: "Somewhere",
@@ -95,7 +95,10 @@
                     
                     <section>
                         <h3>Modules</h3>
-<pre><code>var Counter = (function() {
+<pre><code>Counter.countUp();
+Counter.countUp();
+Counter.getCount(); // 2</code></pre>
+<pre class="fragment"><code>var Counter = (function() {
   <span class="fragment">var count = 1; // private</span>
   
   <span class="fragment">return {
@@ -117,16 +120,16 @@
                     
                     <section>
                         <h3>"Methods": What is "this"?</h3>
-<pre><code><span class="fragment">var obj1 = { x: 100 },
-    obj2 = { x: 200 };</span>
+<pre><code><span class="fragment">var obj1 = { val: 100 },
+    obj2 = { val: 200 };</span>
 
 <span class="fragment">function log() { 
-  console.log(this.x); 
+  console.log(this.val); 
 }</span>
+<span class="fragment">log(); // error: "val" is undefined</span>
                     
 <span class="fragment">obj1.log = obj2.log = log;</span>
 
-<span class="fragment">log(); // error: "this" is undefined</span>
 <span class="fragment">obj1.log(); // 100</span>
 <span class="fragment">obj2.log(); // 200</span></code></pre>
                     </section>
@@ -168,7 +171,7 @@
   }
 };</code></pre>
                     </section>
-                    
+<!--                    
                     <section>
                         <h3>Trick for anonymous handlers</h3>
 <pre><code>var myButton = {
@@ -228,7 +231,7 @@
 <span class="fragment">myObj.log();</span>
 </code></pre>
                     </section>
-                    
+-->                    
                     <section>
                         <h3>Unit testing</h3>
 <pre class="left fragment"><code><div class="title">QUnit</div>test("countUp adds 1", 
