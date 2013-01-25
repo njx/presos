@@ -40,10 +40,10 @@
 
 				<section data-state='bg-hipster2 cover banner-large'>
 					<h2>Become a Web Dev Hipster</h2>
-					<h4 class="fragment"><i>Narciso (NJ) Jaramillo<br>
+					<h4><i>Narciso (NJ) Jaramillo<br>
                         Principal Scientist, Web Platform and Authoring<br>
-                        <a class="fragment" target="_blank" href="mailto:nj@adobe.com">nj@adobe.com</a><br>
-                        <a class="fragment" target="_blank" href="http://twitter.com/notwebsafe">@notwebsafe</a></i></h4>
+                        <a target="_blank" href="mailto:nj@adobe.com">nj@adobe.com</a><br>
+                        <a target="_blank" href="http://twitter.com/notwebsafe">@notwebsafe</a></i></h4>
 				</section>
 <!--
                 <section>
@@ -463,13 +463,16 @@ cube = function(x) {
     return this;
   }</span>
 });</span></code></pre>
+<!--                        
 <pre class="fragment"><code>var myTodo = new Todo({ title: "Buy milk" });
 <span class="fragment">var myTodoView = new TodoView({ model: myTodo });</span>
 <span class="fragment">$("#todolist").append(myTodoView.render().$el);</span>
 <span class="fragment">myTodo.set("title", "Buy lowfat milk"); // view will update</span></code></pre>
+-->
                         <p class="fragment">
                             <a target="_blank" href="http://backbonejs.org">backbonejs.org</a> |
-                            <a target="_blank" href="http://is.gd/backbonetodos">is.gd/backbonetodos</a>
+                            <a target="_blank" href="http://knockoutjs.com">knockoutjs.com</a> |
+                            <a target="_blank" href="http://angularjs.org">angularjs.org</a>
                         </p>
                     </section>
                 </section>
@@ -547,13 +550,13 @@ scripts/main.js</code></pre>
                     
                     <section>
                         <h3>Node.js: JS on the server</h3>
-<pre><code>var http = require("http");
+<pre class="fragment"><code>var http = require("http");
 
 http.createServer(<span class="fragment">function(request, response) {
   <span class="fragment">response.writeHead(200, {"Content-Type": "text/plain"});
   response.write("Hello World");
   response.end();</span>
-}</span>)<span class="fragment">.listen(8888);</span></code></pre>
+}</span>).listen(8888);</code></pre>
                         <p class="fragment">
                             "Everything runs in parallel, except your code"
                         </p>
@@ -678,6 +681,9 @@ cube = function(x) {
   }
   return results;
 })();</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://coffeescript.org">coffeescript.org</a> | <a target="_blank" href="http://www.typescriptlang.org">typescriptlang.org</a>
+                        </p>
                     </section>
                     
                     <section>
