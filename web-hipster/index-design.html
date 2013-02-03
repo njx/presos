@@ -62,17 +62,6 @@
                         <img src="images/seatbelt.jpg">
                     </section>                </section>
 
-<!--
-                <section>
-                    <h2>Calibration</h2>
-                    <h3 class="fragment">CSS3</h3>
-                    <h3 class="fragment">Responsive design</h3>
-                    <h3 class="fragment">jQuery</h3>
-                    <h3 class="fragment">Backbone</h3>
-                    <h3 class="fragment">Great Semicolon Debate of 2012</h3>
-                </section>
--->
-
                 <section>
                     <section>
                         <h2>Modern web design is hard!</h2>
@@ -133,8 +122,8 @@
 <pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-deco {
   <span class="fragment">border-radius: 20px;</span>
   <span class="fragment">box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.6);</span>
-  <span class="fragment">background: linear-gradient(to bottom, #7abcff 0%, #60abf8 44%,
-    #4096ee 100%);</span>
+  <span class="fragment">background: linear-gradient(to bottom, #<span class="number">9adeff</span> 0%, #<span class="number">60bdee</span> 44%,
+    #<span class="number">2062dd</span> 100%);</span>
 }
 </code></pre>
                         <p class="fragment"><a target="_blank" href="http://www.css3generator.com">css3generator.com</a></p>
@@ -142,13 +131,13 @@
                     <section>
                         <h3>Not quite that simple...</h3>
 <pre class="fragment"><code class="css"><div class="title">CSS</div>#sample-gradient {
-  background: #7abcff; /* Old browsers */
-  background: <strong>-moz-linear-gradient</strong>(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6+ */
-  background: <strong>-webkit-gradient</strong>(linear, left top, left bottom, color-stop(0%,#7abcff), color-stop(44%,#60abf8), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
-  background: <strong>-webkit-linear-gradient</strong>(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
-  background: <strong>-o-linear-gradient</strong>(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Opera 11.10+ */
-  background: <strong>-ms-linear-gradient</strong>(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* IE10+ */
-  background: <strong>linear-gradient</strong>(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C */
+  background: #<span class="number">9adeff</span>; /* Old browsers */
+  background: -moz-linear-gradient(top, #<span class="number">9adeff</span> 0%, #<span class="number">60bdee</span> 44%, #<span class="number">2062dd</span> 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#<span class="number">9adeff</span>), color-stop(44%,#<span class="number">60bdee</span>), color-stop(100%,#<span class="number">2062dd</span>)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #<span class="number">9adeff</span> 0%, #<span class="number">60bdee</span> 44%, #<span class="number">2062dd</span> 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #<span class="number">9adeff</span> 0%, #<span class="number">60bdee</span> 44%, #<span class="number">2062dd</span> 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #<span class="number">9adeff</span> 0%, #<span class="number">60bdee</span> 44%, #<span class="number">2062dd</span> 100%); /* IE10+ */
+  background: linear-gradient(to bottom, #<span class="number">9adeff</span> 0%, #<span class="number">60bdee</span> 44%, #<span class="number">2062dd</span> 100%);
 }
 </code></pre>
                         <p class="fragment"><a target="_blank" href="http://prefixr.com">prefixr.com</a> | <a target="_blank" href="http://leaverou.github.com/prefixfree/">prefix-free</a> | <a target="_blank" href="caniuse.com">caniuse.com</a></p>
@@ -259,45 +248,10 @@
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Graphics</h2>
-                    </section>
-                    <section>
-                        <h3>Canvas</h3>
-<pre><code><div class="title">HTML</div>&lt;canvas id="canvas" width="150" height="150"&gt;&lt;/canvas&gt;</code></pre>
-<pre class="fragment"><code><div class="title">JavaScript</div>var canvas = document.getElementById('canvas');
-<span class="fragment">var ctx = canvas.getContext("2d");</span>
-<span class="fragment">ctx.fillStyle = "rgb(200,0,0)";
-ctx.fillRect(10, 10, 55, 50);</span>
-</code></pre>
-                        <p class="fragment"><a target="_blank" href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial">MDN Canvas Tutorial</a> | <a target="_blank" href="http://www.createjs.com/#!/EaselJS">EaselJS</a></p>
-                    </section>
-                    <section>
-                        <h3>Native SVG support</h3>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;object data="myImage.svg" type="image/svg+xml"&gt;&lt;/object&gt;</code></pre>
-<pre class="fragment"><code><div class="title">CSS</div>#myBox {
-  background: url(myImage.svg);
-}</code></pre>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;img src="myImage.svg"&gt;</code></pre>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;body&gt;
-  &lt;h1&gt;SVG can be inline in HTML5 documents&lt;/h1&gt;
-  &lt;svg height="200" xmlns="http://www.w3.org/2000/svg"&gt;
-    &lt;circle cx="30" cy="30" r="30" fill="green" /&gt;
-  &lt;/svg&gt;
-&lt;/body&gt;</code></pre>
-                    </section>
-                    <section>
-                        <h3>WebGL</h3>
-<pre class="fragment"><code><div class="title">JavaScript</div>var canvas = document.getElementById("glcanvas"); 
-<span class="fragment">var gl = canvas.getContext("webgl");</span>
-
-<span class="fragment">gl.clearColor(0.0, 0.0, 0.0, 1.0);
-gl.enable(gl.DEPTH_TEST);
-gl.depthFunc(gl.LEQUAL);
-gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-// ...</span></code></pre>
-                      <p class="fragment">Not implemented in IE currently.<span class="fragment"> (Maybe never.)</span></p>
-                    </section>
+                    <h2>Graphics</h2>
+                    <h3 class="fragment">Canvas</h3>
+                    <h3 class="fragment">Native SVG</h3>
+                    <h3 class="fragment">WebGL</h3>
                 </section>
                 
                 <section>
@@ -387,10 +341,6 @@ gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
                         </div>
                     </section>
                 </section>
-                
-                <section>
-                    <h1>Q&amp;A</h1>
-                </section>
         
                 <section>
                     <h1>
@@ -461,7 +411,48 @@ nav li a {
                     </section>
                 </section>
         
-			</div>
+                <section>
+                    <section>
+                        <h2>Graphics</h2>
+                    </section>
+                    <section>
+                        <h3>Canvas</h3>
+<pre><code><div class="title">HTML</div>&lt;canvas id="canvas" width="150" height="150"&gt;&lt;/canvas&gt;</code></pre>
+<pre class="fragment"><code><div class="title">JavaScript</div>var canvas = document.getElementById('canvas');
+<span class="fragment">var ctx = canvas.getContext("2d");</span>
+<span class="fragment">ctx.fillStyle = "rgb(200,0,0)";
+ctx.fillRect(10, 10, 55, 50);</span>
+</code></pre>
+                        <p class="fragment"><a target="_blank" href="https://developer.mozilla.org/en-US/docs/HTML/Canvas/Tutorial">MDN Canvas Tutorial</a> | <a target="_blank" href="http://www.createjs.com/#!/EaselJS">EaselJS</a></p>
+                    </section>
+                    <section>
+                        <h3>Native SVG support</h3>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;object data="myImage.svg" type="image/svg+xml"&gt;&lt;/object&gt;</code></pre>
+<pre class="fragment"><code><div class="title">CSS</div>#myBox {
+  background: url(myImage.svg);
+}</code></pre>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;img src="myImage.svg"&gt;</code></pre>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;body&gt;
+  &lt;h1&gt;SVG can be inline in HTML5 documents&lt;/h1&gt;
+  &lt;svg height="200" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;circle cx="30" cy="30" r="30" fill="green" /&gt;
+  &lt;/svg&gt;
+&lt;/body&gt;</code></pre>
+                    </section>
+                    <section>
+                        <h3>WebGL</h3>
+<pre class="fragment"><code><div class="title">JavaScript</div>var canvas = document.getElementById("glcanvas"); 
+<span class="fragment">var gl = canvas.getContext("webgl");</span>
+
+<span class="fragment">gl.clearColor(0.0, 0.0, 0.0, 1.0);
+gl.enable(gl.DEPTH_TEST);
+gl.depthFunc(gl.LEQUAL);
+gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+// ...</span></code></pre>
+                      <p class="fragment">Not implemented in IE currently.<span class="fragment"> (Maybe never.)</span></p>
+                    </section>
+                </section>
+            </div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>

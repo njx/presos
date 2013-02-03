@@ -45,7 +45,360 @@
                         <a target="_blank" href="mailto:nj@adobe.com">nj@adobe.com</a><br>
                         <a target="_blank" href="http://twitter.com/notwebsafe">@notwebsafe</a></i></h4>
 				</section>
-<!--
+                
+                <section>
+                    <section>
+                        <h2>The evolution of AJAX</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>Classic vs. modern AJAX</h3>
+                        <p class="fragment">
+                            <img src="images/ajax-old.png">
+                        </p>
+                        <p class="fragment">
+                            <img src="images/ajax-new.png">
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>JSON</h3>
+<pre class="fragment"><code><div class="title">JSON</div>{
+    "name": "Narciso Jaramillo",
+    "birthday": "1932-10-05T03:52:12Z",
+    "address": {
+        "street": "123 Anywhere Place",
+        "city": "Somewhere",
+        zip: 92153
+    }
+}</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Client-side templating</h3>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;script id=“blogPostTemplate” type=“text/x-handlebars-template”&gt;
+  &lt;div class=“entry”&gt;
+    &lt;h1&gt;<strong>{{title}}</strong>&lt;/h1&gt;
+    &lt;div class=“body”&gt;
+      <strong>{{body}}</strong>
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/script&gt;</code></pre>
+<pre class="fragment"><code class="javascript"><span class="fragment">var source = $(‘#blogPostTemplate’).html();</span>
+<span class="fragment">var postTemplate = Handlebars.compile(source);</span>
+<span class="fragment">$.ajax(postURL, { 
+  <span class="fragment">success: function(data) {
+    <span class="fragment">// data = { title: "My Post", body: "..." }</span>
+    <span class="fragment">$(‘#postContent’).html(postTemplate(data));</span>
+  })</span>
+});</span><div class="title">JavaScript</div></code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Frameworks and libraries</h2>
+                    </section>
+                    <section>
+                        <h3>or, small is beautiful</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>"All-in-one" frameworks</h3>
+                        <div class="comparison">
+                            <ul class="frameworks fragment">
+                                <li><img src="images/extjs.png"></li>
+                                <li><img src="images/dojo.png"></li>
+                                <li><img src="images/closure.png"></li>
+                                <li><img src="images/yui.png"></li>
+                                <li><img src="images/sproutcore.png"></li>
+                            </ul>
+                            <ul class="features fragment">
+                                <li>Inheritance</li>
+                                <li>Component model</li>
+                                <li>UI widget set</li>
+                                <li>MVC</li>
+                                <li>Data access</li>
+                                <li>Hide DOM complexity</li>
+                            </ul>                            
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h3>Mix-and-match</h3>
+                        <table>
+                            <tr class="fragment">
+                                <td><img src="images/require.png"></td>
+                                <td>Module loading</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/jquery.png"></td>
+                                <td>DOM manipulation, AJAX</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/bootstrap.png"></td>
+                                <td>CSS grid/lightweight components</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/jqmobile.png"></td>
+                                <td>Mobile UI components</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/handlebars.png"></td>
+                                <td>Client-side templating</td>
+                            </tr>
+                            <tr class="fragment">
+                                <td><img src="images/backbone.png"></td>
+                                <td>Lightweight MV(C)</td>
+                            </tr>
+                        </table>
+                    </section>
+                    
+                    <section>
+                        <h3>MVC mini-frameworks</h3>
+                        <p class="fragment"><img src="images/backbone.png"></p>
+                        <p class="fragment"><img src="images/knockout.png"></p>
+                        <p class="fragment"><img src="images/angular.png"></p>
+                        <p class="fragment"><a target="_blank" href="http://backbonejs.org">backbonejs.org</a> | <a target="_blank" href="http://knockoutjs.com">knockoutjs.com</a> | <a target="_blank" href="http://angularjs.org">angularjs.org</a></a></p>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>HTML5 for apps</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>or, simple APIs are simple</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>Local storage</h3>
+<pre class="fragment"><code>localStorage.setItem("name", "Narciso Jaramillo");
+<span class="fragment">// later...
+var name = localStorage.getItem("name");</span>
+<span class="fragment">localStorage.removeItem("name");</span>
+</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>App cache</h3>
+<pre class="fragment"><code><div class="title">HTML</div>&lt;html manifest="example.appcache"&gt;
+  ...
+&lt;/html&gt;</code></pre>
+<pre class="fragment"><code><div class="title">Manifest</div>CACHE MANIFEST
+# 2013-01-14:v1
+index.html
+stylesheet.css
+images/logo.png
+scripts/main.js</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://is.gd/appcachetut">is.gd/appcachetut</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Web workers</h3>
+<pre class="fragment"><code><div class="title">main.js</div>var worker = new Worker('doWork.js');
+
+<span class="fragment">worker.addEventListener('message', function(e) {
+  console.log('Worker said: ', e.data);
+}, false);</span>
+
+<span class="fragment">worker.postMessage('Hello World'); // Send data to our worker.</span></code></pre>
+<pre class="fragment"><code><div class="title">doWork.js</div>self.addEventListener('message', function(e) {
+  self.postMessage('I heard: ' + e.data);
+}, false);</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://is.gd/webworkertut">is.gd/webworkertut</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Web sockets</h3>
+<pre class="fragment"><code>var connection = new WebSocket("ws://echo.websocket.org/");
+<span class="fragment">connection.onopen = function () {
+  connection.send("Hello there");
+};</span>
+<span class="fragment">connection.onmessage = function (e) {
+  alert("Got message: " + e.data);
+};</span></code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://is.gd/websocketstut">is.gd/websocketstut</a>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The server side</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>Node.js: JS on the server</h3>
+<pre class="fragment"><code>var http = require("http");
+
+http.createServer(<span class="fragment">function(request, response) {
+  <span class="fragment">response.writeHead(200, {"Content-Type": "text/plain"});
+  response.write("Hello World");
+  response.end();</span>
+}</span>).listen(8888);</code></pre>
+                        <p class="fragment">
+                            "Everything runs in parallel, except your code"
+                        </p>
+                        <p class="fragment">
+                            <a target="_blank" href="http://nodebeginner.org">nodebeginner.org</a> |
+                            <a target="_blank" href="http://is.gd/nodeeventloop">is.gd/nodeeventloop</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Node.js: Not just for servers</h3>
+                        <p class="fragment">
+                            <img src="images/npm.png">
+                        </p>
+                        <p class="fragment">
+                            <a target="_blank" href="http://npmjs.org">npmjs.org</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>NoSQL data stores</h3>
+                        <p class="fragment">
+                            <img src="images/redis.png">
+                        </p>
+                        <p class="fragment">
+                            <img src="images/mongodb.png">
+                        </p>
+                        <p class="fragment">
+                            <img src="images/couchdb.png">
+                        </p>
+                        <p class="fragment">
+                            <a target="_blank" href="http://redis.io">redis.io</a> |
+                            <a target="_blank" href="http://mongodb.org">mongodb.org</a> |
+                            <a target="_blank" href="http://couchdb.apache.org">couchdb.apache.org</a>
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Tools and resources</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>In-browser tools</h3>
+                    </section>
+                    
+                    <section>
+                        <h3>Command-line tools</h3>
+                        <p class="fragment"><img src="images/bower.png"></p>
+                        <p class="fragment"><img src="images/grunt.png"></p>
+                        <p class="fragment"><img src="images/yeoman.png"></p>
+                        <p class="fragment">
+                            <a target="_blank" href="http://twitter.github.com/bower">twitter.github.com/bower</a> |
+                            <a target="_blank" href="http://gruntjs.com">gruntjs.com</a> |
+                            <a target="_blank" href="http://yeoman.io">yeoman.io</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Unit testing</h3>
+                        <p class="fragment"><img src="images/qunit.png"></p>
+                        <p class="fragment"><img src="images/jasmine.png"></p>
+                        <p class="fragment"><img src="images/mocha.png"></p>
+                        <p class="fragment" style="clear: both">
+                            <a target="_blank" href="http://qunitjs.com">qunitjs.com</a> |
+                            <a target="_blank" href="http://pivotal.github.com/jasmine">pivotal.github.com/jasmine</a> |
+                            <a target="_blank" href="http://visionmedia.github.com/mocha/">visionmedia.github.com/mocha</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Languages that compile to JS</h3>
+<pre class="left fragment"><code><div class="title">CoffeeScript</div>square = (x) -> x * x
+
+cube   = (x) -> square(x) * x
+
+
+
+
+</code></pre>
+<pre class="right fragment"><code><div class="title">JavaScript</div>var cube, square;
+square = function(x) {
+  return x * x;
+};
+cube = function(x) {
+  return square(x) * x;
+};</code></pre>
+<pre class="left fragment" style="clear: both"><code><div class="title">CoffeeScript</div>cubes = (math.cube num 
+  for num in list)
+
+
+
+
+
+
+
+
+</code></pre>
+<pre class="right fragment"><code><div class="title">JavaScript</div>cubes = (function() {
+  var _i, _len, _results;
+  _results = [];
+  for (_i = 0, _len = list.length; _i &lt; _len; _i++) {
+    num = list[_i];
+    _results.push(math.cube(num));
+  }
+  return results;
+})();</code></pre>
+                        <p class="fragment">
+                            <a target="_blank" href="http://coffeescript.org">coffeescript.org</a> | <a target="_blank" href="http://www.typescriptlang.org">typescriptlang.org</a>
+                        </p>
+                    </section>
+                    
+                    <section>
+                        <h3>Documentation and other resources</h3>
+                        <ul>
+                            <li class="fragment"><a target="_blank" href="http://docs.webplatform.org">docs.webplatform.org</a></li>
+                            <li class="fragment"><a target="_blank" href="http://developer.mozilla.org">developer.mozilla.org</a></li>
+                            <li class="fragment"><a target="_blank" href="http://html5rocks.com">html5rocks.com</a></li>
+                            <li class="fragment"><span class="killme">w3schools.com</span></li>
+                            <li class="fragment"><a target="_blank" href="http://remotesynthesis.com/">remotesynthesis.com</a></li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>Editors</h3>
+                        <p class="fragment">
+                            <img src="images/editors.png">
+                        </p>
+                        <!-- from http://codepen.io/Elbone/pen/DulKx -->
+                        <div id="brackets" class="fragment"></div>
+                        <p class="fragment">
+                            <a target="_blank" href="https://github.com/adobe/brackets">github.com/adobe/brackets</a>
+                        </p>
+                    </section>                    
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Thanks!</h2>
+                        <p>
+                            <a target="_blank" href="http://is.gd/webdesignhipster">is.gd/webdesignhipster</a><br>
+                            <a target="_blank" href="http://is.gd/webdevhipster">is.gd/webdevhipster</a><br>
+                            <a target="_blank" href="https://github.com/njx/presos">github.com/njx/presos</a>
+                        </p>
+                        <p>
+                            Built with <a target="_blank" href="http://lab.hakim.se/reveal-js">reveal.js</a>
+                        </p>
+                    </section>
+                </section>
+                
+                <section>
+                    <h1>Extras</h1>
+                </section>
+                
                 <section>
                     <section>
                         <h2>JavaScript for Smarties</h2>
@@ -306,8 +659,7 @@ cube = function(x) {
 })();</code></pre>
                     </section>
                 </section>
---> 
-<!--
+
                 <section>
                     <section>
                         <h2>jQuery</h2>
@@ -334,118 +686,7 @@ cube = function(x) {
                         <p class="fragment"><a target="_blank" href="http://jquery.com">jquery.com</a></p>
                     </section>
                 </section>
--->                
-                <section>
-                    <section>
-                        <h2>The evolution of AJAX</h2>
-                    </section>
-                    <section>
-                        <h3>or, why it should be called AJAJ</h3>
-                    </section>
-                    
-                    <section>
-                        <h3>Classic vs. modern AJAX</h3>
-                        <p class="fragment">
-                            <img src="images/ajax-old.png">
-                        </p>
-                        <p class="fragment">
-                            <img src="images/ajax-new.png">
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>JSON</h3>
-<pre class="fragment"><code><div class="title">JSON</div>{
-    "name": "Narciso Jaramillo",
-    "birthday": "1932-10-05T03:52:12Z",
-    "address": {
-        "street": "123 Anywhere Place",
-        "city": "Somewhere",
-        zip: 92153
-    }
-}</code></pre>
-                    </section>
-                    
-                    <section>
-                        <h3>Client-side templating</h3>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;script id=“blogPostTemplate” type=“text/x-handlebars-template”&gt;
-  &lt;div class=“entry”&gt;
-    &lt;h1&gt;<strong>{{title}}</strong>&lt;/h1&gt;
-    &lt;div class=“body”&gt;
-      <strong>{{body}}</strong>
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/script&gt;</code></pre>
-<pre class="fragment"><code class="javascript"><span class="fragment">var source = $(‘#blogPostTemplate’).html();</span>
-<span class="fragment">var postTemplate = Handlebars.compile(source);</span>
-<span class="fragment">$.ajax(postURL, { 
-  <span class="fragment">success: function(data) {
-    <span class="fragment">// data = { title: "My Post", body: "..." }</span>
-    <span class="fragment">$(‘#postContent’).html(postTemplate(data));</span>
-  })</span>
-});</span><div class="title">JavaScript</div></code></pre>
-                    </section>
-                </section>
 
-                <section>
-                    <section>
-                        <h2>Frameworks and libraries</h2>
-                    </section>
-                    <section>
-                        <h3>or, small is beautiful</h3>
-                    </section>
-                    
-                    <section>
-                        <h3>"All-in-one" frameworks</h3>
-                        <div class="comparison">
-                            <ul class="frameworks fragment">
-                                <li><img src="images/extjs.png"></li>
-                                <li><img src="images/dojo.png"></li>
-                                <li><img src="images/closure.png"></li>
-                                <li><img src="images/yui.png"></li>
-                                <li><img src="images/sproutcore.png"></li>
-                            </ul>
-                            <ul class="features fragment">
-                                <li>Inheritance</li>
-                                <li>Component model</li>
-                                <li>UI widget set</li>
-                                <li>MVC</li>
-                                <li>Data access</li>
-                                <li>Hide DOM complexity</li>
-                            </ul>                            
-                        </div>
-                    </section>
-                    
-                    <section>
-                        <h3>Mix-and-match</h3>
-                        <table>
-                            <tr class="fragment">
-                                <td><img src="images/require.png"></td>
-                                <td>Module loading</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td><img src="images/jquery.png"></td>
-                                <td>DOM manipulation, AJAX</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td><img src="images/bootstrap.png"></td>
-                                <td>CSS grid/lightweight components</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td><img src="images/jqmobile.png"></td>
-                                <td>Mobile UI components</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td><img src="images/handlebars.png"></td>
-                                <td>Client-side templating</td>
-                            </tr>
-                            <tr class="fragment">
-                                <td><img src="images/backbone.png"></td>
-                                <td>Lightweight MV(C)</td>
-                            </tr>
-                        </table>
-                    </section>
-                    
                     <section>
                         <h3>Backbone: Lightweight MV(C)</h3>
 <pre><code><span class="fragment">var Todo = Backbone.Model.extend({
@@ -463,265 +704,16 @@ cube = function(x) {
     return this;
   }</span>
 });</span></code></pre>
-<!--                        
 <pre class="fragment"><code>var myTodo = new Todo({ title: "Buy milk" });
 <span class="fragment">var myTodoView = new TodoView({ model: myTodo });</span>
 <span class="fragment">$("#todolist").append(myTodoView.render().$el);</span>
 <span class="fragment">myTodo.set("title", "Buy lowfat milk"); // view will update</span></code></pre>
--->
                         <p class="fragment">
                             <a target="_blank" href="http://backbonejs.org">backbonejs.org</a> |
                             <a target="_blank" href="http://knockoutjs.com">knockoutjs.com</a> |
                             <a target="_blank" href="http://angularjs.org">angularjs.org</a>
                         </p>
                     </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>HTML5 for apps</h2>
-                    </section>
-                    
-                    <section>
-                        <h3>or, simple APIs are simple</h3>
-                    </section>
-                    
-                    <section>
-                        <h3>Local storage</h3>
-<pre class="fragment"><code>localStorage.setItem("name", "Narciso Jaramillo");
-<span class="fragment">// later...
-var name = localStorage.getItem("name");</span>
-<span class="fragment">localStorage.removeItem("name");</span>
-</code></pre>
-                    </section>
-                    
-                    <section>
-                        <h3>App cache</h3>
-<pre class="fragment"><code><div class="title">HTML</div>&lt;html manifest="example.appcache"&gt;
-  ...
-&lt;/html&gt;</code></pre>
-<pre class="fragment"><code><div class="title">Manifest</div>CACHE MANIFEST
-# 2013-01-14:v1
-index.html
-stylesheet.css
-images/logo.png
-scripts/main.js</code></pre>
-                        <p class="fragment">
-                            <a target="_blank" href="http://is.gd/appcachetut">is.gd/appcachetut</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Web workers</h3>
-<pre class="fragment"><code><div class="title">main.js</div>var worker = new Worker('doWork.js');
-
-<span class="fragment">worker.addEventListener('message', function(e) {
-  console.log('Worker said: ', e.data);
-}, false);</span>
-
-<span class="fragment">worker.postMessage('Hello World'); // Send data to our worker.</span></code></pre>
-<pre class="fragment"><code><div class="title">doWork.js</div>self.addEventListener('message', function(e) {
-  self.postMessage('I heard: ' + e.data);
-}, false);</code></pre>
-                        <p class="fragment">
-                            <a target="_blank" href="http://is.gd/webworkertut">is.gd/webworkertut</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Web sockets</h3>
-<pre class="fragment"><code>var connection = new WebSocket("ws://echo.websocket.org/");
-<span class="fragment">connection.onopen = function () {
-  connection.send("Hello there");
-};</span>
-<span class="fragment">connection.onmessage = function (e) {
-  alert("Got message: " + e.data);
-};</span></code></pre>
-                        <p class="fragment">
-                            <a target="_blank" href="http://is.gd/websocketstut">is.gd/websocketstut</a>
-                        </p>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>The server side</h2>
-                    </section>
-                    
-                    <section>
-                        <h3>Node.js: JS on the server</h3>
-<pre class="fragment"><code>var http = require("http");
-
-http.createServer(<span class="fragment">function(request, response) {
-  <span class="fragment">response.writeHead(200, {"Content-Type": "text/plain"});
-  response.write("Hello World");
-  response.end();</span>
-}</span>).listen(8888);</code></pre>
-                        <p class="fragment">
-                            "Everything runs in parallel, except your code"
-                        </p>
-                        <p class="fragment">
-                            <a target="_blank" href="http://nodebeginner.org">nodebeginner.org</a> |
-                            <a target="_blank" href="http://is.gd/nodeeventloop">is.gd/nodeeventloop</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Node.js: Not just for servers</h3>
-                        <p class="fragment">
-                            <img src="images/npm.png">
-                        </p>
-                        <p class="fragment">
-                            <a target="_blank" href="http://npmjs.org">npmjs.org</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>NoSQL data stores</h3>
-                        <p class="fragment">
-                            <img src="images/redis.png">
-                        </p>
-                        <p class="fragment">
-                            <img src="images/mongodb.png">
-                        </p>
-                        <p class="fragment">
-                            <img src="images/couchdb.png">
-                        </p>
-                        <p class="fragment">
-                            <a target="_blank" href="http://redis.io">redis.io</a> |
-                            <a target="_blank" href="http://mongodb.org">mongodb.org</a> |
-                            <a target="_blank" href="http://couchdb.apache.org">couchdb.apache.org</a>
-                        </p>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Tools and resources</h2>
-                    </section>
-                    
-                    <section>
-                        <h3>In-browser tools</h3>
-                    </section>
-                    
-                    <section>
-                        <h3>Command-line tools</h3>
-<pre class="fragment"><code class="none">sudo npm install -g bower
-bower install jquery
-bower install underscore
-bower install backbone</code></pre>
-<pre class="fragment"><code class="none">sudo npm install -g grunt
-grunt init:jquery
-</code></pre>
-                        <p class="fragment">
-                            <a target="_blank" href="http://twitter.github.com/bower">twitter.github.com/bower</a> |
-                            <a target="_blank" href="http://gruntjs.com">gruntjs.com</a> |
-                            <a target="_blank" href="http://yeoman.io">yeoman.io</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Unit testing</h3>
-<pre class="left fragment"><code><div class="title">QUnit</div>test("countUp adds 1", 
-  function() {
-    <span class="fragment">Counter.reset();
-    Counter.countUp();</span>
-    <span class="fragment">equal(Counter.getCount(), 1);</span>
-  }
-);</code></pre>
-<pre class="right fragment"><code><div class="title">Jasmine</div>it("should add 1",
-  function() {
-    Counter.reset();
-    Counter.countUp();
-    <span class="fragment">expect(Counter.getCount())
-      .toBe(1);</span>
-  }
-);</code></pre>
-                        <p class="fragment" style="clear: both">
-                            <a target="_blank" href="http://qunitjs.com">qunitjs.com</a> |
-                            <a target="_blank" href="http://pivotal.github.com/jasmine">pivotal.github.com/jasmine</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Languages that compile to JS</h3>
-<pre class="left fragment"><code><div class="title">CoffeeScript</div>square = (x) -> x * x
-
-cube   = (x) -> square(x) * x
-
-
-
-
-</code></pre>
-<pre class="right fragment"><code><div class="title">JavaScript</div>var cube, square;
-square = function(x) {
-  return x * x;
-};
-cube = function(x) {
-  return square(x) * x;
-};</code></pre>
-<pre class="left fragment" style="clear: both"><code><div class="title">CoffeeScript</div>cubes = (math.cube num 
-  for num in list)
-
-
-
-
-
-
-
-
-</code></pre>
-<pre class="right fragment"><code><div class="title">JavaScript</div>cubes = (function() {
-  var _i, _len, _results;
-  _results = [];
-  for (_i = 0, _len = list.length; _i &lt; _len; _i++) {
-    num = list[_i];
-    _results.push(math.cube(num));
-  }
-  return results;
-})();</code></pre>
-                        <p class="fragment">
-                            <a target="_blank" href="http://coffeescript.org">coffeescript.org</a> | <a target="_blank" href="http://www.typescriptlang.org">typescriptlang.org</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Editors</h3>
-                        <p class="fragment">
-                            <img src="images/editors.png">
-                        </p>
-                        <!-- from http://codepen.io/Elbone/pen/DulKx -->
-                        <div id="brackets" class="fragment"></div>
-                        <p class="fragment">
-                            <a target="_blank" href="https://github.com/adobe/brackets">github.com/adobe/brackets</a>
-                        </p>
-                    </section>
-                    
-                    <section>
-                        <h3>Documentation and other resources</h3>
-                        <ul>
-                            <li class="fragment"><a target="_blank" href="http://docs.webplatform.org">docs.webplatform.org</a></li>
-                            <li class="fragment"><a target="_blank" href="http://developer.mozilla.org">developer.mozilla.org</a></li>
-                            <li class="fragment"><a target="_blank" href="http://html5rocks.com">html5rocks.com</a></li>
-                            <li class="fragment"><span class="killme">w3schools.com</span></li>
-                            <li class="fragment"><a target="_blank" href="http://remotesynthesis.com/">remotesynthesis.com</a></li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Thanks!</h2>
-                        <p>
-                            <a target="_blank" href="http://is.gd/webdesignhipster">is.gd/webdesignhipster</a><br>
-                            <a target="_blank" href="http://is.gd/webdevhipster">is.gd/webdevhipster</a><br>
-                            <a target="_blank" href="https://github.com/njx/presos">github.com/njx/presos</a>
-                        </p>
-                        <p>
-                            Built with <a target="_blank" href="http://lab.hakim.se/reveal-js">reveal.js</a>
-                        </p>
-                    </section>
-                </section>
             </div>
 		</div>
 
