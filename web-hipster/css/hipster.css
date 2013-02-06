@@ -20,7 +20,7 @@
 }
 .cover h2, .cover h4 {
     padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     -webkit-box-shadow:  0px 0px 16px 0px rgba(0, 0, 0, 0.8);    
     box-shadow:  0px 0px 16px 0px rgba(0, 0, 0, 0.8);
 }

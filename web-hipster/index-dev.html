@@ -660,33 +660,6 @@ cube = function(x) {
                     </section>
                 </section>
 
-                <section>
-                    <section>
-                        <h2>jQuery</h2>
-                    </section>
-                    <section>
-                        <h3>Selecting elements</h3>
-<pre class="fragment"><code><div class="title">JavaScript</div>var animBox = document.getElementById("sample-anim");
-<span class="fragment">animBox.onclick = function () {
-    <span class="fragment">animBox.className = animBox.className ? "" : "moved";</span>
-}</span>
-</code></pre>
-<pre class="fragment"><code><div class="title">JavaScript</div>$("#sample-anim")
-  <span class="fragment">.click(function () {
-    <span class="fragment">$(this).toggleClass("moved");</span>
-  });</span></code></pre>
-                    </section>
-                    <section>
-                        <h3>Multiple selection and chaining</h3>
-<pre class="fragment"><code><div class="title">JavaScript</div>$(".someClass")
-  <span class="fragment">.addClass("shown")</span>
-  <span class="fragment">.fadeIn()</span>
-  <span class="fragment">.click(function () { /* ... */ })</span>
-  <span class="fragment">.mouseover(function () { /* ... */ });</span></code></pre>
-                        <p class="fragment"><a target="_blank" href="http://jquery.com">jquery.com</a></p>
-                    </section>
-                </section>
-
                     <section>
                         <h3>Backbone: Lightweight MV(C)</h3>
 <pre><code><span class="fragment">var Todo = Backbone.Model.extend({
