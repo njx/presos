@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>space-age-miracle-tools.js</title>
+
+		<meta name="description" content="Futuristic tooling experiments built on Brackets.">
+		<meta name="author" content="Narciso (nj) Jaramillo, @notwebsafe">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="css/styles.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+                    <p><code>space-age-miracle-tools.js</code></p>
+					<p><img src="images/rocket.svg" width="32%"><img src="images/angel.svg" width="32%"><img src="images/hammer.svg" width="32%"></p>
+                    <p>&nbsp;</p>
+					<p>
+						Narciso (nj) Jaramillo &middot; <a href="http://twitter.com/notwebsafe">@notwebsafe</a> &middot; <a href="https://github.com/njx">github.com/njx</a>
+                    </p>
+                    <p class="attribution">
+                        Icons from <a href="http://thenounproject.com/">The Noun Project</a> &middot;
+                        <a href="http://thenounproject.com/noun/rocket/#icon-No1758" target="_blank">Rocket</a> by <a href="http://thenounproject.com/AntonisMakriyannis" target="_blank">Antonis Makriyannis</a> &middot;
+                        <a href="http://thenounproject.com/noun/angel/#icon-No5832" target="_blank">Angel</a> by <a href="http://thenounproject.com/Luis" target="_blank">Luis Prado</a> &middot;
+                        <a href="http://thenounproject.com/noun/hammer/#icon-No1306" target="_blank">Hammer</a> by <a href="http://thenounproject.com/johncaserta" target="_blank">John Caserta</a>
+                    </p>
+				</section>
+                
+                <section data-state="doc-brown"></section>
+                
+                <section>
+                    <section>
+                        <h2>Theseus</h2>
+                        <div class="person-half">
+                            <img src="images/tom-lieber.jpg"><br/>
+                            Tom Lieber &middot; <a href="http://alltom.com">alltom.com</a>
+                        </div>
+                        <div class="person-half">
+                            <img src="images/joel-brandt.jpg"><br/>
+                            Joel Brandt &middot; <a href="http://joelbrandt.org">joelbrandt.org</a>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h2>Debugging async code is fun!</h2>
+                        <div class="fragment diagram-step">
+                            <img src="images/theseus-diagram-1.png">
+                            <p>Something's wrong!</p>
+                        </div>
+                        <div class="fragment diagram-step">
+                            <img src="images/theseus-diagram-2.png">
+                            <p>Guess at the problem</p>
+                        </div>
+                        <div class="fragment diagram-step">
+                            <img src="images/theseus-diagram-3.png">
+                            <p>Add breakpoints, logs</p>
+                        </div>
+                        <div class="fragment diagram-step">
+                            <img src="images/theseus-diagram-4.png">
+                            <p>Reload</p>
+                        </div>
+                        <div class="fragment diagram-step">
+                            <img src="images/theseus-diagram-5.png"><br/>
+                            <p>Fixed yet?</p>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <p><a href="https://github.com/adobe-research/theseus">github.com/adobe-research/theseus</a></p>
+                    </section>
+                </section>    
+                
+                <section>
+                    <h2>Instabug</h2>
+                    <div>
+                        <img src="images/peter-flynn.png" height="400"><br/>
+                        Peter Flynn &middot; <a href="https://github.com/peterflynn">github.com/peterflynn</a>
+                    </div>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Live JS Editing</h2>
+                    </section> 
+                    
+                    <section>
+                        <img src="images/grotesque.png" width="600">
+                    </section>
+                    
+                    <section>
+                        <h3>Function replacement</h3>
+<pre><code>function myFunc() {
+    console.log('old message');
+}</code></pre>
+<pre class="fragment"><code><span class="dim">function myFunc() {</span>
+    var func, funcDef = __funcReplacements['myFunc'];
+    if (funcDef) {
+        func = eval(funcDef);
+    } else {
+        func = function () {
+<span class="dim">            console.log('old message');</span>
+        }
+    }
+    return func.apply(this, arguments);
+<span class="dim">}</span></code></pre>
+<pre class="fragment"><code>__funcReplacements['myFunc'] = 
+    '(function () { console.log(\'new message\'); })';</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Adding items to existing closures</h3>
+<pre><code>var myModule = (function () {
+    var someVar = 1;
+    var myFunc = function () { console.log(someVar); };
+    return { myFunc: myFunc };
+}());</code></pre>
+                        <p class="fragment">...user makes edits...</p>
+<pre class="fragment"><code><span class="dim">var myModule = (function () {
+    var someVar = 1;
+    var myFunc = function () { console.log(</span>newFunc()<span class="dim">); };
+</span>    var newFunc = function () { return someVar; };
+<span class="dim">    return { myFunc: myFunc };
+}());</span></code></pre> 
+                    </section>
+                    
+                    <section>
+                        <h3>The grotesque hack: "with"</h3>
+<pre class="fragment"><code>var someObj = {
+    name: "Some Guy",
+    age: 21
+};
+<span class="fragment">
+with (someObj) {
+    console.log("Name: " + name + ", age: " + age);
+}</span></code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Applying the grotesqueness</h3>
+<pre><code><span class="dim">var myModule = (function () {</span>
+<span class="fragment">    __scopes['myModule'] = {};</span>
+<span class="fragment">    with (__scopes['myModule']) {</span>
+<span class="fragment"><span class="dim">        var someVar = 1;
+        var myFunc = function () { /* instrumented version */ };</span></span>
+<span class="fragment">    }
+    scope.someVar = someVar;
+    scope.myFunc = myFunc;</span>
+<span class="fragment"><span class="dim">    return { myFunc: myFunc };
+}());</span></span></code></pre>
+<pre class="fragment"><code>with (__scopes['myModule']) {
+<span class="dim">    var newFunc = function () { return someVar; };</span>
+}
+__scopes['myModule'].newFunc = newFunc;</code></pre>
+                    </section>
+                    
+                    <section>
+                        <h3>Why, God, Why?</h3>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Response</h2>
+                        <div>
+                            <img src="images/lee-brimelow.jpg" height="400"><br/>
+                            Lee Brimelow &middot; <a href="http://leebrimelow.com">leebrimelow.com</a>
+                        </div>
+                    </section>
+                    <section>
+                        <a href="http://is.gd/BracketsResponse">is.gd/BracketsResponse</a>
+                    </section>
+                </section>
+                
+<!--                
+                <section>
+                    <h2>Extending Brackets</h2>
+                </section>
+-->
+                
+                <section>
+                    <p><img src="images/HTML5_Logo_512.png" width="32%"><img src="images/CSS3_Logo.png" width="32%"><img src="images/js.png" width="32%"></p>
+                </section>
+                
+                <section data-state="sandbox"></section>
+
+                <section data-state="sandbox">
+                    <div class="standout">
+                        <img src="images/brackets.svg" width="96" height="96">
+                        <a href="https://github.com/adobe/brackets">github.com/adobe/brackets</a>
+                    </div>
+                    <div class="standout fragment">
+                        nj &middot; <a href="http://twitter.com/notwebsafe">@notwebsafe</a> &middot; <a href="https://github.com/njx">github.com/njx</a>
+                    </div>
+                </section>
+                
+<!--
+				<section>
+					<div><img src="images/beaker.svg" width="300" height="300"></div>
+                    <p class="attribution"><a href="http://thenounproject.com/noun/beaker/#icon-No11557" target="_blank">Beaker</a> designed by <a href="http://thenounproject.com/kayles" target="_blank">Kaylee Koenig</a> from The Noun Project</p>
+				</section>
+-->
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: false,
+				history: true,
+				center: true,
+                rollingLinks: false,
+
+				theme: 'beige', // available themes are in /css/theme
+				transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+                transitionSpeed: 'fast',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

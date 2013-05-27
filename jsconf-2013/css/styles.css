@@ -1,0 +1,57 @@
+h2 {
+    margin-top: 20px !important;
+}
+
+h3 {
+    margin-bottom: 30px !important;
+}
+
+img {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+code {
+    text-transform: none !important;
+}
+
+p.attribution {
+    margin-top: 50px;
+    color: #999;
+    font-size: 0.4em;
+}
+
+.sandbox body {
+    background: url(../images/sandbox.jpg) 50% 50% / cover no-repeat;
+}
+
+.doc-brown body {
+    background: url(../images/doc-brown.jpg) 50% 50% / cover no-repeat;
+}
+
+.person-half {
+    float: left;
+    width: 50%;
+}
+
+.diagram-step {
+    float: left;
+    width: 19%;
+    font-size: 0.5em !important;
+}
+
+.dim {
+    opacity: 0.5;
+}
+
+.standout {
+    width: 70%;
+    margin: 20px auto !important;
+    padding: 10px !important;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
+}
+.standout img {
+    vertical-align: middle;
+    margin-right: 10px !important;
+}
