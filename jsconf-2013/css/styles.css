@@ -21,6 +21,14 @@ p.attribution {
     font-size: 0.4em;
 }
 
+.bump-up {
+    margin-top: -1.4em !important;
+}
+
+.name {
+    font-size: 1.5em !important;
+}
+
 .sandbox body {
     background: url(../images/sandbox.jpg) 50% 50% / cover no-repeat;
 }
@@ -41,7 +49,7 @@ p.attribution {
 }
 
 .dim {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .standout {

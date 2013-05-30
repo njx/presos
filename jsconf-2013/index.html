@@ -41,10 +41,6 @@
 				<section>
                     <p><code>space-age-miracle-tools.js</code></p>
 					<p><img src="images/rocket.svg" width="32%"><img src="images/angel.svg" width="32%"><img src="images/hammer.svg" width="32%"></p>
-                    <p>&nbsp;</p>
-					<p>
-						Narciso (nj) Jaramillo &middot; <a href="http://twitter.com/notwebsafe">@notwebsafe</a> &middot; <a href="https://github.com/njx">github.com/njx</a>
-                    </p>
                     <p class="attribution">
                         Icons from <a href="http://thenounproject.com/">The Noun Project</a> &middot;
                         <a href="http://thenounproject.com/noun/rocket/#icon-No1758" target="_blank">Rocket</a> by <a href="http://thenounproject.com/AntonisMakriyannis" target="_blank">Antonis Makriyannis</a> &middot;
@@ -52,6 +48,24 @@
                         <a href="http://thenounproject.com/noun/hammer/#icon-No1306" target="_blank">Hammer</a> by <a href="http://thenounproject.com/johncaserta" target="_blank">John Caserta</a>
                     </p>
 				</section>
+              
+                <section>
+					<p class="name">
+						<span class="fragment fade-out" data-fragment-index="1">&amp;#x01CC;<br/></span>
+                    </p>
+                    <p class="bump-up name">
+                        <span class="fragment" data-fragment-index="3">Narciso (</span><span class="fragment" data-fragment-index="2">&#x01CC;</span><span class="fragment" data-fragment-index="3">) Jaramillo<br/></span>
+                    </p>
+                    <p class="fragment name" data-fragment-index="4">
+                        <a href="http://twitter.com/notwebsafe">@notwebsafe</a>
+                    </p>
+                    <p class="fragment" data-fragment-index="5"><img src="images/brackets.svg" width="128" height="128"></p>
+                </section>
+                
+                <section>
+                    <p><code>space-age-miracle-tools.js</code></p>
+                    <p class="fragment"><img src="images/miraculous.jpg" width="600"></p>
+                </section>
                 
                 <section data-state="doc-brown"></section>
                 
@@ -70,6 +84,7 @@
                     
                     <section>
                         <h2>Debugging async code is fun!</h2>
+                        <h3 class="fragment">#amirite #yolo</h3>
                         <div class="fragment diagram-step">
                             <img src="images/theseus-diagram-1.png">
                             <p>Something's wrong!</p>
@@ -98,11 +113,16 @@
                 </section>    
                 
                 <section>
-                    <h2>Instabug</h2>
-                    <div>
-                        <img src="images/peter-flynn.png" height="400"><br/>
-                        Peter Flynn &middot; <a href="https://github.com/peterflynn">github.com/peterflynn</a>
-                    </div>
+                    <section>
+                        <h2>Instabug</h2>
+                        <div>
+                            <img src="images/peter-flynn.png" height="400"><br/>
+                            Peter Flynn &middot; <a href="https://github.com/peterflynn">github.com/peterflynn</a>
+                        </div>
+                    </section>
+                    <section>
+                        <img src="images/bret-victor-example.png">
+                    </section>
                 </section>
                 
                 <section>
@@ -115,31 +135,31 @@
                     </section>
                     
                     <section>
-                        <h3>Function replacement</h3>
+                        <h2>Function replacement</h2>
 <pre><code>function myFunc() {
     console.log('old message');
 }</code></pre>
 <pre class="fragment"><code><span class="dim">function myFunc() {</span>
-    var func, funcDef = __funcReplacements['myFunc'];
-    if (funcDef) {
+<span class="fragment">    var func, funcDef = __funcReplacements['myFunc'];</span>
+<span class="fragment">    if (funcDef) {
         func = eval(funcDef);
-    } else {
-        func = function () {
+    }</span><span class="fragment"> else {
+        func = function () {</span>    
 <span class="dim">            console.log('old message');</span>
-        }
-    }
-    return func.apply(this, arguments);
+<span class="fragment">        }</span>
+<span class="fragment">    }
+    return func.apply(this, arguments);</span>
 <span class="dim">}</span></code></pre>
 <pre class="fragment"><code>__funcReplacements['myFunc'] = 
     '(function () { console.log(\'new message\'); })';</code></pre>
                     </section>
                     
                     <section>
-                        <h3>Adding items to existing closures</h3>
+                        <h2>Adding items to existing closures</h2>
 <pre><code>var myModule = (function () {
-    var someVar = 1;
-    var myFunc = function () { console.log(someVar); };
-    return { myFunc: myFunc };
+<span class="fragment">    var someVar = 1;</span>
+<span class="fragment">    var myFunc = function () { console.log(someVar); };</span>
+<span class="fragment">    return { myFunc: myFunc };</span>
 }());</code></pre>
                         <p class="fragment">...user makes edits...</p>
 <pre class="fragment"><code><span class="dim">var myModule = (function () {
@@ -151,7 +171,7 @@
                     </section>
                     
                     <section>
-                        <h3>The grotesque hack: "with"</h3>
+                        <h2>The grotesque hack: "with"</h2>
 <pre class="fragment"><code>var someObj = {
     name: "Some Guy",
     age: 21
@@ -163,17 +183,17 @@ with (someObj) {
                     </section>
                     
                     <section>
-                        <h3>Applying the grotesqueness</h3>
+                        <h2>Applying the grotesqueness</h2>
 <pre><code><span class="dim">var myModule = (function () {</span>
 <span class="fragment">    __scopes['myModule'] = {};</span>
 <span class="fragment">    with (__scopes['myModule']) {</span>
-<span class="fragment"><span class="dim">        var someVar = 1;
-        var myFunc = function () { /* instrumented version */ };</span></span>
+<span class="dim">        var someVar = 1;
+        var myFunc = function () { /* instrumented version */ };</span>
 <span class="fragment">    }
     scope.someVar = someVar;
     scope.myFunc = myFunc;</span>
-<span class="fragment"><span class="dim">    return { myFunc: myFunc };
-}());</span></span></code></pre>
+<span class="dim">    return { myFunc: myFunc };
+}());</span></code></pre>
 <pre class="fragment"><code>with (__scopes['myModule']) {
 <span class="dim">    var newFunc = function () { return someVar; };</span>
 }
@@ -181,7 +201,7 @@ __scopes['myModule'].newFunc = newFunc;</code></pre>
                     </section>
                     
                     <section>
-                        <h3>Why, God, Why?</h3>
+                        <h2>Why, God, Why?</h2>
                     </section>
                 </section>
                 
