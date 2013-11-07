@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Exploring the Future of Web Tooling with Brackets</title>
+    
+    <meta name="description" content="An overview of Brackets.">
+    <meta name="author" content="Narciso (nj) Jaramillo, nj@adobe.com, @notwebsafe">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes" >
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" >
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+    
+    <!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->
+  </head>
+  
+  <body>
+    
+    <div class="reveal">
+      
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        
+        <section>
+          <h1>Brackets</h1>
+          <p><img src="images/brackets.svg" width="256" height="256"></p>
+          <h2>Exploring the Future of Web Tooling</h2>
+          <p><span class="fragment">Narciso (nj) Jaramillo</span><span class="fragment">, Adobe</span><span class="fragment"> / <a href="http://twitter.com/notwebsafe">@notwebsafe</a></span><span class="fragment"> / QCon SF 2013</span></p>
+        </section>
+        
+        <section>
+          <section>
+            <h1>What is Brackets?</h1>
+          </section>
+          
+          <section>
+            <p>
+              <span>An <strong>open-source</strong> code editor<br></span>
+              <span class="fragment">for HTML/CSS/JavaScript<br></span>
+              <span class="fragment"><strong>built</strong> in HTML/CSS/JavaScript<br></span>
+              <span class="fragment">and architected for <strong>extensibility</strong></span>
+            </p>
+          </section>
+          
+          <section>
+            <h2>Demo</h2>
+          </section>
+        </section>
+        
+        <section data-state="doc-brown">
+          <h1>Experiments</h1>
+        </section>
+        
+        <section>
+          <section>
+            <h2>Theseus</h2>
+            <div class="person-half">
+              <img src="images/tom-lieber.jpg"><br>
+              Tom Lieber &middot; <a href="http://alltom.com">alltom.com</a>
+            </div>
+            <div class="person-half">
+              <img src="images/joel-brandt.jpg"><br>
+              Joel Brandt &middot; <a href="http://joelbrandt.org">joelbrandt.org</a>
+            </div>
+          </section>
+          
+          <section>
+            <h2>Debugging async code is fun!</h2>
+            <h3 class="fragment">#amirite #yolo</h3>
+            <div class="fragment diagram-step">
+              <img src="images/theseus-diagram-1.png">
+              <p>Something's wrong!</p>
+            </div>
+            <div class="fragment diagram-step">
+              <img src="images/theseus-diagram-2.png">
+              <p>Guess at the problem</p>
+            </div>
+            <div class="fragment diagram-step">
+              <img src="images/theseus-diagram-3.png">
+              <p>Add breakpoints, logs</p>
+            </div>
+            <div class="fragment diagram-step">
+              <img src="images/theseus-diagram-4.png">
+              <p>Reload</p>
+            </div>
+            <div class="fragment diagram-step">
+              <img src="images/theseus-diagram-5.png"><br>
+              <p>Fixed yet?</p>
+            </div>
+          </section>
+          
+          <section>
+            <h2>Demo</h2>
+          </section>
+          
+          <section>
+            <p><a href="https://github.com/adobe-research/theseus">github.com/adobe-research/theseus</a></p>
+          </section>
+        </section>    
+        
+        <section>
+          <section>
+            <h2>Instabug</h2>
+            <div>
+              <img src="images/peter-flynn.png" height="400"><br>
+              Peter Flynn &middot; <a href="https://github.com/peterflynn">github.com/peterflynn</a>
+            </div>
+          </section>
+          
+          <section>
+            <h2>Demo</h2>
+          </section>
+          
+          <section>
+            <p><a href="https://git.corp.adobe.com/pflynn/instabug">git.corp/pflynn/instabug</a></p>
+          </section>
+        </section>
+        
+
+        <section>
+          <section>
+            <h2>PSD Lens</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Building on the Web Stack</h1>
+          </section>
+          
+          <section>
+            <h2>Why?</h2>
+            <ul>
+              <li class="fragment">Flexibility for UI prototyping</li>
+              <li class="fragment">Multi-platform, multi-device</li>
+              <li class="fragment">Users can be builders</li>
+              <li class="fragment">No compiling!</li>
+            </ul>
+          </section>
+          
+          <section>
+            <h2>Challenges</h2>
+            <ul>
+              <li class="fragment">Lack of strong typing</li>
+              <li class="fragment">Managing large amounts of JS</li>
+              <li class="fragment">CSS for app layout</li>
+              <li class="fragment">Asynchronicity</li>
+              <li class="fragment">Performance</li>
+            </ul>
+          </section>
+          
+          <section>
+            <h2>The shoulders of giants</h2>
+            <table>
+              <tr class="fragment"><td>Modularity</td><td><a href="http://requirejs.org">require.js</a></td></tr>
+              <tr class="fragment"><td>Unit testing</td><td><a href="http://pivotal.github.io/jasmine">Jasmine</a></td></tr>
+              <tr class="fragment"><td>Static analysis</td><td><a href="http://jslint.com/">JSLint</a></td></tr>
+              <tr class="fragment"><td>CSS management</td><td><a href="http://lesscss.org">LESS</a></td></tr>
+              <tr class="fragment"><td>Asynchronicity</td><td><a href="http://api.jquery.com/category/deferred-object/">Promises</a></td></tr>
+              <tr class="fragment"><td>Debugging</td><td>Browser dev tools (+ Theseus?)</td></tr>
+            </table>
+          </section>
+          
+          <section>
+            <h2>Other key libraries</h2>
+            <table>
+              <tr class="fragment">
+                <td><a href="http://codemirror.net">CodeMirror 2</a></td>
+                <td>Text editor</td>
+              </tr>
+              <tr class="fragment">
+                <td><a href="http://jquery.com">jQuery</a></td>
+                <td>DOM manipulation, AJAX</td>
+              </tr>
+              <tr class="fragment">
+                <td><a href="http://getbootstrap.com">Bootstrap</a></td>
+                <td>CSS framework</td>
+              </tr>
+            </table>
+          </section>
+          
+          <section>
+            <h2>BLOCK DIAGRAM TIME!</h2>
+          </section>
+          
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-1.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-2.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-3.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-4.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-5.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-6.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-7.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-8.png"></p>
+          </section>
+          <section data-transition="none">
+            <p><img src="images/brackets-arch-9.png"></p>
+          </section>
+          
+          <section>
+            <h2>Caveats</h2>
+            <ul>
+              <li class="fragment">Still exposed to browser bugs</li>
+              <li class="fragment">Cross-browser will eventually be an issue</li>
+              <li class="fragment">Hard to find contributors with native experience</li>
+              <li class="fragment">Performance issues can be hard to track down</li>
+              <li class="fragment">CSS still not great for app layout - Topcoat, grids coming</li>
+            </ul>
+          </section>
+          
+          <section>
+            <h2>Extending Brackets</h2>
+            <ol>
+              <li class="fragment">Create a folder in the <code>extensions/user</code> directory</li>
+              <li class="fragment">Create a module named <code>main.js</code> in that folder</li>
+              <li class="fragment">Use <code>brackets.getModule()</code> instead of <code>require()</code></li>
+              <li class="fragment">Profit!</li>
+            </ol>
+          </section>
+          
+          <section>
+            <h2>Example</h2>
+          </section>                
+        </section>
+                
+        <section>
+          <section>
+            <h1>Open Source Rocks</h1>
+          </section>
+          
+          <section>
+            <h2>The Numbers</h2>
+            <p class="fragment">Open-sourced May 2012</p>
+            <p class="fragment"><strong>50-60,000</strong> downloads per sprint</p>
+            <p class="fragment"><strong>~13,000</strong> watchers, <strong>~2,500</strong> forks</p>
+            <p class="fragment"><strong>~140</strong> external contributors</p>
+            <p class="fragment"><strong>5</strong> external committers</p>
+            <p class="fragment"><strong>140</strong> extensions</p>
+          </section>
+          
+          <section>
+            <h2>Working with External Developers</h2>
+            <ul>
+              <li class="fragment">Budget time for code reviews</li>
+              <li class="fragment">Devs will scratch their own itches</li>
+              <li class="fragment">Core is hard, extensions are easier</li>
+              <li class="fragment">Keeping devs engaged takes time</li>
+              <li class="fragment">We're still learning</li>
+            </ul>
+          </section>
+        </section>
+        
+        <section>
+          <section>
+            <h1>Conclusions</h1>
+          </section>
+          
+          <section>
+            <p><img src="images/HTML5_Logo_512.png" width="32%"><img src="images/CSS3_Logo.png" width="32%"><img src="images/js.png" width="32%"></p>
+          </section>
+          
+          <section data-state="sandbox"></section>
+          
+          <section data-state="sandbox">
+            <div class="standout">
+              <img src="images/brackets.svg" width="96" height="96"><br>
+              <a href="http://brackets.io">brackets.io</a><br>
+              <a href="https://github.com/adobe/brackets">github.com/adobe/brackets</a>
+            </div>
+            <div class="standout fragment">
+              <a href="http://github.com/njx/presos/brackets-qconsf-2013">github.com/njx/presos/brackets-qconsf-2013</a>
+            </div>
+            <div class="standout fragment">
+              Narciso (nj) Jaramillo / <a href="http://twitter.com/notwebsafe">@notwebsafe</a>
+            </div>
+          </section>
+        </section>
+        
+      </div>
+      
+    </div>
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    
+    <script>
+      
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: false,
+        history: true,
+        center: true,
+        rollingLinks: false,
+        
+        theme: 'beige', // available themes are in /css/theme
+        transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+        transitionSpeed: 'fast',
+        
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+      
+    </script>
+    
+  </body>
+</html>
