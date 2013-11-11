@@ -108,5 +108,5 @@ img.left {
 }
 
 .spaced {
-    margin: 20px;
+    margin: 0 30px !important;
 }
