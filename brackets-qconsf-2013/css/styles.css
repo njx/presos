@@ -103,3 +103,10 @@ p.attribution {
 img.left {
     float: left;
 }
+.fiery {
+    color: #f00;
+}
+
+.spaced {
+    margin: 20px;
+}
